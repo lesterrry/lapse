@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+user = User.create(username: 'lesterrry', first_name: 'aydar', last_name: 'prikol', email: 'me@aydar.media')
+
+Lifetime.create(title: 'Жизнь моего деда', description: 'Подлинная история', user: user)
+Lifetime.create(title: 'Мемуары лил пипа', description: "isn't life beautiful", user: User.find_by(username: 'lesterrry'))
