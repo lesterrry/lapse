@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   get 'lifetimes/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root 'pages#index'
+  root 'static_pages#index'
 
-  get '/search', to: 'pages#search'
+  get '/search', to: 'static_pages#search'
   get '/profile', to: 'users#single'
   get '/featured', to: 'lifetimes#featured'
   get '/lifetime', to: 'lifetimes#single'

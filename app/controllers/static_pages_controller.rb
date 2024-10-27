@@ -6,7 +6,7 @@
 
 # frozen_string_literal: true
 
-class PagesController < ApplicationController
+class StaticPagesController < ApplicationController
   def index; end
   def search; end
 end
