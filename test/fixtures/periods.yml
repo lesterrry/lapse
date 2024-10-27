@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lifetime: one
+  start: 2024-10-27 14:45:39
+  end: 2024-10-27 14:45:39
+  title: MyText
+  description: MyText
+  color_hex: MyText
+
+two:
+  lifetime: two
+  start: 2024-10-27 14:45:39
+  end: 2024-10-27 14:45:39
+  title: MyText
+  description: MyText
+  color_hex: MyText

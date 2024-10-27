@@ -1,7 +1,6 @@
 class LifetimesController < ApplicationController
   def featured
     @featured = Lifetime.all
-    p @featured
   end
 
   def single

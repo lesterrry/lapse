@@ -1,2 +1,5 @@
 %h1 lifetime page
 %h2= @lifetime.title
+
+- @lifetime.periods.each do |period|
+    = period.title
