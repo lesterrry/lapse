@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'haml', '~> 5.2'
+gem 'sassc-rails'
 gem 'stimulus-rails'
 
 group :development, :test do
