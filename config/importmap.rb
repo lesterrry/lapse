@@ -5,3 +5,8 @@ pin 'application', preload: true
 pin '@hotwired/stimulus', to: 'stimulus.min.js'
 pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js'
 pin_all_from 'app/javascript/controllers', under: 'controllers'
+
+# pin 'chart.js', to: 'node_modules/chart.js'
+# pin '@kurkle/color', to: 'node_modules/@kurkle/color'
+
+pin 'chart.js', to: 'node_modules/chart.js'
