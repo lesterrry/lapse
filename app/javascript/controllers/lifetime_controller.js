@@ -19,8 +19,11 @@ export default class extends Controller {
 				}]
 			},
 			options: {
+				cutout: '70%',
+
 				plugins: {
 					tooltip: {
+						position: 'nearest',
 						bodyColor: 'black',
 						titleColor: 'black',
 						titleFont: { weight: 'normal' },
