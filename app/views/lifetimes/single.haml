@@ -1,7 +1,6 @@
 %h1 lifetime page
 %h2= @lifetime.title
 
--# - @lifetime.periods.each do |period|
--#     = period.title
-%div{'data-controller': 'lifetime', 'data-lifetime-data': @lifetime.as_json(include: [:periods]).to_json}
-    %canvas{'data-lifetime-target': 'canvas'}
+.single-lifetime
+	%div{'data-controller': 'lifetime', 'data-lifetime-data': @lifetime.as_json(include: [:periods]).to_json}
+		%canvas{'data-lifetime-target': 'canvas'}

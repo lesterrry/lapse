@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from '@hotwired/stimulus'
 import { Chart } from 'chart.js';
 
 export default class extends Controller {
@@ -7,18 +7,36 @@ export default class extends Controller {
 	connect() {
 		this.lifetimeData = JSON.parse(this.data.get('data'));
 
-		this.context = this.canvasTarget.getContext('2d');
+		const context = this.canvasTarget.getContext('2d');
 
-		this.chart = new Chart(this.context, {
-			type: 'pie',
+		const chart = new Chart(context, {
+			type: 'doughnut',
 			data: {
-				labels: ['Red', 'Blue', 'Yellow', 'Green'],
+				labels: ['Red', 'Blue', 'Yellow'],
 				datasets: [{
-					data: [10, 20, 30, 40],
-					backgroundColor: ['red', 'blue', 'yellow', 'green']
+					data: [30, 10, 70],
+					backgroundColor: ['red', 'green', 'rgba(1,1,1,0)']
 				}]
 			},
-			options: {}
+			options: {
+				plugins: {
+					tooltip: {
+						bodyColor: 'black',
+						titleColor: 'black',
+						titleFont: { weight: 'normal' },
+						backgroundColor: 'white',
+						displayColors: false,
+						xAlign: 'center',
+
+						callbacks: {
+							label: () => null
+						}
+					},
+					legend: {
+						display: false,
+					},			
+				}
+			}
 		});
 	}
 }
