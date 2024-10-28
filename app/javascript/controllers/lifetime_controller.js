@@ -1,23 +1,21 @@
 import { Controller } from '@hotwired/stimulus'
 import { Chart } from 'chart.js';
 
+import { generateChart } from '../helpers/generateChart';
+
 export default class extends Controller {
 	static targets = ['canvas'];
 
 	connect() {
-		this.lifetimeData = JSON.parse(this.data.get('data'));
+		const lifetimeData = JSON.parse(this.data.get('data'));
 
 		const context = this.canvasTarget.getContext('2d');
 
+		const chartData = generateChart(lifetimeData);
+
 		const chart = new Chart(context, {
 			type: 'doughnut',
-			data: {
-				labels: ['Red', 'Blue', 'Yellow'],
-				datasets: [{
-					data: [30, 10, 70],
-					backgroundColor: ['red', 'green', 'rgba(1,1,1,0)']
-				}]
-			},
+			data: chartData,
 			options: {
 				cutout: '70%',
 
