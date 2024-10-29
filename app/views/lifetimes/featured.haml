@@ -1,4 +1,6 @@
-%h1 featured page
+.container
+	.featured-lifetimes
+		%h1 featured page
 
-- @featured.each do |feature|
-    %p= feature.title
+	- @featured.each do |feature|
+		%p= feature.title

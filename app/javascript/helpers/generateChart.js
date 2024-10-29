@@ -20,12 +20,12 @@ function getDayOfYear(date) {
     return day;
 }
 
-export function generateChart(lifetimeData) {
+export function generateChart(periods) {
     console.info('generating chart...');
 
-    if (!lifetimeData.periods.length) return null;
+    if (!periods.length) return null;
 
-    const periods = lifetimeData.periods.map(i => {
+    periods = periods.map(i => {
         i.start = new Date(i.start);
         i.end = new Date(i.end);
 

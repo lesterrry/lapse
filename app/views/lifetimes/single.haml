@@ -2,8 +2,13 @@
 	.single-lifetime
 		%h1 lifetime page
 		%h2= @lifetime.title
+		%p= @lifetime.description
 
-		%div.chart{'data-controller': 'lifetime', 'data-lifetime-data': @lifetime.as_json(include: [:periods]).to_json}
+		%div.years
+			- years_from_periods(@lifetime.periods.map).each do |year|
+				%p= year
+
+		%div.chart{'data-controller': 'lifetime', 'data-lifetime-periods': @lifetime.periods.to_json}
 			%div
 				%canvas{'data-lifetime-target': 'canvas'}
 

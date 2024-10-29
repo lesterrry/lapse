@@ -7,11 +7,11 @@ export default class extends Controller {
 	static targets = ['canvas'];
 
 	connect() {
-		const lifetimeData = JSON.parse(this.data.get('data'));
+		const periods = JSON.parse(this.data.get('periods'));
 
 		const context = this.canvasTarget.getContext('2d');
 
-		const chartData = generateChart(lifetimeData);
+		const chartData = generateChart(periods);
 
 		const chart = new Chart(context, {
 			type: 'doughnut',
