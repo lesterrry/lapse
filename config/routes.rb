@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/search', to: 'common_pages#search'
   get '/profile', to: 'users#single'
   get '/featured', to: 'lifetimes#featured'
-  get '/lifetime', to: 'lifetimes#single'
+  get '/lifetime/:id/(:year)', to: 'lifetimes#single', as: 'single_lifetime'
 end

@@ -20,7 +20,11 @@ function getDayOfYear(date) {
     return day;
 }
 
-export function generateChart(periods) {
+function getYear(date) {
+    return date.getFullYear();
+}
+
+export function generateChart(periods, selectedYear) {
     console.info('generating chart...');
 
     if (!periods.length) return null;
@@ -36,7 +40,7 @@ export function generateChart(periods) {
         return a.start - b.start;
     });
 
-    const initialYear = sortedPeriods[0].start.getFullYear();
+    const initialYear = selectedYear ?? sortedPeriods[0].start.getFullYear();
     const daysInYear = getDaysInYear(initialYear);
 
     console.info(`initial year: ${initialYear}, ${daysInYear} days`);
@@ -49,6 +53,11 @@ export function generateChart(periods) {
     for (const period of sortedPeriods) {
         const startDay = getDayOfYear(period.start);
         const endDay = getDayOfYear(period.end);
+        const startYear = getYear(period.start);
+        const endYear = getYear(period.end);
+
+        // TODO
+        if (startYear !== initialYear || endYear !== initialYear) continue;
 
         if (startDay - 1 > lastDay) {
             console.info(`filling period ${lastDay}-${startDay}`);

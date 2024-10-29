@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_27_114539) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_29_165003) do
   create_table "lifetimes", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -41,6 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_27_114539) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "lifetimes", "users"
-  add_foreign_key "periods", "lifetimes"
+  add_foreign_key "lifetimes", "users", on_delete: :cascade
+  add_foreign_key "periods", "lifetimes", on_delete: :cascade
 end
