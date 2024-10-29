@@ -6,3 +6,8 @@
 		%div.chart{'data-controller': 'lifetime', 'data-lifetime-data': @lifetime.as_json(include: [:periods]).to_json}
 			%div
 				%canvas{'data-lifetime-target': 'canvas'}
+
+		%div.periods
+			%h2 периоды
+			- @lifetime.periods.each do |period|
+				= render partial: 'partials/period', locals: { period: }

@@ -1,17 +1,13 @@
-# Handcrafted by Aydar N.
-# 2024
-#
-# me@aydar.media
-#
-
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
 	before_action :set_locale
 
-	private
+		private
+
 	def set_locale
 		loc = extract_locale
+
 		unless loc.nil?
 			I18n.locale = loc
 			cookies[:locale] = loc
