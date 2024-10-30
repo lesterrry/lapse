@@ -1,4 +1,4 @@
-# User.delete_all; exit 0
+User.delete_all
 
 User.find_or_create_by(username: 'lesterrry') do |user|
 	user.first_name = 'aydar'
@@ -6,10 +6,35 @@ User.find_or_create_by(username: 'lesterrry') do |user|
 	user.email = 'me@aydar.media'
 
 	Lifetime.create(title: 'Мемуары лил пипа', description: "isn't life beautiful", user:)
-	lifetime = Lifetime.create(title: 'Жизнь моего деда', description: 'Подлинная история', user:)
+	lifetime = Lifetime.create(title: 'Эры Тейлор Свифт', description: '(taylor\'s version)', user:)
 
-	Period.create(title: 'Поиск работы', description: 'I was looking for a job and then I found a job', start: DateTime.parse('2023-02-01 00:00:00'), end: DateTime.parse('2023-07-26 00:00:00'), lifetime:)
-	Period.create(title: 'хааххаха', description: 'мяу', start: DateTime.parse('2023-07-27 00:00:00'), end: DateTime.parse('2023-08-01 00:00:00'), lifetime:)
-	Period.create(title: 'др', description: 'с др', start: DateTime.parse('2023-08-16 00:00:00'), end: DateTime.parse('2023-10-01 00:00:00'), lifetime:)
-	Period.create(title: 'Новый год', description: 'с новым годом', start: DateTime.parse('2024-01-01 00:00:00'), end: DateTime.parse('2024-01-10 00:00:00'), lifetime:)
+	Period.create(title: 'Taylor Swift', description: 'First studio album', start: DateTime.parse('2006-10-24 00:00:00'), end: DateTime.parse('2006-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Taylor Swift', description: 'First studio album', start: DateTime.parse('2007-01-01 00:00:00'), end: DateTime.parse('2007-11-10 23:59:59'), lifetime:)
+
+	Period.create(title: 'Fearless', description: 'Second studio album', start: DateTime.parse('2008-11-11 00:00:00'), end: DateTime.parse('2008-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Fearless', description: 'Second studio album', start: DateTime.parse('2009-01-01 00:00:00'), end: DateTime.parse('2009-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Fearless', description: 'Second studio album', start: DateTime.parse('2010-01-01 00:00:00'), end: DateTime.parse('2010-10-24 23:59:59'), lifetime:)
+
+	Period.create(title: 'Speak Now', description: 'Third studio album', start: DateTime.parse('2010-10-25 00:00:00'), end: DateTime.parse('2010-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Speak Now', description: 'Third studio album', start: DateTime.parse('2011-01-01 00:00:00'), end: DateTime.parse('2011-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Speak Now', description: 'Third studio album', start: DateTime.parse('2012-01-01 00:00:00'), end: DateTime.parse('2012-10-21 23:59:59'), lifetime:)
+
+	Period.create(title: 'Red', description: 'Fourth studio album', start: DateTime.parse('2012-10-22 00:00:00'), end: DateTime.parse('2012-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Red', description: 'Fourth studio album', start: DateTime.parse('2013-01-01 00:00:00'), end: DateTime.parse('2013-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Red', description: 'Fourth studio album', start: DateTime.parse('2014-01-01 00:00:00'), end: DateTime.parse('2014-10-26 23:59:59'), lifetime:)
+
+	Period.create(title: '1989', description: 'Fifth studio album', start: DateTime.parse('2017-01-01 00:00:00'), end: DateTime.parse('2017-11-09 23:59:59'), lifetime:)
+
+	Period.create(title: 'Reputation', description: 'Sixth studio album', start: DateTime.parse('2017-11-10 00:00:00'), end: DateTime.parse('2017-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Reputation', description: 'Sixth studio album', start: DateTime.parse('2018-01-01 00:00:00'), end: DateTime.parse('2018-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Reputation', description: 'Sixth studio album', start: DateTime.parse('2019-01-01 00:00:00'), end: DateTime.parse('2019-08-22 23:59:59'), lifetime:)
+
+	Period.create(title: 'Lover', description: 'Seventh studio album', start: DateTime.parse('2019-08-23 00:00:00'), end: DateTime.parse('2019-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Lover', description: 'Seventh studio album', start: DateTime.parse('2020-01-01 00:00:00'), end: DateTime.parse('2020-07-23 23:59:59'), lifetime:)
+
+	Period.create(title: 'Folklore', description: 'Eighth studio album', start: DateTime.parse('2020-07-24 00:00:00'), end: DateTime.parse('2020-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Folklore', description: 'Eighth studio album', start: DateTime.parse('2021-01-01 00:00:00'), end: DateTime.parse('2021-04-08 23:59:59'), lifetime:)
+
+	Period.create(title: 'Fearless (Taylor\'s Version)', description: 'First re-recorded album', start: DateTime.parse('2021-04-09 00:00:00'), end: DateTime.parse('2021-12-30 23:59:59'), lifetime:)
+	Period.create(title: 'Fearless (Taylor\'s Version)', description: 'First re-recorded album', start: DateTime.parse('2022-01-01 00:00:00'), end: DateTime.parse('2022-07-11 23:59:59'), lifetime:)
 end

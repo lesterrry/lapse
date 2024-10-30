@@ -1,26 +1,55 @@
 .single-lifetime {
-    div.chart {
-        & {
-            padding: 0 40px 0 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
+	& {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 
-        & > div {
-            width: 100%;
-            height: 600px;
-        }
-    }
+	div.chart {
+		& {
+			padding: 0 40px 0 40px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		& > div {
+			width: 100%;
+			height: 600px;
+		}
+	}
+
+	.years{
+		& {
+			margin-top: 20px;
+			margin-bottom: 40px;
+			text-align: center;
+		}
+
+		a {
+			color: rgba(132, 137, 156, 0.5);
+			font-size: 15px;
+			cursor: pointer;
+		}
+
+		a:hover {
+			color: var(--blue);
+		}
+		
+		p {
+			font-size: 50px;
+		}
+	}
 }
 
 @media all and (min-width: 680px) {
-    .single-lifetime {
-        div.chart {
-            & > div {
-                width: 600px;
-            };
-        }
-    }
+	.single-lifetime {
+		div.chart {
+			& > div {
+				width: 600px;
+			};
+		}
+	}
 }
