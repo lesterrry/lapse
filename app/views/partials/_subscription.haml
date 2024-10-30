@@ -1,2 +1,3 @@
-= render partial: 'partials/email'
-= render partial: 'partials/button', locals: { text: 'Подписаться' }
+= form_for :subscription, url: subscriptions_path, html: { class: 'subscription-partial' } do |f|
+	= render partial: 'partials/email', locals: { form: f }
+	= render partial: 'partials/button', locals: { form: f, text: 'Подписаться' }

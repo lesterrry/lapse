@@ -1,2 +1,2 @@
-%button.button-partial
-    %p.stroke-s= text
+%button.button-partial{type: defined?(form) ? 'submit' : nil}
+	%p.stroke-s= text

@@ -1,2 +1,5 @@
 %div.email-partial
-	%input{ type: 'text', placeholder: 'email' }
+	- if defined? form
+		= form.text_field :email, placeholder: 'email'
+	- else
+		%input{ type: 'text', placeholder: 'email' }

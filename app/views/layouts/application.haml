@@ -11,3 +11,7 @@
 		= render partial: 'partials/nav', locals: { current_page: @page_nav_name, header: true }
 		= yield
 		= render partial: 'partials/nav'
+
+		- if flash[:notice]
+			:javascript
+				alert('#{flash[:notice]}');
