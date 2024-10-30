@@ -1,0 +1,23 @@
+.button-partial {
+	& {
+		background-color: var(--blue);
+		border-radius: 15px;
+		padding: 16px 40px 16px 40px;
+		min-width: 380px;
+		transition: 0.2s;
+		cursor: pointer;
+	}
+
+	& > p {
+		color: white;
+		font-size: 26px;
+	}
+
+	& > p.stroke-s {
+		-webkit-text-stroke-color: white;
+	}
+
+	&:hover {
+		opacity: 80%;
+	}
+}

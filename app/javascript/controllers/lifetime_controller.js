@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { Chart } from 'chart.js';
 
-import { generateChart } from '../helpers/generateChart';
+import { generateChart } from '../helpers/generate_chart';
 
 export default class extends Controller {
 	static targets = ['canvas'];

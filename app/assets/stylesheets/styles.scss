@@ -1,5 +1,25 @@
 body {
-    background-color: lightgray;
+    background-color: #EAEAEA;
+}
+
+a, p, h1, h2, input, button {
+    font-family: 'Arial';
+    color: var(--blue);
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.stroke-s {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--blue);
+}
+
+.stroke-m {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: var(--blue);
 }
 
 .container {

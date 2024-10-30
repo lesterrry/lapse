@@ -1,0 +1,14 @@
+.email-partial {
+	& {
+		width: 760px;
+		height: 74px;
+		border-radius: 15px;
+		padding: 18px 20px 0 20px;
+		background-color: white;
+		box-sizing: border-box;
+	}
+
+	& > input {
+		font-size: 26px;
+	}
+}

@@ -1,4 +1,22 @@
-= link_to 'home', '/'
-= link_to 'featured', '/featured'
-= link_to 'my lifetimes', '/profile'
-= link_to 'create new', '/lifetime'
+- stroke = 'stroke-s'
+
+.nav-partial{class: defined?(header) ? 'header' : 'footer'}
+    - if defined?(header)
+        %div
+            = link_to 'о проекте', '/about', class: current_page == 'about' ? stroke : nil
+            = link_to 'жизни', '/featured', class: current_page == 'featured' ? stroke : nil
+
+        = link_to 'lapse', '/', class: current_page == 'home' ? stroke : nil
+
+        %div
+            = link_to 'промо', '/promo', class: current_page == 'promo' ? stroke : nil
+            = link_to 'профиль', '/lifetime/2', class: current_page == 'profile' ? stroke : nil
+    - else
+        %div
+            %p 2024
+
+        = link_to 'lapse', '/', class: 'stroke-s'
+
+        %div
+            %p
+            %p adc hse

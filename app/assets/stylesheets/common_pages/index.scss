@@ -1,0 +1,47 @@
+.index-page {
+	.circle-container {
+		width: 100%;
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	div.circle {
+		& {
+			width: 1000px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			aspect-ratio: 1 / 1;
+			border-radius: 50%;
+			border: 10px solid var(--blue);
+		}
+
+		p.caption {
+			margin-top: 20%;
+			color: var(--lightblue);
+			font-size: 25px;
+		}
+
+		p.title {
+			margin-top: -60px;
+			font-size: 197px;
+		}
+
+		p.subtitle {
+			margin-top: 10px;
+			font-size: 26px;
+			text-align: center;
+			width: 560px;
+		}
+
+		div.email-partial {
+			margin-top: 180px;
+		}
+
+		button.button-partial {
+			margin-top: 25px;
+		}
+	}
+}

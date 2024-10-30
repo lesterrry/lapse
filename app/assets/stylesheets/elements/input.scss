@@ -1,0 +1,31 @@
+input {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+::-webkit-input-placeholder {
+    color: var(--lightblue);
+}
+
+:-moz-placeholder {
+    color: var(--lightblue);
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    color: var(--lightblue);
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: var(--lightblue);
+}
+
+::-ms-input-placeholder {
+    color: var(--lightblue);
+}
+
+::placeholder {
+    color: var(--lightblue);
+}
