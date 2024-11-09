@@ -29,15 +29,15 @@ a {
         align-items: center;
     }
     
-    & > div {
+    & > div, & > form {
         width: 100%;
         padding: 0 40px 0 40px;
-    };
+    }
 }
 
 @media all and (min-width: 1370px) {
     .container {    
-        & > div {
+        & > div, & > form {
             width: 1370px;
         };
     }

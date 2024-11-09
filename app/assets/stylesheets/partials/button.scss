@@ -20,4 +20,12 @@
 	&:hover {
 		opacity: 80%;
 	}
+
+	&.m {
+		min-width: initial;
+	}
+
+	&.m > p {
+		font-size: 18px;
+	}
 }

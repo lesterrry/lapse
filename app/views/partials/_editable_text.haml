@@ -1,0 +1,3 @@
+%span{'data-controller': 'editable-text'}
+	= content_tag tag, text, {'contenteditable': enabled, 'data-action': 'blur->editable-text#rewrite'}
+	= form.hidden_field form_field, {'data-editable-text-target': 'destination'}

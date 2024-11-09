@@ -51,13 +51,11 @@ export function generateChart(periods, selectedYear) {
     let lastDay = 1;
 
     for (const period of sortedPeriods) {
-        const startDay = getDayOfYear(period.start);
-        const endDay = getDayOfYear(period.end);
         const startYear = getYear(period.start);
         const endYear = getYear(period.end);
-
-        // TODO
-        if (startYear !== initialYear || endYear !== initialYear) continue;
+        
+        const startDay = startYear === initialYear ? getDayOfYear(period.start) : 1;
+        const endDay = endYear === initialYear ? getDayOfYear(period.end) : daysInYear;
 
         if (startDay - 1 > lastDay) {
             console.info(`filling period ${lastDay}-${startDay}`);

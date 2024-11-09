@@ -1,3 +1,4 @@
 .period-partial
-	%h3= period.title
-	%p #{friendly_date(period.start)} —> #{friendly_date(period.end)}
+	-# = form_for :period, url: 
+	%h3{contenteditable: true}= period.title
+	%p #{friendly_date(period.start)} → #{friendly_date(period.end)}

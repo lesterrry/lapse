@@ -1,7 +1,7 @@
 .container
-	.single-lifetime
-		%h2= @lifetime.title
-		%p= @lifetime.description
+	= form_for :lifetime, html: {class: 'single-lifetime'} do |form|
+		= render partial: 'partials/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
+		= render partial: 'partials/editable_text', locals: { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 
 		%div.years
 			- @years.each do |year|
@@ -10,11 +10,19 @@
 				- else
 					= link_to year, single_lifetime_url(id: @lifetime.id, year: year)
 
-		%div.chart{'data-controller': 'lifetime', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
-			%div
-				%canvas{'data-lifetime-target': 'canvas'}
+		%div.info
+			%div.description
 
-		%div.periods
-			%h2 периоды
-			- @periods.each do |period|
-				= render partial: 'partials/period', locals: { period: }
+			%div.chart{'data-controller': 'lifetime', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
+				%div
+					%canvas{'data-lifetime-target': 'canvas'}
+
+			%div.periods
+				%h2 периоды
+				- @periods.each do |period|
+					= render partial: 'partials/period', locals: { period: }
+
+		- if @editable
+			= render partial: 'partials/button', locals: { text: 'Сохранить', link: '?edit', size: 'm', html_class: 'edit-button' }
+		- else
+			= render partial: 'partials/button', locals: { text: 'Редактировать', link: '?edit=1', size: 'm', html_class: 'edit-button' }

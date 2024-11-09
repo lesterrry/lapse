@@ -1,2 +1,8 @@
-%button.button-partial{type: defined?(form) ? 'submit' : nil}
+- size ||= nil
+- html_class ||= nil
+- link ||= nil
+
+- tag = link ? 'a' : 'button'
+
+= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('button-partial', size, html_class) } do
 	%p.stroke-s= text

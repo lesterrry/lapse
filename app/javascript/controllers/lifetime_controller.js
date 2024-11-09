@@ -10,13 +10,11 @@ export default class extends Controller {
 		const periods = JSON.parse(this.data.get('periods'));
 		const selectedYear = Number.parseInt(this.data.get('selectedYear'), 10);
 
-		console.log(selectedYear);
-
 		const context = this.canvasTarget.getContext('2d');
 
 		const chartData = generateChart(periods, selectedYear);
 
-		const chart = new Chart(context, {
+		new Chart(context, {
 			type: 'doughnut',
 			data: chartData,
 			options: {
