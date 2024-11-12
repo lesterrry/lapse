@@ -1,4 +1,4 @@
 .period-partial
-	-# = form_for :period, url: 
-	%h3{contenteditable: true}= period.title
-	%p #{friendly_date(period.start)} → #{friendly_date(period.end)}
+	= form.fields_for :periods, period do |fields|
+		= render partial: 'partials/editable_text', locals: { tag: 'h3', text: period.title, enabled:, form_field: :title, form: fields }
+		%p #{friendly_date(period.start)} → #{friendly_date(period.end)}

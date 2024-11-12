@@ -1,5 +1,5 @@
 .container
-	= form_for :lifetime, html: {class: 'single-lifetime'} do |form|
+	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year), html: {class: 'single-lifetime'} do |form|
 		= render partial: 'partials/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
 		= render partial: 'partials/editable_text', locals: { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 
@@ -20,9 +20,9 @@
 			%div.periods
 				%h2 периоды
 				- @periods.each do |period|
-					= render partial: 'partials/period', locals: { period: }
+					= render partial: 'partials/period', locals: { enabled: @editable, period:, form: }
 
 		- if @editable
-			= render partial: 'partials/button', locals: { text: 'Сохранить', link: '?edit', size: 'm', html_class: 'edit-button' }
+			= render partial: 'partials/button', locals: { text: 'Сохранить', size: 'm', html_class: 'edit-button', form: }
 		- else
 			= render partial: 'partials/button', locals: { text: 'Редактировать', link: '?edit=1', size: 'm', html_class: 'edit-button' }

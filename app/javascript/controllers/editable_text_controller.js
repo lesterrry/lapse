@@ -1,25 +1,25 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-	static targets = ['destination']
+	static targets = ['field'];
 
 	connect() {
-		window.addEventListener("keydown", this.handleKeyDown.bind(this))
+		window.addEventListener('keydown', this.handleKeyDown.bind(this));
 	}
 
 	disconnect() {
-		window.removeEventListener("keydown", this.handleKeyDown.bind(this))
+		window.removeEventListener('keydown', this.handleKeyDown.bind(this));
 	}
 
 	handleKeyDown(event) {
+		// disabling enter key
 		if (event.keyCode === 13) {
 			event.preventDefault();
 			return false;
 		}
 	}
 
-
 	rewrite(event) {
-		this.destinationTarget.value = event.srcElement.innerHTML;
+		this.fieldTarget.value = event.srcElement.innerHTML;
 	}
 }

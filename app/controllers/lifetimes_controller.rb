@@ -15,4 +15,20 @@ class LifetimesController < ApplicationController
 
 		@editable = !params[:edit].nil?
 	end
+
+	def update_single
+		@lifetime = Lifetime.find(params[:id])
+
+		if @lifetime.update(lifetime_params)
+			redirect_to action: :single, year: params[:year]
+		else
+			# render :single
+		end
+	end
+
+	private
+
+	def lifetime_params
+		params.require(:lifetime).permit(:title, :description, periods_attributes: %i[id title description _destroy])
+	end
 end

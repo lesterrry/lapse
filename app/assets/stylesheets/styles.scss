@@ -12,6 +12,11 @@ a {
     text-decoration: none;
 }
 
+[contenteditable]:hover {
+    text-decoration: underline;
+    text-decoration-color: gray;
+}
+
 .stroke-s {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--blue);
