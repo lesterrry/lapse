@@ -8,4 +8,15 @@
         flex-direction: column;
         gap: 8px;
     }
+
+    input, p {
+        font-size: 16px;
+        padding: 0;
+        height: 15px;
+        overflow: visible;
+    }
+
+    input:hover {
+        border-bottom: 1.5px solid gray;
+    }
 }

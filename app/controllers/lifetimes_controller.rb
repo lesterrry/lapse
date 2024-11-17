@@ -29,6 +29,6 @@ class LifetimesController < ApplicationController
 	private
 
 	def lifetime_params
-		params.require(:lifetime).permit(:title, :description, periods_attributes: %i[id title description _destroy])
+		params.require(:lifetime).permit(:title, :description, periods_attributes: %i[id title description start end _destroy])
 	end
 end

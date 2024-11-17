@@ -1,6 +1,6 @@
 module LifetimesHelper
 	def friendly_date(date)
-		date.strftime('%-d %b %Y')
+		date.strftime('%-d.%m.%Y')
 	end
 
 	def years_from_periods(periods)

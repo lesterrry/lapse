@@ -1,4 +1,7 @@
 .period-partial
 	= form.fields_for :periods, period do |fields|
+		- date_start = enabled ? fields.date_field(:start, value: period.start.to_date) : friendly_date(period.start)
+		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date) : friendly_date(period.end)
+
 		= render partial: 'partials/editable_text', locals: { tag: 'h3', text: period.title, enabled:, form_field: :title, form: fields }
-		%p #{friendly_date(period.start)} → #{friendly_date(period.end)}
+		%p #{date_start} → #{date_end}
