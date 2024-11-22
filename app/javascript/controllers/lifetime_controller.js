@@ -7,18 +7,29 @@ export default class extends Controller {
 	static targets = ['canvas'];
 
 	connect() {
-		const periods = JSON.parse(this.data.get('periods'));
-		const selectedYear = Number.parseInt(this.data.get('selectedYear'), 10);
+		this.periods = JSON.parse(this.data.get('periods'));
+		this.selectedYear = Number.parseInt(this.data.get('selectedYear'), 10);
 
-		const context = this.canvasTarget.getContext('2d');
+		this.context = this.canvasTarget.getContext('2d');
 
-		const chartData = generateChart(periods, selectedYear);
+		this.renderChart();
+	}
 
-		new Chart(context, {
+	disconnect() {
+		this.element.removeEventListener('periodChanged', this.handlePeriodChanged);
+	}
+
+	renderChart(withAnimation = true) {
+		this.chart?.destroy();
+
+		const chartData = generateChart(this.periods, this.selectedYear);
+
+		this.chart = new Chart(this.context, {
 			type: 'doughnut',
 			data: chartData,
 			options: {
 				cutout: '70%',
+				animation: { duration: withAnimation ? 1000 : 0 },
 
 				plugins: {
 					tooltip: {
@@ -36,9 +47,21 @@ export default class extends Controller {
 					},
 					legend: {
 						display: false,
-					},			
+					},
 				}
 			}
 		});
+	}
+
+	handlePeriodChanged(event) {
+		const { id, field, value } = event.detail;
+
+		let period = this.periods.find(i => i.id === id);
+		
+		period[field] = value;
+
+		console.log(period)
+
+		this.renderChart(false)
 	}
 }

@@ -19,7 +19,7 @@ export default class extends Controller {
 		}
 	}
 
-	rewrite(event) {
+	handleBlur(event) {
 		this.fieldTarget.value = event.srcElement.innerHTML;
 	}
 }

@@ -1,7 +1,9 @@
-.period-partial
+.period-partial{'data-controller': 'period', 'data-period-id': period.id}
 	= form.fields_for :periods, period do |fields|
-		- date_start = enabled ? fields.date_field(:start, value: period.start.to_date) : friendly_date(period.start)
-		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date) : friendly_date(period.end)
+		- blur_action = 'blur->period#handleBlur'
 
-		= render partial: 'partials/editable_text', locals: { tag: 'h3', text: period.title, enabled:, form_field: :title, form: fields }
+		- date_start = enabled ? fields.date_field(:start, value: period.start.to_date, 'data-action': blur_action, 'data-id': 'start') : friendly_date(period.start)
+		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date, 'data-action': blur_action, 'data-id': 'end') : friendly_date(period.end)
+
+		= render partial: 'partials/editable_text', locals: { tag: 'h3', id: 'title', text: period.title, enabled:, form_field: :title, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'title' } }
 		%p #{date_start} → #{date_end}

@@ -1,3 +1,8 @@
-%span{'data-controller': 'editable-text'}
-	= content_tag tag, text, {'contenteditable': enabled || nil, 'data-action': 'blur->editable-text#rewrite'}
+- custom_actions ||= []
+- data ||= {}
+- id ||= nil
+
+%span{'data-controller': 'editable-text', data: data}
+	- actions = ['blur->editable-text#handleBlur', *custom_actions]
+	= content_tag tag, text, {'contenteditable': enabled || nil, 'data-action': actions.join(' '), 'data-id': id}
 	= form.hidden_field form_field, {'data-editable-text-target': 'field'}

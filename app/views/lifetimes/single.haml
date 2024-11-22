@@ -13,7 +13,7 @@
 		%div.info
 			%div.description
 
-			%div.chart{'data-controller': 'lifetime', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
+			%div.chart{'data-controller': 'lifetime', 'data-action': 'periodChanged@document->lifetime#handlePeriodChanged', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
 				%div
 					%canvas{'data-lifetime-target': 'canvas'}
 

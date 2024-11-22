@@ -5,7 +5,7 @@ function getRandomColor() {
 }
 
 function getDaysInYear(year) {
-    return isLeap(year) ? 366 : 365;
+    return isLeap(year) ? 365 : 364;
 }
 
 function isLeap(year) {
@@ -13,11 +13,12 @@ function isLeap(year) {
 }
 
 function getDayOfYear(date) {
-    var start = new Date(date.getFullYear(), 0, 0);
-    var diff = (date - start) + ((start.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000);
-    var oneDay = 1000 * 60 * 60 * 24;
-    var day = Math.floor(diff / oneDay);
-    return day;
+    const startOfYear = new Date(date.getFullYear(), 0, 1);
+    const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const diffInMilliseconds = currentDate - startOfYear;
+    const dayOfYear = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+    return dayOfYear;
 }
 
 function getYear(date) {
@@ -35,7 +36,7 @@ export function generateChart(periods, selectedYear) {
 
         return i;
     });
-    
+
     const sortedPeriods = periods.sort((a, b) => {
         return a.start - b.start;
     });
@@ -44,17 +45,15 @@ export function generateChart(periods, selectedYear) {
     const daysInYear = getDaysInYear(initialYear);
 
     console.info(`initial year: ${initialYear}, ${daysInYear} days`);
-    
-    console.log(sortedPeriods);
 
     let consecutivePeriods = [];
-    let lastDay = 1;
+    let lastDay = -1;
 
     for (const period of sortedPeriods) {
         const startYear = getYear(period.start);
         const endYear = getYear(period.end);
-        
-        const startDay = startYear === initialYear ? getDayOfYear(period.start) : 1;
+
+        const startDay = startYear === initialYear ? getDayOfYear(period.start) : 0;
         const endDay = endYear === initialYear ? getDayOfYear(period.end) : daysInYear;
 
         if (startDay - 1 > lastDay) {
@@ -65,18 +64,23 @@ export function generateChart(periods, selectedYear) {
             consecutivePeriods.push({ days: range, title: '', color: 'rgba(0,0,0,0)' });
 
             lastDay += range;
+        } else if (lastDay === -1) {
+            lastDay = 0;
         }
 
         console.info(`adding period ${startDay}-${endDay}`);
 
         const range = endDay - startDay;
 
-        consecutivePeriods.push({ days: range + lastDay > daysInYear ? daysInYear - range : range, title: period.title });
+        const remaining = range + lastDay > daysInYear ? daysInYear - range : range;
 
-        lastDay += range;
+        consecutivePeriods.push({ days: remaining, title: period.title });
+
+        lastDay += remaining;
     }
 
-    if (lastDay < daysInYear) {
+    if (lastDay < daysInYear - 1) {
+        console.info(`filling rest of year ${lastDay}-${daysInYear}`);
         consecutivePeriods.push({ days: daysInYear - lastDay + 1, title: '', color: 'rgba(0,0,0,0)' });
     }
 
