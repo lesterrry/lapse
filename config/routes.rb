@@ -11,6 +11,11 @@ Rails.application.routes.draw do
 	get '/featured', to: 'lifetimes#featured'
 	get '/lifetimes/:id/(:year)', to: 'lifetimes#single', as: 'single_lifetime'
 
+	namespace :api do
+		get '/lifetimes/', to: 'lifetimes#index'
+		get '/lifetimes/:id/', to: 'lifetimes#single'
+	end
+
 	resources :lifetimes, only: [:update] do
 		member do
 			patch ':year', to: 'lifetimes#update_single'
