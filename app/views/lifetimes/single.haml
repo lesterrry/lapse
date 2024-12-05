@@ -21,8 +21,12 @@
 				%h2 периоды
 				- @periods.each do |period|
 					= render partial: 'partials/period', locals: { enabled: @editable, period:, form: }
+				
+				- if @editable
+					= render partial: 'partials/button', locals: { text: 'Добавить', link: '?edit=1&new=1', size: 's', html_class: 'edit-button' }
+					= @new_period
 
 		- if @editable
-			= render partial: 'partials/button', locals: { text: 'Сохранить', size: 'm', html_class: 'edit-button', form: }
+			= render partial: 'partials/button', locals: { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
 		- else
 			= render partial: 'partials/button', locals: { text: 'Редактировать', link: '?edit=1', size: 'm', html_class: 'edit-button' }

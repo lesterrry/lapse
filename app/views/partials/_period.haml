@@ -7,3 +7,7 @@
 
 		= render partial: 'partials/editable_text', locals: { tag: 'h3', id: 'title', text: period.title, enabled:, form_field: :title, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'title' } }
 		%p #{date_start} → #{date_end}
+
+		- if enabled
+			= fields.label :_destroy, 'Delete?'
+			= fields.check_box :_destroy

@@ -11,6 +11,7 @@
 	& > p {
 		color: white;
 		font-size: 26px;
+		text-align: center;
 	}
 
 	& > p.stroke-s {
@@ -27,5 +28,13 @@
 
 	&.m > p {
 		font-size: 18px;
+	}
+
+	&.s {
+		min-width: initial;
+	}
+
+	&.s > p {
+		font-size: 16px;
 	}
 }

@@ -90,7 +90,7 @@ export function generateChart(periods, selectedYear) {
         labels: consecutivePeriods.map(i => i.title),
         datasets: [{
             data: consecutivePeriods.map(i => i.days),
-            backgroundColor: consecutivePeriods.map(i => i.color || getRandomColor()),
+            backgroundColor: consecutivePeriods.map(i => i.color || 'lightblue'),
         }]
     }
 }

@@ -60,8 +60,6 @@ export default class extends Controller {
 		
 		period[field] = value;
 
-		console.log(period)
-
-		this.renderChart(false)
+		this.renderChart(false);
 	}
 }
