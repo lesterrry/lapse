@@ -1,7 +1,7 @@
 .container
 	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year), html: {class: 'single-lifetime'} do |form|
-		= render partial: 'partials/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
-		= render partial: 'partials/editable_text', locals: { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
+		= render partial: 'shared/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
+		= render partial: 'shared/editable_text', locals: { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 
 		%div.years
 			- @years.each do |year|
@@ -20,13 +20,13 @@
 			%div.periods
 				%h2 периоды
 				- @periods.each do |period|
-					= render partial: 'partials/period', locals: { enabled: @editable, period:, form: }
+					= render partial: 'shared/period', locals: { enabled: @editable, period:, form: }
 				
 				- if @editable
-					= render partial: 'partials/button', locals: { text: 'Добавить', link: '?edit=1&new=1', size: 's', html_class: 'edit-button' }
+					= render partial: 'shared/button', locals: { text: 'Добавить', link: '?edit=1&new=1', size: 's', html_class: 'edit-button' }
 					= @new_period
 
 		- if @editable
-			= render partial: 'partials/button', locals: { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
+			= render partial: 'shared/button', locals: { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
 		- else
-			= render partial: 'partials/button', locals: { text: 'Редактировать', link: '?edit=1', size: 'm', html_class: 'edit-button' }
+			= render partial: 'shared/button', locals: { text: 'Редактировать', link: '?edit=1', size: 'm', html_class: 'edit-button' }

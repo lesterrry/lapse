@@ -5,9 +5,8 @@
 		- date_start = enabled ? fields.date_field(:start, value: period.start.to_date, 'data-action': blur_action, 'data-id': 'start') : friendly_date(period.start)
 		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date, 'data-action': blur_action, 'data-id': 'end') : friendly_date(period.end)
 
-		= render partial: 'partials/editable_text', locals: { tag: 'h3', id: 'title', text: period.title, enabled:, form_field: :title, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'title' } }
+		= render partial: 'shared/editable_text', locals: { tag: 'h3', id: 'title', text: period.title, enabled:, form_field: :title, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'title' } }
 		%p #{date_start} → #{date_end}
 
 		- if enabled
-			= fields.label :_destroy, 'Delete?'
-			= fields.check_box :_destroy
+			= render partial: 'shared/checkbox', locals: { text_unchecked: 'Удалить', text_checked: 'Не удалять', form_field: :_destroy, form: fields }

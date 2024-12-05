@@ -12,9 +12,13 @@ a {
     text-decoration: none;
 }
 
-[contenteditable]:hover {
+[contenteditable]:hover, .checkbox-partial > label:hover {
     text-decoration: underline;
     text-decoration-color: gray;
+}
+
+input[type="checkbox"] {
+    display: none;
 }
 
 .stroke-s {

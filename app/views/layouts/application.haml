@@ -8,9 +8,9 @@
 		= stylesheet_link_tag 'application'
 		= javascript_importmap_tags
 	%body
-		= render partial: 'partials/nav', locals: { current_page: @page_nav_name, header: true }
+		= render partial: 'shared/nav', locals: { current_page: @page_nav_name, header: true }
 		= yield
-		= render partial: 'partials/nav'
+		= render partial: 'shared/nav'
 
 		- if flash[:notice]
 			:javascript
