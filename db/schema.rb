@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_30_001615) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_13_225653) do
   create_table "lifetimes", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -18,6 +18,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_30_001615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lifetimes_on_user_id"
+  end
+
+  create_table "passkeys", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "label"
+    t.string "external_id"
+    t.string "public_key"
+    t.integer "sign_count"
+    t.datetime "last_used_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["external_id"], name: "index_passkeys_on_external_id", unique: true
+    t.index ["public_key"], name: "index_passkeys_on_public_key", unique: true
+    t.index ["user_id"], name: "index_passkeys_on_user_id"
   end
 
   create_table "periods", force: :cascade do |t|
@@ -42,11 +56,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_30_001615) do
     t.string "username"
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
+    t.string "email", default: "", null: false
+    t.datetime "remember_created_at"
+    t.string "remember_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "webauthn_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["webauthn_id"], name: "index_users_on_webauthn_id", unique: true
   end
 
   add_foreign_key "lifetimes", "users", on_delete: :cascade
+  add_foreign_key "passkeys", "users"
   add_foreign_key "periods", "lifetimes", on_delete: :cascade
 end

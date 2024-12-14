@@ -1,0 +1,6 @@
+.container
+	.single-user
+		%h1 profile page
+		%h2= current_user.email
+
+		= render "users/shared/links", resource_name: :user, devise_mapping: Devise.mappings[:user]

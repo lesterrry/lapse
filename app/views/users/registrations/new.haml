@@ -1,0 +1,21 @@
+.container.registrations-new
+  %h2 Sign up
+
+  = form_with(model: resource, as: resource_name, url: registration_path(resource_name), data: { challenge_url: new_user_registration_challenge_url, credential_field_name: "#{resource_name}[passkey_credential]" }) do |f|
+    = render 'devise/shared/error_messages', resource: resource
+
+    = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'email', required: true
+    = f.text_field :passkey_label, autofocus: 'off', placeholder: 'device name', required: true
+
+    = f.hidden_field :passkey_credential
+
+    = render partial: 'shared/button', locals: { text: 'Use Passkey' }
+  .other
+    = render 'devise/shared/links'
+
+  :plain
+    <script type="module">
+      import { submitFormEvent } from 'registration_form'
+
+      document.querySelector('form').addEventListener('submit', submitFormEvent)
+    </script>
