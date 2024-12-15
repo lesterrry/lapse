@@ -1,0 +1,28 @@
+.container.passkeys-index
+  %h2 Passkeys
+  = link_to 'Настройки входа', '/users/edit'
+
+  %table
+    %thead
+      %tr
+        %th Label
+        %th Sign Count
+        %th Last Used At
+        %th Public Key
+        %th External ID
+        %th
+    %tbody
+      - current_user.passkeys.each do |passkey|
+        %tr
+          %td= passkey.label
+          %td= passkey.sign_count
+          %td= passkey.last_used_at
+          %td
+            %pre= passkey.public_key
+          %td
+            %pre= passkey.external_id
+          %td
+            - if current_user.passkeys.count > 1
+              -# add confirmation 
+              = form_with(model: [:users, passkey], method: :delete, class: 'delete-passkey') do |f|
+                %button{ type: "submit"} Delete

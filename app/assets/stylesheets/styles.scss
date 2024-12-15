@@ -21,7 +21,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-.stroke-s {
+a:hover, .stroke-s {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--blue);
 }

@@ -1,7 +1,5 @@
 class Users::ProfilesController < ApplicationController
   before_action :authenticate_user!
 
-  def me
-    @user = current_user
-  end
+  def me; end
 end
