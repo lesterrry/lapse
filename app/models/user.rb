@@ -1,11 +1,10 @@
 class User < ApplicationRecord
-    validates_uniqueness_of :username
+    validates_uniqueness_of :username, :email
     has_many :lifetimes, dependent: :destroy
 
-    devise :passkey_authenticatable, :registerable, :rememberable
+    devise :passkey_authenticatable, :database_authenticatable, :registerable, :rememberable
 
     has_many :passkeys, dependent: :destroy
-    has_many :links, dependent: :destroy
 
     def self.passkeys_class
         Passkey

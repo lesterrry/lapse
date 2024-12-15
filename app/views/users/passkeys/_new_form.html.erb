@@ -14,12 +14,7 @@
 ) do |f| %>
   <h2>Add a passkey</h2>
 
-  <fieldset>
-    <button id="unlock-button" type="button"><%= image_tag("passkey-black.svg", width: "25", height: "25") %> Unlock</button>
-    <%= f.text_field :reauthentication_token, readonly: true%>
-  </fieldset>
-
-  <fieldset id='new-passkey-fields' disabled>
+  <fieldset id='new-passkey-fields' >
     <table>
       <tr>
         <th><%= f.label :label %></th>
@@ -34,16 +29,7 @@
 
 
 <script type="module">
-  import {getReauthenticationToken} from 'passkey_reauthentication_handler'
   import {submitFormEvent} from 'registration_form'
 
-  let unlockFormEvent = async function(event){
-    let unlockButton = event.currentTarget
-    let form = unlockButton.closest('form')
-    await getReauthenticationToken(form)
-    form.querySelector('#new-passkey-fields').removeAttribute("disabled")
-  }
-
-  document.querySelector('#unlock-button').addEventListener('click', unlockFormEvent)
   document.querySelector('#add-passkey-form').addEventListener('submit', submitFormEvent)
 </script>

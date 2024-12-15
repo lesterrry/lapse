@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_13_225653) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_14_130005) do
   create_table "lifetimes", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_13_225653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "webauthn_id"
+    t.string "encrypted_password"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["webauthn_id"], name: "index_users_on_webauthn_id", unique: true
   end
