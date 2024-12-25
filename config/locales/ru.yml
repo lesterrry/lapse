@@ -3,3 +3,7 @@ ru:
   pages:
     index:
       description: ''
+
+  devise:
+    failure:
+      unauthenticated: 'Выполните вход'

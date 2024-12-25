@@ -1,7 +1,7 @@
 class Api::LifetimesController < ApplicationController
 	def index
 		@all = Lifetime.all
-		render json: @all
+		render json: @all, include: [:periods]
 	end
 
 	def single
