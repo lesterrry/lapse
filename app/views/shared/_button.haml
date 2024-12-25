@@ -1,8 +1,9 @@
 - size ||= nil
 - html_class ||= nil
 - link ||= nil
+- hollow ||= false
 
 - tag = link ? 'a' : 'button'
 
-= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('button-partial', size, html_class) } do
-	%p.stroke-s= text
+= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('button-partial', size, html_class, hollow ? 'hollow' : '') } do
+	%p= text

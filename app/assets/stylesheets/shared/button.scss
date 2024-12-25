@@ -1,11 +1,22 @@
 .button-partial {
 	& {
-		background-color: var(--blue);
+		background-color: var(--black);
 		border-radius: 15px;
 		padding: 16px 40px 16px 40px;
 		min-width: 380px;
 		transition: 0.2s;
 		cursor: pointer;
+	}
+
+	&.hollow {
+		& {
+			background: none;
+			border: 1px solid var(--black);
+		}
+
+		& > p {
+			color: var(--black);
+		}
 	}
 
 	& > p {

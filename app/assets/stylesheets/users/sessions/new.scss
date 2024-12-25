@@ -1,0 +1,60 @@
+.sessions-new {
+    & {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 160px;
+        box-sizing: border-box;
+        padding: 90px 0 90px 0;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    > div {
+        & {
+            height: 100%;
+            max-width: 620px;
+        }
+
+        > img {
+            height: 100%;
+        }
+
+        &.form, .password-form, .passkey-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            justify-items: center;
+        }
+
+        &.form {
+            & {
+                width: 400px;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 36px;
+            }
+
+            p {
+                text-align: center;
+            }
+        }
+
+        .password-form {
+            & {
+                gap: 8px;
+                margin-top: 22px;
+            }
+
+            button {
+                margin-top: 18px;
+            }
+        }
+
+        .passkey-form, a {
+            margin-top: 8px;
+        }
+    }
+}

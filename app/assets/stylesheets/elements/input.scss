@@ -5,27 +5,27 @@ input {
 }
 
 ::-webkit-input-placeholder {
-    color: var(--lightblue);
+    color: var(--lightgray);
 }
 
 :-moz-placeholder {
-    color: var(--lightblue);
+    color: var(--lightgray);
     opacity: 1;
 }
 
 ::-moz-placeholder {
-    color: var(--lightblue);
+    color: var(--lightgray);
     opacity: 1;
 }
 
 :-ms-input-placeholder {
-    color: var(--lightblue);
+    color: var(--lightgray);
 }
 
 ::-ms-input-placeholder {
-    color: var(--lightblue);
+    color: var(--lightgray);
 }
 
 ::placeholder {
-    color: var(--lightblue);
+    color: var(--lightgray);
 }

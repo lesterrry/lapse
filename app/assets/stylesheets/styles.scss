@@ -1,10 +1,11 @@
 body {
-    background-color: #EAEAEA;
+    background-color: white;
+    margin: 0;
 }
 
 a, p, h1, h2, h3, h4, label, input, button {
     font-family: 'Arial';
-    color: var(--blue);
+    color: var(--black);
     margin: 0;
 }
 
@@ -21,7 +22,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-a:hover, .stroke-s {
+.stroke-s {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--blue);
 }

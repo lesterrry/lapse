@@ -1,21 +1,44 @@
-.container.registrations-new
-  %h2 Sign up
+= render partial: 'shared/logo_frame'
 
-  = form_with(model: resource, as: resource_name, url: registration_path(resource_name), data: { challenge_url: new_user_registration_challenge_url, credential_field_name: "#{resource_name}[passkey_credential]" }) do |f|
+.registrations-new.sessions-new
+  %div.image
+    = image_tag 'texture.png'
+  
+  %div.form
+    %h2 Регистрация
+
+    - if flash[:alert]
+      %p= flash[:alert]
+    - if flash[:notice]
+      %p= flash[:notice]
+
     = render 'devise/shared/error_messages', resource: resource
 
-    = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'email', required: true
-    = f.text_field :passkey_label, autofocus: 'off', placeholder: 'device name', required: true
+    - if @passkey_mode
+      = form_with(model: resource, as: resource_name, url: registration_path(resource_name), class: 'password-form', data: { challenge_url: new_user_registration_challenge_url, credential_field_name: "#{resource_name}[passkey_credential]" }) do |f|
+        = render partial: 'shared/input', locals: { placeholder: 'Почта', form_field: :email, form: f, required: true }
+        = render partial: 'shared/input', locals: { placeholder: 'Название устройства', form_field: :passkey_label, form: f, required: true }
 
-    = f.hidden_field :passkey_credential
+        = f.hidden_field :passkey_credential 
 
-    = render partial: 'shared/button', locals: { text: 'Use Passkey' }
-  .other
-    = render 'devise/shared/links'
+        = render partial: 'shared/button', locals: { size: 's', text: 'Зарегистрироваться' }
 
-:plain
-  <script type="module">
-    import { submitFormEvent } from 'registration_form'
+      = render partial: 'shared/button', locals: { size: 's', text: 'Использовать пароль', link: '?passkey=0' }
+    - else
+      = form_with(model: resource, as: resource_name, url: registration_path(resource_name), class: 'password-form') do |f|
+        = render partial: 'shared/input', locals: { placeholder: 'Почта', form_field: :email, form: f, required: true }
+        = render partial: 'shared/input', locals: { placeholder: 'Пароль', form_field: :password, form: f, required: true }
 
-    document.querySelector('form').addEventListener('submit', submitFormEvent)
-  </script>
+        = render partial: 'shared/button', locals: { size: 's', text: 'Зарегистрироваться', form: f }
+
+      = render partial: 'shared/button', locals: { size: 's', text: 'Использовать Passkey', link: '?passkey=1' }
+
+    = render partial: 'shared/button', locals: { hollow: true, size: 's', text: 'Вход', link: new_session_path(resource_name) }
+
+- if @passkey_mode
+  :plain
+    <script type="module">
+      import { submitFormEvent } from 'registration_form'
+
+      document.querySelector('form').addEventListener('submit', submitFormEvent)
+    </script>

@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-    validates_uniqueness_of :username, :email
+    validates_uniqueness_of :username, allow_nil: true
+    validates_uniqueness_of :email
+
     has_many :lifetimes, dependent: :destroy
 
     devise :passkey_authenticatable, :database_authenticatable, :registerable, :rememberable
