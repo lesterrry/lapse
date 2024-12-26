@@ -1,22 +1,8 @@
-- stroke = 'stroke-s'
-
-.nav-partial{class: defined?(header) ? 'header' : 'footer'}
-    - if defined?(header)
-        %div
-            = link_to 'о проекте', '/about', class: current_page == 'about' ? stroke : nil
-            = link_to 'жизни', '/featured', class: current_page == 'featured' ? stroke : nil
-
-        = link_to 'lapse', '/', class: current_page == 'home' ? stroke : nil
-
-        %div
-            = link_to 'промо', '/promo', class: current_page == 'promo' ? stroke : nil
-            = link_to 'профиль', my_profile_url, class: current_page == 'profile' ? stroke : nil
-    - else
-        %div
-            %p 2024
-
-        = link_to 'lapse', '/', class: 'stroke-s'
-
-        %div
-            %p
-            %p adc hse
+.nav-partial.header
+    %a{href: root_path}
+        = image_tag 'logo.svg'
+    = render partial: 'shared/input', locals: { placeholder: 'Поиск' }
+    = image_tag 'fav.svg', class: 'fav'
+    = render partial: 'shared/button', locals: { size: 's', text: '+ lapse', link: '/lifetimes/2' }
+    %a{href: my_profile_path}
+        = image_tag 'profile.png'

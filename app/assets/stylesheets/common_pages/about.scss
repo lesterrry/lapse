@@ -1,6 +1,21 @@
 .about-page {
 	.icon {
-		margin-top: 40px;
+		margin-top: -80px;
 		width: 100%;
+		z-index: -1;
+	}
+
+	.icon.m {
+		display: none;
+	}
+
+	@media all and (max-width: 570px) {
+		.icon.m {
+			display: initial;
+		}
+
+		.icon.d {
+			display: none;
+		}
 	}
 }

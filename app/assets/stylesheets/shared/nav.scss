@@ -1,24 +1,26 @@
 .nav-partial {
-	&, & > div {
+	& {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		gap: 18px;
+		margin-top: 20px;
+		box-sizing: border-box;
+		height: 47px;
+		border-color: var(--darkgreen);
 	}
 
-	& {
-		padding: 10px 20px 10px 20px;
+	img {
+		height: 100%;
 	}
 
-	&.footer {
-		position: relative;
-		padding-top: 60px;
+	.button-partial {
+		background-color: var(--darkgreen);
 	}
 
-	& > div {
-		width: 30%;
-	}
-
-	a {
-		font-size: 16px;
+	@media all and (max-width: 570px) {
+		.fav {
+			display: none;
+		}
 	}
 }

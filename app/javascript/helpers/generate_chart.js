@@ -1,7 +1,6 @@
 function getRandomColor() {
-    const hue = Math.floor(Math.random() * 360);
-    const color = 'hsl(' + hue + ', 80%, 85%)';
-    return color;
+    const c = ['#E0E447', '#33473B', '#334FD7', '#D8E6FF', '#FFC7EC', '#FF42C0', '#C7B0FE', '#431D58', '#F74A39', '#FFCCC8'];
+    return c[Math.floor(Math.random() * c.length)];
 }
 
 function getDaysInYear(year) {
@@ -61,7 +60,7 @@ export function generateChart(periods, selectedYear) {
 
             const range = startDay - lastDay;
 
-            consecutivePeriods.push({ days: range, title: '', color: 'rgba(0,0,0,0)' });
+            consecutivePeriods.push({ days: range, title: '', color: 'rgba(0, 0, 0, 0.02)' });
 
             lastDay += range;
         } else if (lastDay === -1) {
@@ -81,7 +80,7 @@ export function generateChart(periods, selectedYear) {
 
     if (lastDay < daysInYear - 1) {
         console.info(`filling rest of year ${lastDay}-${daysInYear}`);
-        consecutivePeriods.push({ days: daysInYear - lastDay + 1, title: '', color: 'rgba(0,0,0,0)' });
+        consecutivePeriods.push({ days: daysInYear - lastDay + 1, title: '', color: 'rgba(0, 0, 0, 0.02)' });
     }
 
     console.info(`total: ${consecutivePeriods.reduce((s, i) => s + i.days, 0)}`);
@@ -90,7 +89,7 @@ export function generateChart(periods, selectedYear) {
         labels: consecutivePeriods.map(i => i.title),
         datasets: [{
             data: consecutivePeriods.map(i => i.days),
-            backgroundColor: consecutivePeriods.map(i => i.color || 'lightblue'),
+            backgroundColor: consecutivePeriods.map(i => i.color || getRandomColor()),
         }]
     }
 }

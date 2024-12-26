@@ -1,4 +1,6 @@
 .container
+	= render partial: 'shared/nav', locals: { current_page: @page_nav_name }
+
 	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year), html: {class: 'single-lifetime'} do |form|
 		= render partial: 'shared/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
 		= render partial: 'shared/editable_text', locals: { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }

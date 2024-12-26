@@ -40,3 +40,6 @@ config/secrets.yml
 .DS_Store
 
 node_modules/
+
+# dont want to get sued
+/app/assets/fonts/*

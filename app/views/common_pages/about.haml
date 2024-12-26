@@ -1,3 +1,4 @@
-.container
-	.about-page
-		= image_tag 'icon2.png', class: 'icon'
+.about-page.container
+	= render partial: 'shared/nav', locals: { current_page: @page_nav_name }
+	= image_tag 'icon3.png', class: 'icon d'
+	= image_tag 'icon3m.png', class: 'icon m'

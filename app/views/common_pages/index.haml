@@ -1,6 +1,3 @@
-.index-page
-	.circle-container
-		%div.circle
-			%p.caption (time)
-			%p.title.stroke-m lapse
-			%p.subtitle.stroke-s Помогаем вам не забыть о самом важном и сохранить все воспоминания в одном месте
+.about-page.container
+	= render partial: 'shared/nav', locals: { current_page: @page_nav_name }
+	= image_tag 'icon5.png', class: 'icon d'

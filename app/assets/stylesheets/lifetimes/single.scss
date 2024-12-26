@@ -48,13 +48,13 @@
 		}
 
 		a {
-			color: rgba(132, 137, 156, 0.5);
+			color: var(--lightgray);
 			font-size: 15px;
 			cursor: pointer;
 		}
 
 		a:hover {
-			color: var(--blue);
+			color: var(--darkgreen);
 		}
 		
 		p {

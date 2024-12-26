@@ -2,7 +2,10 @@
 	& {
 		background-color: var(--black);
 		border-radius: 15px;
-		padding: 16px 40px 16px 40px;
+		padding: 16px 24px 16px 24px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		min-width: 380px;
 		transition: 0.2s;
 		cursor: pointer;
