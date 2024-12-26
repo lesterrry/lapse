@@ -7,3 +7,5 @@
 .about-page.container 
 	= render partial: 'shared/nav', locals: { current_page: @page_nav_name }
 	= image_tag 'icon4.png', class: 'icon d'
+
+	= render "users/shared/links", resource_name: :user, devise_mapping: Devise.mappings[:user]

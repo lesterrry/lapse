@@ -4,6 +4,7 @@ User.create(username: 'lesterrry') do |user|
 	user.first_name = 'aydar'
 	user.last_name = 'prikol'
 	user.email = 'me@aydar.media'
+	user.is_admin = true
 
 	Lifetime.create(title: 'Мемуары лил пипа', description: "isn't life beautiful", user:)
 

@@ -38,15 +38,19 @@ Rails.application.routes.draw do
 		post 'reauthenticate', to: 'users/reauthentication#reauthenticate', as: :user_reauthentication
 
 		namespace :users do
-		  resources :passkeys, only: %i[index create destroy] do
-			collection do
-			  post :new_create_challenge
+			scope '/admin' do
+				root to: 'admin#index'
 			end
 
-			member do
-				post :new_destroy_challenge
+			resources :passkeys, only: %i[index create destroy] do
+				collection do
+				post :new_create_challenge
+				end
+
+				member do
+					post :new_destroy_challenge
+				end
 			end
-		  end
 		end
 	end
 end
