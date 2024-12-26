@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+	namespace :admin do
+		resources :lifetimes
+		resources :passkeys
+		resources :periods
+		resources :subscriptions
+		resources :users
+
+		root to: 'users#index'
+	end
+
 	get 'lifetimes/index'
 
 	root 'common_pages#index'
@@ -38,10 +48,6 @@ Rails.application.routes.draw do
 		post 'reauthenticate', to: 'users/reauthentication#reauthenticate', as: :user_reauthentication
 
 		namespace :users do
-			scope '/admin' do
-				root to: 'admin#index'
-			end
-
 			resources :passkeys, only: %i[index create destroy] do
 				collection do
 				post :new_create_challenge
