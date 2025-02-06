@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 	namespace :api do
 		get '/lifetimes/', to: 'lifetimes#index'
 		get '/lifetimes/:id/', to: 'lifetimes#single'
+
+		post '/login', to: 'users#login'
 	end
 
 	resources :lifetimes, only: [:update] do
