@@ -25,6 +25,7 @@ let submitFormEvent = async function (event) {
   })
 
   const challengeJSON = await (await challengeFetch).json()
+  console.log(challengeJSON)
   const credentialCreationOptions = parseCreationOptionsFromJSON({ publicKey: challengeJSON })
 
   const credentialCreationResponse = await create(credentialCreationOptions)

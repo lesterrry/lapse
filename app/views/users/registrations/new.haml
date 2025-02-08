@@ -4,11 +4,11 @@
   %div.image
     = image_tag 'texture.png'
   
-  %div.form
+  %div.form{'data-controller': @passkey_mode ? 'passkey-form' : nil, 'data-passkey-form-type': 'registration'}
     %h2 Регистрация
 
     - if @passkey_mode
-      = form_with(model: resource, as: resource_name, url: registration_path(resource_name), class: 'password-form', data: { challenge_url: new_user_registration_challenge_url, credential_field_name: "#{resource_name}[passkey_credential]" }) do |f|
+      = form_with(model: resource, as: resource_name, url: registration_path(resource_name), class: 'password-form', data: { 'passkey-form-target': 'form', challenge_url: new_user_registration_challenge_url, credential_field_name: "#{resource_name}[passkey_credential]" }) do |f|
         = render partial: 'shared/input', locals: { placeholder: 'Почта', form_field: :email, form: f, required: true }
         = render partial: 'shared/input', locals: { placeholder: 'Название устройства', form_field: :passkey_label, form: f, required: true }
 
@@ -27,11 +27,3 @@
       = render partial: 'shared/button', locals: { size: 's', text: 'Использовать Passkey', link: '?passkey=1' }
 
     = render partial: 'shared/button', locals: { hollow: true, size: 's', text: 'Вход', link: new_session_path(resource_name) }
-
-- if @passkey_mode
-  :plain
-    <script type="module">
-      import { submitFormEvent } from 'registration_form'
-
-      document.querySelector('form').addEventListener('submit', submitFormEvent)
-    </script>
