@@ -1,0 +1,8 @@
+%div.periods
+	%h2 периоды
+	- @periods.each do |period|
+		= render partial: 'shared/period', locals: { enabled: @editable, period:, form: }
+	
+	- if @editable
+		= render partial: 'shared/button', locals: { text: 'Добавить', link: '?edit=1&new=1', size: 's', html_class: 'edit-button' }
+		= @new_period

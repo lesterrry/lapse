@@ -24,6 +24,17 @@
 			flex-direction: column;
 			gap: 20px;
 		}
+
+		&.list {
+			& {
+				justify-content: center;
+			}
+
+			div.periods {
+				width: 100%;
+				margin: 0 40px 0 40px;
+			}
+		}
 	}
 
 	div.chart {

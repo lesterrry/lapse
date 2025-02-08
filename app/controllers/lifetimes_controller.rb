@@ -8,6 +8,8 @@ class LifetimesController < ApplicationController
 	def single
 		@lifetime = Lifetime.find(params[:id])
 		@years = years_from_periods(@lifetime.periods)
+		@editable = !params[:edit].nil?
+		@view_mode = params['view-mode']&.to_sym || :donut
 
 		year = params[:year].to_i
 		@selected_year = year && @years.include?(year) ? year : @years[0]
@@ -19,8 +21,6 @@ class LifetimesController < ApplicationController
 			@lifetime.periods.create({ title: 'New period', description: 'description', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 1) })
 			redirect_to "#{request.base_url}#{request.path}?edit=1"
 		end
-
-		@editable = !params[:edit].nil?
 	end
 
 	def update_single

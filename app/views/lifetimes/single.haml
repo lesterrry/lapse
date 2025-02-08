@@ -5,6 +5,8 @@
 		= render partial: 'shared/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
 		= render partial: 'shared/editable_text', locals: { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 
+		= render partial: 'shared/tab_select', locals: { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
+
 		%div.years
 			- @years.each do |year|
 				- if year == @selected_year
@@ -12,23 +14,17 @@
 				- else
 					= link_to year, single_lifetime_url(id: @lifetime.id, year: year)
 
-		%div.info
-			%div.description
+		%div.info{class: @view_mode}
+			- if @view_mode == :donut
+				%div.description
 
-			%div.chart{'data-controller': 'lifetime', 'data-action': 'periodChanged@document->lifetime#handlePeriodChanged', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
-				%div
-					%canvas{'data-lifetime-target': 'canvas'}
+				%div.chart{'data-controller': 'lifetime', 'data-action': 'periodChanged@document->lifetime#handlePeriodChanged', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
+					%div
+						%canvas{'data-lifetime-target': 'canvas'}
 
-			%div.periods
-				%h2 периоды
-				- @periods.each do |period|
-					= render partial: 'shared/period', locals: { enabled: @editable, period:, form: }
-				
-				- if @editable
-					= render partial: 'shared/button', locals: { text: 'Добавить', link: '?edit=1&new=1', size: 's', html_class: 'edit-button' }
-					= @new_period
+			= render partial: 'lifetimes/periods', locals: { form: }
 
 		- if @editable
 			= render partial: 'shared/button', locals: { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
 		- else
-			= render partial: 'shared/button', locals: { text: 'Редактировать', link: '?edit=1', size: 'm', html_class: 'edit-button' }
+			= render partial: 'shared/button', locals: { text: 'Редактировать', link: set_param('edit', 1), size: 'm', html_class: 'edit-button' }
