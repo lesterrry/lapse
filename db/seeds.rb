@@ -1,4 +1,5 @@
-User.delete_all
+# User.delete_all
+User.find_by(username: 'lesterrry').delete
 
 User.create(username: 'lesterrry') do |user|
 	user.first_name = 'aydar'

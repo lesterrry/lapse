@@ -6,6 +6,7 @@
 		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date, 'data-action': blur_action, 'data-id': 'end') : friendly_date(period.end)
 
 		= render partial: 'shared/editable_text', locals: { tag: 'h3', id: 'title', text: period.title, enabled:, form_field: :title, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'title' } }
+		= render partial: 'shared/editable_text', locals: { tag: 'p', id: 'description', text: period.description, enabled:, form_field: :description, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'description' } }
 		%p #{date_start} → #{date_end}
 
 		- if enabled

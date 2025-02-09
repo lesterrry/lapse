@@ -13,10 +13,23 @@ module LifetimesHelper
 		end
 	end
 
-	def set_param(key, value)
-		params = request.query_parameters
-		params[key] = value
+	def set_param(*params, current_params: nil)
+		current_params ||= request.query_parameters
 
-		request.path + '?' + params.to_query
+		set = lambda do |key, value|
+			if value
+				current_params[key] = value
+			else
+				current_params.delete(key)
+			end
+		end
+
+		if params[0].is_a? Array
+			params.each { |param| set.call(param[0], param[1]) }
+		else
+			set.call(params[0], params[1])
+		end
+
+		request.path + '?' + current_params.to_query
 	end
 end

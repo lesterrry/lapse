@@ -1,8 +1,13 @@
+- last_year = nil
+
 %div.periods
 	%h2 периоды
 	- @periods.each do |period|
+		- if last_year != period.start.year
+			%h3= period.start.year
+			- last_year = period.start.year
 		= render partial: 'shared/period', locals: { enabled: @editable, period:, form: }
 	
 	- if @editable
-		= render partial: 'shared/button', locals: { text: 'Добавить', link: '?edit=1&new=1', size: 's', html_class: 'edit-button' }
+		= render partial: 'shared/button', locals: { text: 'Добавить', link: set_param('new', 1), size: 's', html_class: 'edit-button' }
 		= @new_period

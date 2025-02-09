@@ -7,12 +7,13 @@
 
 		= render partial: 'shared/tab_select', locals: { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
 
-		%div.years
-			- @years.each do |year|
-				- if year == @selected_year
-					%p= year
-				- else
-					= link_to year, single_lifetime_url(id: @lifetime.id, year: year)
+		- if @view_mode == :donut
+			%div.years
+				- @years.each do |year|
+					- if year == @selected_year
+						%p= year
+					- else
+						= link_to year, single_lifetime_url(id: @lifetime.id, year: year)
 
 		%div.info{class: @view_mode}
 			- if @view_mode == :donut
