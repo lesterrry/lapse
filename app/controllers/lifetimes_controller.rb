@@ -22,8 +22,6 @@ class LifetimesController < ApplicationController
 				@lifetime.periods
 			end
 
-		p '****', request.query_parameters
-
 		if new_period
 			@lifetime.periods.create({ title: 'New period', description: 'description', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 1) })
 			redirect_to set_param(['edit', 1], ['new', nil], current_params: request.query_parameters)
@@ -33,9 +31,11 @@ class LifetimesController < ApplicationController
 	def update_single
 		@lifetime = Lifetime.find(params[:id])
 
+		view_mode = params[:lifetime][:view_mode].dup
+
 		@lifetime.update(lifetime_params)
 
-		redirect_to action: :single, year: params[:year]
+		redirect_to action: :single, 'view-mode': view_mode
 	end
 
 	private

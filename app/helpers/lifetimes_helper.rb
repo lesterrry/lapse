@@ -14,7 +14,7 @@ module LifetimesHelper
 	end
 
 	def set_param(*params, current_params: nil)
-		current_params ||= request.query_parameters
+		current_params ||= request.query_parameters.dup
 
 		set = lambda do |key, value|
 			if value
