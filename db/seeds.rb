@@ -1,4 +1,5 @@
-# User.delete_all
+# /lifetimes/2
+
 User.find_by(username: 'lesterrry').delete
 
 User.create(username: 'lesterrry') do |user|

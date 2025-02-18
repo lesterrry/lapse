@@ -1,0 +1,8 @@
+.container
+	= render partial: 'shared/nav', locals: { current_page: @page_nav_name }
+
+	= form_for @lifetime, html: {class: 'single-lifetime'} do |form|
+		- if @editable
+			= render partial: 'shared/button', locals: { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
+		- else
+			= render partial: 'shared/button', locals: { text: 'Редактировать', link: set_param('edit', 1), size: 'm', html_class: 'edit-button' }

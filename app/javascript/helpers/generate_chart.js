@@ -1,4 +1,6 @@
 function getRandomColor() {
+    return '#6290C8';
+
     const c = ['#E0E447', '#33473B', '#334FD7', '#D8E6FF', '#FFC7EC', '#FF42C0', '#C7B0FE', '#431D58', '#F74A39', '#FFCCC8'];
     return c[Math.floor(Math.random() * c.length)];
 }
@@ -73,7 +75,7 @@ export function generateChart(periods, selectedYear) {
 
         const remaining = range + lastDay > daysInYear ? daysInYear - range : range;
 
-        consecutivePeriods.push({ days: remaining, title: period.title });
+        consecutivePeriods.push({ days: remaining, title: period.title, color: period.color_hex });
 
         lastDay += remaining;
     }

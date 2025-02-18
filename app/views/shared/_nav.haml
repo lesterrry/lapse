@@ -3,6 +3,6 @@
         = image_tag 'logo.svg'
     = render partial: 'shared/input', locals: { placeholder: 'Поиск' }
     = image_tag 'fav.svg', class: 'fav'
-    = render partial: 'shared/button', locals: { size: 's', text: '+ lapse', link: '/lifetimes/2' }
+    = render partial: 'shared/button', locals: { size: 's', text: '+ lapse', link: new_lifetime_url }
     %a{href: my_profile_path}
         = image_tag 'profile.png'

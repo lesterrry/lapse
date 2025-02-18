@@ -1,4 +1,4 @@
-.period-partial{'data-controller': 'period', 'data-period-id': period.id}
+.period-partial{'style': period.color_hex ? "border-color: #{period.color_hex}" : nil, 'data-controller': 'period', 'data-period-id': period.id}
 	= form.fields_for :periods, period do |fields|
 		- blur_action = 'blur->period#handleBlur'
 
@@ -10,4 +10,5 @@
 		%p #{date_start} → #{date_end}
 
 		- if enabled
+			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8')
 			= render partial: 'shared/checkbox', locals: { text_unchecked: 'Удалить', text_checked: 'Не удалять', form_field: :_destroy, form: fields }

@@ -34,5 +34,8 @@ Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
+
 Layout/AccessModifierIndentation:
+  Enabled: false
+Layout/AssignmentIndentation:
   Enabled: false

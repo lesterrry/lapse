@@ -5,6 +5,10 @@ class LifetimesController < ApplicationController
 		@featured = Lifetime.all
 	end
 
+	def new
+		@lifetime = Lifetime.new
+	end
+
 	def single
 		@lifetime = Lifetime.find(params[:id])
 		@years = years_from_periods(@lifetime.periods)
@@ -35,12 +39,12 @@ class LifetimesController < ApplicationController
 
 		@lifetime.update(lifetime_params)
 
-		redirect_to action: :single, 'view-mode': view_mode
+		redirect_to action: :single, year: params[:year], 'view-mode': view_mode
 	end
 
 	private
 
 	def lifetime_params
-		params.require(:lifetime).permit(:title, :description, periods_attributes: %i[id title description start end _destroy])
+		params.require(:lifetime).permit(:title, :description, periods_attributes: %i[id title description color_hex start end _destroy])
 	end
 end
