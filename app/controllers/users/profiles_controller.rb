@@ -1,5 +1,7 @@
 class Users::ProfilesController < ApplicationController
-  before_action :authenticate_user!
+	before_action :authenticate_user!
 
-  def me; end
+	def single
+		@lifetimes = current_user.lifetimes
+	end
 end

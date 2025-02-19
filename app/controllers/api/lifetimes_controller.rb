@@ -6,6 +6,6 @@ class Api::LifetimesController < ApplicationController
 
 	def single
 		@lifetime = Lifetime.find(params[:id])
-		render json: @lifetime
+		render json: @lifetime, include: [:periods]
 	end
 end

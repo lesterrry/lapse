@@ -1,11 +1,9 @@
--# .container.profiles-single
--# 	%h2 профиль
--# 	= link_to 'Настройки входа', '/users/edit'
+.container.profiles-single
+	%div
+		%h2 профиль
+		= link_to 'Настройки входа', '/users/edit'
 
--# 	= render "users/shared/links", resource_name: :user, devise_mapping: Devise.mappings[:user]
+		- @lifetimes.each do |lifetime|
+			= link_to lifetime.title, single_lifetime_url(id: lifetime.id)
 
-.about-page.container 
-	= render partial: 'shared/nav', locals: { current_page: @page_nav_name }
-	= image_tag 'icon4.png', class: 'icon d'
-
-	= render "users/shared/links", resource_name: :user, devise_mapping: Devise.mappings[:user]
+		= render "users/shared/links", resource_name: :user, devise_mapping: Devise.mappings[:user]
