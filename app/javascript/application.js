@@ -2,3 +2,4 @@
 //= require_tree ./helpers
 
 import 'controllers'
+import '@hotwired/turbo-rails'
