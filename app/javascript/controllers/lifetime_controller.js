@@ -19,7 +19,7 @@ export default class extends Controller {
 		this.element.removeEventListener('periodChanged', this.handlePeriodChanged);
 	}
 
-	renderChart(withAnimation = true) {
+	renderChart(withAnimation = false) {
 		this.chart?.destroy();
 
 		const chartData = generateChart(this.periods, this.selectedYear);
