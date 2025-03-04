@@ -3,7 +3,19 @@
 class ApplicationController < ActionController::Base
 	before_action :set_locale
 
-		private
+	protected
+
+	def authenticate_user_from_token!
+		auth_header = request.headers['Authorization']
+		token = auth_header&.split(' ')&.last
+		payload = JWT.decode(token, Rails.application.secret_key_base).first rescue nil
+
+		if payload && payload['user_id']
+			@current_user = User.find_by(id: payload['user_id'])
+		end
+
+		render json: { error: 'Unauthorized' }, status: :unauthorized unless @current_user
+	end
 
 	def set_locale
 		loc = extract_locale
@@ -14,7 +26,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	# TODO: debug locales
 	def extract_locale
 		if !params[:locale].blank?
 			parsed_locale = params[:locale]

@@ -1,4 +1,6 @@
 class Api::LifetimesController < ApplicationController
+	before_action :authenticate_user_from_token!
+
 	def index
 		@all = Lifetime.all
 		render json: @all, include: [:periods]

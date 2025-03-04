@@ -343,6 +343,7 @@ DEPENDENCIES
   hotwire-rails
   importmap-rails
   jbuilder
+  jwt
   passenger
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-i18n

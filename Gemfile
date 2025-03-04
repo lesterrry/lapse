@@ -54,6 +54,8 @@ gem 'stimulus-rails'
 gem 'devise'
 gem 'devise-passkeys'
 
+gem 'jwt'
+
 gem 'administrate', '~> 0.20.1'
 
 group :development, :test do
