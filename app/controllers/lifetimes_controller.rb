@@ -64,6 +64,6 @@ class LifetimesController < ApplicationController
 	private
 
 	def lifetime_params
-		params.require(:lifetime).permit(:title, :description, periods_attributes: %i[id title description color_hex start end _destroy])
+		params.require(:lifetime).permit(:title, :description, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, :_destroy, { photos: [] }])
 	end
 end

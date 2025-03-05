@@ -9,6 +9,10 @@
 		= render partial: 'shared/editable_text', locals: { tag: 'p', id: 'description', text: period.description, enabled:, form_field: :description, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'description' } }
 		%p #{date_start} → #{date_end}
 
+		- period.photos.each do |photo|
+			= image_tag photo
+
 		- if enabled
+			= fields.file_field(:photos, multiple: true)
 			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8')
 			= render partial: 'shared/checkbox', locals: { text_unchecked: 'Удалить', text_checked: 'Не удалять', form_field: :_destroy, form: fields }
