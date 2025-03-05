@@ -12,9 +12,23 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def signup
+        user = User.new(user_params)
+
+        if user.save
+            render json: { message: 'OK', token: generate_token(user.id), user: }, status: :created
+        else
+            render json: { message: 'Error', error: user.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def generate_token(user_id)
         JWT.encode({ user_id: }, Rails.application.secret_key_base)
+    end
+
+    def user_params
+        params.permit(:email, :password, :username)
     end
 end

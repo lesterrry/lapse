@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 		get '/lifetimes/:id/', to: 'lifetimes#single'
 
 		post '/login', to: 'users#login'
+		post '/signup', to: 'users#signup'
 	end
 
 	get '/lifetimes/new', to: 'lifetimes#new', as: :new_lifetime
@@ -52,7 +53,7 @@ Rails.application.routes.draw do
 		namespace :users do
 			resources :passkeys, only: %i[index create destroy] do
 				collection do
-				post :new_create_challenge
+					post :new_create_challenge
 				end
 
 				member do
