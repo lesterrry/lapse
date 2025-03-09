@@ -2,7 +2,6 @@ class User < ApplicationRecord
     validates_uniqueness_of :username, allow_nil: true
 
     validates :email, presence: true, uniqueness: { case_sensitive: false }
-    validates :password, presence: true, length: { minimum: 4 }
 
     has_many :lifetimes, dependent: :destroy
 

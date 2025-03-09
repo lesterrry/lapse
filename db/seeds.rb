@@ -1,17 +1,17 @@
 # /lifetimes/2
 
-User.find_by(username: 'lesterrry').delete
+User.find_by(username: 'lesterrry')&.delete
 
-User.create(username: 'lesterrry') do |user|
+user = User.create(username: 'lesterrry') do |user|
 	user.first_name = 'aydar'
 	user.last_name = 'prikol'
 	user.email = 'me@aydar.media'
 	user.is_admin = true
+end
 
-	Lifetime.create(title: 'Мемуары лил пипа', description: "isn't life beautiful", user:)
+Lifetime.create(title: 'Мемуары лил пипа', description: "isn't life beautiful", user: user)
 
-	lifetime = Lifetime.create(title: 'Эры Тейлор Свифт', description: '(taylor\'s version)', user:)
-
+Lifetime.create(title: 'Эры Тейлор Свифт', description: '(taylor\'s version)', user: user) do |lifetime|
 	Period.create(title: 'Taylor Swift', description: 'First studio album', start: DateTime.parse('2006-10-24 00:00:00'), end: DateTime.parse('2007-11-10 23:59:59'), lifetime:)
 
 	Period.create(title: 'Fearless', description: 'Second studio album', start: DateTime.parse('2008-11-11 00:00:00'), end: DateTime.parse('2010-01-01 00:00:00'), lifetime:)

@@ -36,13 +36,15 @@ export default class extends Controller {
 						position: 'nearest',
 						bodyColor: 'black',
 						titleColor: 'black',
-						titleFont: { weight: 'normal' },
+						titleFont: { weight: 'normal', family: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif" },
 						backgroundColor: 'white',
 						displayColors: false,
 						xAlign: 'center',
 
+						filter: (item) => item.label,
+
 						callbacks: {
-							label: () => null
+							label: () => null,
 						}
 					},
 					legend: {
