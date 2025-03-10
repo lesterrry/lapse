@@ -47,7 +47,7 @@ input[type="checkbox"] {
         align-items: center;
     }
     
-    & > div, & > form {
+    & > div, & > form, & > turbo-frame {
         width: 100%;
         padding: 0 40px 0 40px;
         margin-top: 20px;
@@ -61,7 +61,7 @@ input[type="checkbox"] {
 
 @media all and (min-width: 1370px) {
     .container {    
-        & > div, & > form {
+        & > div, & > form, & > turbo-frame {
             width: 1370px;
         };
     }

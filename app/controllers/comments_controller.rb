@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
     before_action :set_lifetime
 
     def create
-        @comment = @lifetime.comments.new(comment_params)
+        @comment = @lifetime.comments.build(comment_params)
+        @comment.user = current_user
 
         @comment.save
 
@@ -11,6 +12,10 @@ class CommentsController < ApplicationController
 
     def destroy
         @comment = @lifetime.comments.find(params[:id])
+        @owned = @comment.user == current_user
+
+        raise ActiveRecord::RecordInvalid unless @owned
+
         @comment.destroy
 
         redirect_to single_lifetime_url(@lifetime)

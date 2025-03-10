@@ -4,6 +4,7 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 
     has_many :lifetimes, dependent: :destroy
+    has_many :comments, dependent: :nullify
 
     devise :passkey_authenticatable, :database_authenticatable, :registerable, :rememberable
 

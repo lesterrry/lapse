@@ -1,8 +1,9 @@
-.comments
+%turbo-frame.comments{id: "lifetime_#{@lifetime.id}_comments"}
     .existing
         %h2 комментарии
         - @lifetime.comments.each do |comment|
             %div.comment
+                %p= some_user_name(comment.user)
                 %p= comment.content
 
     .add
