@@ -24,8 +24,10 @@ class LifetimesController < ApplicationController
 	def single
 		@lifetime = Lifetime.find(params[:id])
 		@years = years_from_periods(@lifetime.periods)
-		@editable = !params[:edit].nil?
+		@owned = @lifetime.user == current_user
+		@editable = !params[:edit].nil? && @owned
 		@view_mode = params['view-mode']&.to_sym || :donut
+
 		new_period = !params[:new].nil?
 		year = params[:year].to_i
 
@@ -46,6 +48,8 @@ class LifetimesController < ApplicationController
 			end
 
 		if new_period
+			raise ActiveRecord::RecordInvalid unless @owned
+
 			@lifetime.periods.create({ title: 'New period', description: 'description', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
 			redirect_to set_param(['edit', 1], ['new', nil], current_params: request.query_parameters)
 		end
@@ -53,6 +57,8 @@ class LifetimesController < ApplicationController
 
 	def update_single
 		@lifetime = Lifetime.find(params[:id])
+
+		raise ActiveRecord::RecordInvalid unless @lifetime.user == current_user
 
 		view_mode = params[:lifetime][:view_mode].dup
 
