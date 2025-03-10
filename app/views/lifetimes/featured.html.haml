@@ -1,6 +1,6 @@
-.container
-	.featured-lifetimes
+.lifetimes-featured.container
+	%div
 		%h1 featured page
 
-	- @featured.each do |feature|
-		%p= feature.title
+		- @featured.each do |feature|
+			%p= feature.title

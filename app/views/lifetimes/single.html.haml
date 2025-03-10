@@ -1,5 +1,5 @@
-.container
-	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year), html: {class: 'single-lifetime'} do |form|
+.lifetimes-single.container
+	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year) do |form|
 		= form.hidden_field :view_mode, value: @view_mode
 
 		= render partial: 'shared/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }

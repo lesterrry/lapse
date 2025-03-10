@@ -1,4 +1,4 @@
-.single-lifetime {
+.lifetimes-single {
 	div.info {
 		& {
 			width: 100%;
@@ -71,7 +71,7 @@
 }
 
 @media all and (min-width: 680px) {
-	.single-lifetime {
+	.lifetimes-single {
 		div.chart {
 			& > div {
 				width: 600px;

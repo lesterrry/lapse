@@ -5,5 +5,5 @@
 
 - tag = link ? 'a' : 'button'
 
-= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('button-partial', size, html_class, hollow ? 'hollow' : '') } do
+= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('shared-button', size, html_class, hollow ? 'hollow' : '') } do
 	%p= text

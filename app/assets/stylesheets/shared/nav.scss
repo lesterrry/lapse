@@ -1,4 +1,4 @@
-.nav-partial {
+.shared-nav {
 	& {
 		display: flex;
 		flex-direction: row;
@@ -10,7 +10,7 @@
 		border-color: var(--darkgreen);
 	}
 
-	.input {
+	.shared-input {
 		max-width: 960px;
 	}
 
@@ -18,7 +18,7 @@
 		height: 100%;
 	}
 
-	.button-partial {
+	.shared-button {
 		background-color: var(--darkgreen);
 	}
 

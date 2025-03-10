@@ -1,5 +1,5 @@
-.container
-	= form_for @lifetime, html: {class: 'single-lifetime'} do |form|
+.lifetimes-single.container
+	= form_for @lifetime do |form|
 		- if alert
 			%h2= alert
 		= render partial: 'shared/editable_text', locals: { tag: 'h2', text: 'Название', enabled: true, form_field: :title, form: }

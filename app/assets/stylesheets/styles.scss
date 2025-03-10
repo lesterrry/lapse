@@ -21,7 +21,7 @@ a.wrapper {
     display: contents;
 }
 
-[contenteditable]:hover, .checkbox-partial > label:hover {
+[contenteditable]:hover, .shared-checkbox > label:hover {
     text-decoration: underline;
     text-decoration-color: gray;
 }

@@ -1,7 +1,7 @@
 - is_password ||= false
 - required ||= false
 
-.input
+.shared-input
 	- if defined? form
 		- if form_field == :password
 			= form.password_field form_field, placeholder:, required:

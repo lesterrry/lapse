@@ -1,4 +1,4 @@
-.period-partial{'style': period.color_hex ? "border-color: #{period.color_hex}" : nil, 'data-controller': 'period', 'data-period-id': period.id}
+.shared-period{'style': period.color_hex ? "border-color: #{period.color_hex}" : nil, 'data-controller': 'period', 'data-period-id': period.id}
 	= form.fields_for :periods, period do |fields|
 		- blur_action = 'blur->period#handleBlur'
 

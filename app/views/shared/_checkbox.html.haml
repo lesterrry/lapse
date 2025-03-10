@@ -1,3 +1,3 @@
-.checkbox-partial{'data-controller': 'checkbox', 'data-checkbox-text-checked': text_checked, 'data-checkbox-text-unchecked': text_unchecked}
+.shared-checkbox{'data-controller': 'checkbox', 'data-checkbox-text-checked': text_checked, 'data-checkbox-text-unchecked': text_unchecked}
     = form.label form_field, text_unchecked, {'data-checkbox-target': 'label'}
     = form.check_box form_field, {'data-action': 'change->checkbox#handleChange'}
