@@ -1,0 +1,13 @@
+.comments
+    .existing
+        %h2 комментарии
+        - @lifetime.comments.each do |comment|
+            %div.comment
+                %p= comment.content
+
+    .add
+        %h2 добавить комментарий
+        = form_with model: [@lifetime, @lifetime.comments.build] do |form|
+            = form.text_area :content
+            = form.submit "отправить"
+

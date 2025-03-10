@@ -29,3 +29,5 @@
 			= render partial: 'shared/button', locals: { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
 		- elsif @owned
 			= render partial: 'shared/button', locals: { text: 'Редактировать', link: set_param('edit', 1), size: 'm', html_class: 'edit-button' }
+
+	= render partial: 'lifetimes/comments'
