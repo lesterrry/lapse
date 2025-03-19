@@ -10,4 +10,8 @@ module ApplicationHelper
         all = [entity_name, entity_id, *additional]
         all.join('_')
     end
+
+    def top_link_to(name, url)
+        link_to(name, url, data: { turbo_action: 'advance' })
+    end
 end

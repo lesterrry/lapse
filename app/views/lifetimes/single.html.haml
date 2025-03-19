@@ -1,4 +1,4 @@
-.lifetimes-single.container
+%turbo-frame.lifetimes-single.container{id: qualify(@lifetime)}
 	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year) do |form|
 		= form.hidden_field :view_mode, value: @view_mode
 
@@ -13,7 +13,7 @@
 					- if year == @selected_year
 						%p= year
 					- else
-						= link_to year, single_lifetime_url(id: @lifetime.id, year: year)
+						= top_link_to year, single_lifetime_url(id: @lifetime.id, year: year)
 
 		%div.info{class: @view_mode}
 			- if @view_mode == :donut
