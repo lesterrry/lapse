@@ -1,0 +1,8 @@
+%turbo-frame.likes{id: qualify(@lifetime, 'likes')}
+    %h2= @lifetime.like_count
+    - if @lifetime.liked_by?(current_user)
+        = button_to(lifetime_like_path(@lifetime, @lifetime.likes.find_by(user: current_user)), method: :delete, class:'unlike-button', form: { id: qualify(@lifetime, 'like-form') }) do
+            не нравится
+    - else
+        = button_to(lifetime_likes_path(@lifetime), method: :post, class: 'like-button', form: { id: qualify(@lifetime, 'like-form') }) do
+            нравится

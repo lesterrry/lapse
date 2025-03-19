@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_03_10_193810) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_19_174908) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,6 +56,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_10_193810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lifetimes_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "lifetime_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lifetime_id"], name: "index_likes_on_lifetime_id"
+    t.index ["user_id", "lifetime_id"], name: "index_likes_on_user_id_and_lifetime_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -153,6 +163,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_10_193810) do
   add_foreign_key "comments", "lifetimes"
   add_foreign_key "comments", "users"
   add_foreign_key "lifetimes", "users", on_delete: :cascade
+  add_foreign_key "likes", "lifetimes"
+  add_foreign_key "likes", "users"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "passkeys", "users"

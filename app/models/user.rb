@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
     has_many :lifetimes, dependent: :destroy
     has_many :comments, dependent: :nullify
+    has_many :likes, dependent: :destroy
+    has_many :liked_lifetimes, through: :likes, source: :lifetime
 
     devise :passkey_authenticatable, :database_authenticatable, :registerable, :rememberable
 
