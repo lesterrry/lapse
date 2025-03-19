@@ -1,4 +1,4 @@
-%turbo-frame.comments{id: "lifetime_#{@lifetime.id}_comments"}
+%turbo-frame.comments{id: qualify(@lifetime, 'comments')}
     .existing
         %h2 комментарии
         - @lifetime.comments.each do |comment|
