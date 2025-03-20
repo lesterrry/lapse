@@ -1,8 +1,17 @@
 :root {
-    --black: #444444;
+    --black: #151E3F;
     --lightgray: #C7C7C7;
-    --darkgreen: #33473B;
-
-    --blue: #0853EA;
     --lightblue: #6290C8;
+}
+
+.black {
+    color: var(--black);
+}
+
+.lightgray {
+    color: var(--lightgray);
+}
+
+.lightblue {
+    color: var(--lightblue);
 }

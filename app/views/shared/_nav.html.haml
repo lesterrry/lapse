@@ -1,8 +1,12 @@
 .shared-nav
-    %a{href: root_path}
-        = image_tag 'logo.svg'
-    = render partial: 'shared/input', locals: { placeholder: 'Поиск' }
-    = image_tag 'fav.svg', class: 'fav'
-    = render partial: 'shared/button', locals: { size: 's', text: '+ lapse', link: new_lifetime_url }
-    %a.wrapper{href: my_profile_path}
-        = image_tag 'profile.png'
+    %div.left
+        %a.wrapper{href: root_path}
+            = render partial: 'shared/raw_svg', locals: { src: 'lapse_b.svg', html_class: 'logo' }
+
+    %div.center
+        %p.text-s.stroke-s.lightblue everything is temporary
+
+    %div.right
+        = link_to 'create', my_profile_path, class: 'stroke-s'
+        = link_to 'explore', my_profile_path, class: 'stroke-s'
+        = link_to 'profile', my_profile_path, class: 'stroke-s'
