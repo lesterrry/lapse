@@ -12,7 +12,7 @@ class Lifetime < ApplicationRecord
 	has_many :liking_users, through: :likes, source: :user
 
 	def liked_by?(user)
-		likes.exists?(user_id: user.id)
+		likes.exists?(user_id: user&.id)
 	end
 
 	def like_count

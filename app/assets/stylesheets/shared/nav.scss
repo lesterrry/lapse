@@ -30,5 +30,10 @@
 
 	.right {
 		justify-content: flex-end;
+		gap: 15%;
+	}
+
+	.logo {
+		color: var(--lightblue);
 	}
 }
