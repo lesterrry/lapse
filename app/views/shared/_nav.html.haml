@@ -4,9 +4,9 @@
             = render partial: 'shared/raw_svg', locals: { src: 'lapse_b.svg', html_class: 'logo' }
 
     %div.center
-        %p.text-s.stroke-s.lightblue everything is temporary
+        %p.text-s.stroke.lightblue everything is temporary
 
     %div.right
-        = link_to 'create', my_profile_path, class: 'stroke-s'
-        = link_to 'explore', my_profile_path, class: 'stroke-s'
-        = link_to 'profile', my_profile_path, class: 'stroke-s'
+        = link_to 'create', my_profile_path, class: 'text-s stroke'
+        = link_to 'explore', my_profile_path, class: 'text-s stroke'
+        = link_to 'profile', my_profile_path, class: 'text-s stroke'

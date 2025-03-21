@@ -31,7 +31,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-.stroke-s, .stroke-m {
+.stroke {
     & {
         -webkit-text-stroke-color: var(--black);
     }
@@ -41,20 +41,34 @@ input[type="checkbox"] {
     }
 }
 
-.stroke-s {
-    -webkit-text-stroke-width: 1px;
-}
+.text-xs {
+    & {
+        font-size: 14px;
+    }
 
-.stroke-m {
-    -webkit-text-stroke-width: 2px;
+    &.stroke {
+        -webkit-text-stroke-width: 1px;
+    }
 }
 
 .text-s {
-    font-size: 16px;
+    & {
+        font-size: 16px;
+    }
+
+    &.stroke {
+        -webkit-text-stroke-width: 1px;
+    }
 }
 
 .text-m {
-    font-size: 26px;
+    & {
+        font-size: 22px;
+    }
+
+    &.stroke {
+        -webkit-text-stroke-width: 1.5px;
+    }
 }
 
 .text-l {
@@ -62,11 +76,16 @@ input[type="checkbox"] {
 }
 
 .text-xl {
-    font-size: 50px;
+    font-size: 58px;
 }
 
 .text-xxl {
     font-size: 196px;
+}
+
+.text-accent {
+    font-family: 'Instrument Serif';
+    font-style: italic;
 }
 
 .container {

@@ -1,42 +1,48 @@
-.index-page {
-	.circle-container {
-		width: 100%;
-		margin-top: 20px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+.common-pages-index {
+
+	.lapse-block {
+		.shared-lapse {
+			& {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			& > div {
+				& {
+					position: absolute;
+					border-radius: 50%;
+					border: 1px solid var(--lightblue);
+				}
+
+				&.b {
+					width: calc(100% - 20px);
+					height: calc(100% - 20px);
+				}
+
+				&.c {
+					width: calc(100% - 40px);
+					height: calc(100% - 40px);
+				}
+			}
+
+			.content {
+				& {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+				}
+
+				& > p {
+					margin-top: -10px;
+				}
+
+				& > a {
+					margin-top: 28px;
+				}
+			}
+		}
 	}
 
-	div.circle {
-		& {
-			width: 1000px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			aspect-ratio: 1 / 1;
-			border-radius: 50%;
-			border: 10px solid var(--black);
-		}
-
-		p.caption {
-			margin-top: 20%;
-			font-size: 25px;
-		}
-
-		p.title {
-			margin-top: -60px;
-			font-size: 197px;
-		}
-
-		p.subtitle {
-			margin-top: 10px;
-			font-size: 26px;
-			text-align: center;
-			width: 560px;
-		}
-
-		div.email-partial {
-			margin-top: 180px;
-		}
-	}
 }

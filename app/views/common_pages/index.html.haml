@@ -1,1 +1,11 @@
-.common-pages-about.container
+.common-pages-index.container
+    %div.lapse-block
+        = render layout: 'shared/lapse' do
+            %div.a
+            %div.b
+            %div.c
+
+            %div.content
+                %h1.text-xl.text-accent your whole life
+                %p.text-m.stroke at a glance
+                = render partial: 'shared/button', locals: { size: 'xs', color: 'lightblue', text: 'create a lapse', link: new_lifetime_path }

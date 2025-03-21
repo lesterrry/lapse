@@ -6,7 +6,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		min-width: 380px;
 		transition: 0.2s;
 		cursor: pointer;
 	}
@@ -24,11 +23,10 @@
 
 	& > p {
 		color: white;
-		font-size: 26px;
 		text-align: center;
 	}
 
-	& > p.stroke-s {
+	& > p.stroke {
 		-webkit-text-stroke-color: white;
 	}
 
@@ -36,19 +34,12 @@
 		opacity: 80%;
 	}
 
-	&.m {
-		min-width: initial;
+	&.lightblue {
+		background-color: var(--lightblue);
 	}
 
-	&.m > p {
-		font-size: 18px;
-	}
-
-	&.s {
-		min-width: initial;
-	}
-
-	&.s > p {
-		font-size: 16px;
+	&.xs {
+		padding: 8px 20px 10px 20px;
+		border-radius: 50px;
 	}
 }

@@ -1,9 +1,11 @@
-- size ||= nil
-- html_class ||= nil
 - link ||= nil
+- size ||= 's'
+- color ||= nil
+- html_class ||= nil
+
 - hollow ||= false
 
 - tag = link ? 'a' : 'button'
 
-= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('shared-button', size, html_class, hollow ? 'hollow' : '') } do
-	%p= text
+= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('shared-button', size, html_class, color, hollow ? 'hollow' : '') } do
+	%p.stroke{class: "text-#{size}"}= text
