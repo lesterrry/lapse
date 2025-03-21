@@ -14,4 +14,8 @@ module ApplicationHelper
     def top_link_to(name, url)
         link_to(name, url, data: { turbo_action: 'advance' })
     end
+
+    def shared(name, locals)
+        render(partial: "shared/#{name}", locals:)
+    end
 end

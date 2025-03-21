@@ -1,7 +1,7 @@
 .shared-nav
     %div.left
         %a.wrapper{href: root_path}
-            = render partial: 'shared/raw_svg', locals: { src: 'lapse_b.svg', html_class: 'logo' }
+            = shared 'raw_svg', { src: 'lapse_b.svg', html_class: 'logo' }
 
     %div.center
         %p.text-s.stroke.lightblue everything is temporary

@@ -2,10 +2,10 @@
 	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year) do |form|
 		= form.hidden_field :view_mode, value: @view_mode
 
-		= render partial: 'shared/editable_text', locals: { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
-		= render partial: 'shared/editable_text', locals: { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
+		= shared 'editable_text', { tag: 'h2', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
+		= shared 'editable_text', { tag: 'p', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 
-		= render partial: 'shared/tab_select', locals: { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
+		= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
 
 		- if @view_mode == :donut
 			%div.years
@@ -26,9 +26,9 @@
 			= render partial: 'lifetimes/periods', locals: { form: }
 
 		- if @editable
-			= render partial: 'shared/button', locals: { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
+			= shared 'button', { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
 		- elsif @owned
-			= render partial: 'shared/button', locals: { text: 'Редактировать', link: set_param('edit', 1), size: 'm', html_class: 'edit-button' }
+			= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), size: 'm', html_class: 'edit-button' }
 
 	= render partial: 'lifetimes/likes'
 	= render partial: 'lifetimes/comments'

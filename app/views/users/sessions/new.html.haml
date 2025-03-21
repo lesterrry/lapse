@@ -1,4 +1,4 @@
-= render partial: 'shared/logo_frame'
+= shared 'logo_frame'
 
 .sessions-new
   %div.image
@@ -11,16 +11,16 @@
       %p= flash[:notice]
 
     = form_with(model: resource, as: resource_name, url: user_session_path, class: 'password-form') do |f|
-      = render partial: 'shared/input', locals: { placeholder: 'Почта', form_field: :email, form: f }
-      = render partial: 'shared/input', locals: { placeholder: 'Пароль', form_field: :password, form: f }
-      = render partial: 'shared/checkbox', locals: { text_unchecked: 'Запомнить меня', text_checked: 'Не запоминать', form_field: :remember_me, form: f }
+      = shared 'input', { placeholder: 'Почта', form_field: :email, form: f }
+      = shared 'input', { placeholder: 'Пароль', form_field: :password, form: f }
+      = shared 'checkbox', { text_unchecked: 'Запомнить меня', text_checked: 'Не запоминать', form_field: :remember_me, form: f }
 
-      = render partial: 'shared/button', locals: { size: 's', text: 'Войти', form: f }
+      = shared 'button', { size: 's', text: 'Войти', form: f }
 
     = form_with(id: 'passkey-form', class: 'passkey-form', model: resource, as: resource_name, url: user_session_path, data: {'passkey-form-target': 'form', challenge_url: new_user_session_challenge_url, credential_field_name: "#{resource_name}[passkey_credential]" }) do |f|
       = render 'devise/shared/error_messages', resource: resource
       = f.hidden_field :passkey_credential
       = f.check_box :remember_me, { style: 'display: none', checked: true }
-      = render partial: 'shared/button', locals: { size: 's', text: 'Passkey' }
+      = shared 'button', { size: 's', text: 'Passkey' }
 
-    = render partial: 'shared/button', locals: { hollow: true, size: 's', text: 'Регистрация', link: new_registration_path(resource_name) }
+    = shared 'button', { hollow: true, size: 's', text: 'Регистрация', link: new_registration_path(resource_name) }

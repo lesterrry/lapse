@@ -8,9 +8,9 @@
             %div.content
                 %h1.text-xl.text-accent your whole life
                 %p.text-m.stroke at a glance
-                = render partial: 'shared/button', locals: { size: 'xs', color: 'lightblue', text: 'create a lapse', link: new_lifetime_path }
+                = shared 'button', { size: 'xs', color: 'lightblue', text: 'create a lapse', link: new_lifetime_path }
 
     %div.popular-block
         %h1.text-l.stroke.heading popular timelines
         %div
-            = render partial: 'shared/lifetime_card', locals: { title: 'bebra' }
+            = shared 'lifetime_card', { title: 'bebra' }

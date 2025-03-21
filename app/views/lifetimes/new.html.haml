@@ -2,7 +2,7 @@
 	= form_for @lifetime do |form|
 		- if alert
 			%h2= alert
-		= render partial: 'shared/editable_text', locals: { tag: 'h2', text: 'Название', enabled: true, form_field: :title, form: }
-		= render partial: 'shared/editable_text', locals: { tag: 'p', text: 'Описание', enabled: true, form_field: :description, form: }
+		= shared 'editable_text', { tag: 'h2', text: 'Название', enabled: true, form_field: :title, form: }
+		= shared 'editable_text', { tag: 'p', text: 'Описание', enabled: true, form_field: :description, form: }
 
-		= render partial: 'shared/button', locals: { text: 'Далее', form:, size: 'm', html_class: 'edit-button' }
+		= shared 'button', { text: 'Далее', form:, size: 'm', html_class: 'edit-button' }
