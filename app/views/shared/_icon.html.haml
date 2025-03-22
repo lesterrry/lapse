@@ -1,2 +1,5 @@
-.shared-icon
-    = image_tag "#{name}_icon"
+- color ||= 'black'
+- size ||= nil
+
+.shared-icon{class: size}
+    = shared 'raw_svg', { src: "#{name}_icon", html_class: color }

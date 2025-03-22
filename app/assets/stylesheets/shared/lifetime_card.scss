@@ -1,0 +1,60 @@
+.shared-lifetime-card {
+    & {
+        border: 1px solid var(--lightblue);
+        border-radius: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 18px;
+        width: 400px;
+    }
+
+    & > * {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .center {
+        .asset {
+            & {
+                width: 160px;
+                height: 160px;
+                min-width: 160px;
+                border-radius: 50%;
+                border: 1px solid var(--black);
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+            }
+
+            &:not(:first-child) {
+                margin-left: -50px;
+            }
+
+            & > img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .lower {
+        .stats {
+            & {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+            }
+
+            > div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 2px;
+            }
+        }
+    }
+}

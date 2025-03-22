@@ -1,4 +1,20 @@
 .shared-lifetime-card
-    %div.header
-        %p.text-s= title
+    %div.upper
+        %p.text-m= title
         = shared 'icon', { name: 'more' }
+    %div.center
+        %div.asset
+            = image_tag 'ugc_mock_1'
+        %div.asset
+            = image_tag 'ugc_mock_2'
+        %div.asset
+            %p.text-s 2025
+    %div.lower
+        = shared 'profile_preview', { image: 'profile_mock', title: 'Арина Артамонова', subtitle: '256 подписчиков' }
+        %div.stats
+            %div
+                = shared 'icon', { name: 'heart', size: 's' }
+                %p.text-s 128
+            %div
+                = shared 'icon', { name: 'eye', size: 's' }
+                %p.text-s 128

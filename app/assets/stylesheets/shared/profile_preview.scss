@@ -1,0 +1,13 @@
+.shared-profile-preview {
+    & {
+        display: flex;
+        flex-direction: row;
+        gap: 8px
+    }
+
+    img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+}
