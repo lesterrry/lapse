@@ -1,12 +1,19 @@
-.shared-nav
+- footer ||= false
+
+- motto = footer ? 'everything is fragile' : 'everything is temporary'
+
+.shared-nav{class: footer ? 'footer' : nil}
     %div.left
         %a.wrapper{href: root_path}
-            = shared 'raw_svg', { src: 'lapse_b.svg', html_class: 'logo' }
+            = shared 'raw_svg', { src: footer ? 'lapse_d.svg' : 'lapse_b.svg', html_class: 'logo' }
 
     %div.center
-        %p.text-s.stroke.lightblue everything is temporary
+        %p.text-s.stroke.lightblue= motto
 
     %div.right
-        = link_to 'create', my_profile_path, class: 'text-s stroke'
-        = link_to 'explore', my_profile_path, class: 'text-s stroke'
-        = link_to 'profile', my_profile_path, class: 'text-s stroke'
+        - if footer
+            %p.text-s.stroke.lightblue adc '25
+        - else
+            = link_to 'create', my_profile_path, class: 'text-s stroke'
+            = link_to 'explore', my_profile_path, class: 'text-s stroke'
+            = link_to 'profile', my_profile_path, class: 'text-s stroke'
