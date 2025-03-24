@@ -1,7 +1,12 @@
 :root {
+    --white: white;
     --black: #151E3F;
     --lightgray: #C7C7C7;
     --lightblue: #6290C8;
+}
+
+.white {
+    color: var(--white)
 }
 
 .black {

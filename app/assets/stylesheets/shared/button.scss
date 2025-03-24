@@ -2,7 +2,7 @@
 	& {
 		background-color: var(--black);
 		border-radius: 15px;
-		padding: 16px 24px 16px 24px;
+		padding: 14px 24px 14px 24px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -12,22 +12,50 @@
 
 	&.hollow {
 		& {
-			background: none;
+			background-color: initial !important;
 			border: 1px solid var(--black);
+		}
+
+		&.white {
+			border-color: var(--white);
+		}
+
+		&.lightblue {
+			border-color: var(--lightblue);
 		}
 
 		& > p {
 			color: var(--black);
 		}
+
+		&.white > p {
+			& {
+				color: var(--white);
+			}
+
+			&.stroke {
+				-webkit-text-stroke-color: var(--white);
+			}
+		}
+
+		&.lightblue > p {
+			& {
+				color: var(--lightblue);
+			}
+
+			&.stroke {
+				-webkit-text-stroke-color: var(--lightblue);
+			}
+		}
 	}
 
 	& > p {
-		color: white;
+		color: var(--white);
 		text-align: center;
 	}
 
 	& > p.stroke {
-		-webkit-text-stroke-color: white;
+		-webkit-text-stroke-color: var(--white);
 	}
 
 	&:hover {

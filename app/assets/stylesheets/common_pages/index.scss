@@ -1,5 +1,9 @@
 .common-pages-index {
 
+	& {
+		gap: 60px;
+	}
+
 	.lapse-block {
 		.shared-lapse {
 			& {
@@ -45,4 +49,49 @@
 		}
 	}
 
+	.popular-block {
+		& > div {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(375px, 420px));
+			gap: 15px;
+		}
+	}
+
+	.about-block {
+		& {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.content {
+			max-width: 600px;
+		}
+
+		.graphics > img {
+			width: 550px;
+		}
+
+		.buttons {
+			display: flex;
+			flex-direction: row;
+			margin-top: 40px;
+			gap: 8px;
+		}
+	}
+
+	.subscription-block {
+		& {
+			background-color: var(--black);
+			padding-top: 26px;
+			padding-bottom: 38px;
+			border-radius: 30px;
+		}
+
+		.shared-subscription {
+			width: 100%;
+		}
+	}
 }

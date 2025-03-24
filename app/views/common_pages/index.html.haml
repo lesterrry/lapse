@@ -14,3 +14,22 @@
         %h1.text-l.stroke.heading popular timelines
         %div
             = shared 'lifetime_card', { title: 'bebra' }
+            = shared 'lifetime_card', { title: 'bebra' }
+            = shared 'lifetime_card', { title: 'bebra' }
+            = shared 'lifetime_card', { title: 'bebra' }
+            = shared 'lifetime_card', { title: 'bebra' }
+
+    %div.about-block
+        %div.content
+            %h1.text-l.stroke.heading what is lapse
+            %p.text-m lapse is a tool that facilitates detailed timeline visualization of people's lives. It allows users to map out significant milestones, experiences, and events, adding a crucial dimension to how we view personal histories.
+            %p.text-m lapse allows you to create, manage and share interactive, graphics-rich timelines with ease, affording a deeper understanding of one's own journey or that of another.
+            %div.buttons
+                = shared 'button', { size: 'xs', color: 'lightblue', text: 'create a lapse', link: new_lifetime_path }
+                = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log in / sign up', link: new_lifetime_path }
+        %div.graphics
+            = image_tag 'lapse_year.svg'
+
+    %div.subscription-block
+        %h1.text-l.stroke.white.heading keep in touch
+        = shared 'subscription'
