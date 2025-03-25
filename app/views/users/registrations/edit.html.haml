@@ -1,5 +1,7 @@
 .registrations-edit.container
-    %h2 Настройки аккаунта и входа
+
+    %div.info-block
+        = render partial: 'users/profiles/profile_heading'
 
     = link_to 'Настройки Passkey', '/users/passkeys'
 

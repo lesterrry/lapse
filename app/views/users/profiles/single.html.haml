@@ -1,15 +1,7 @@
 .profiles-single.container
 
 	%div.info-block
-		= render layout: 'shared/lapse' do
-			%div.content
-				= image_tag 'profile_mock'
-				%div.content
-					%h1.text-m.stroke.white= some_user_name(current_user)
-					= shared 'bullet_list', { items: ['256 подписчиков', '12 подписок'], html_class: 'white' }
-					= shared 'button', { size: 'xs', color: 'white', hollow: true, text: 'настройки профиля', link: edit_user_registration_url }
-					= shared 'button', { size: 'xs', color: 'white', textonly: true, text: 'выйти', method: :delete, link: destroy_session_path(current_user) }
-			%div.fill
+		= render partial: 'users/profiles/profile_heading'
 
 	%div.lifetimes-block
 		%h1.text-l.stroke.heading my timelines

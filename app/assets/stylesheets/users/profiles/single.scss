@@ -1,58 +1,5 @@
 .profiles-single {
     .info-block {
-        .shared-lapse {
-            & {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            & > div.content {
-                & {
-                    position: absolute;
-                    border-radius: 50%;
-                    border: 1px solid var(--lightblue);
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                img {
-                    width: 160px;
-                    height: 160px;
-                    border-radius: 50%;
-                    border: 1px solid var(--white);
-                }
-    
-                .content {
-                    & {
-                        position: absolute;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        margin-top: 340px;
-                    }
-    
-                    & > .shared-bullet-list {
-                        margin-top: 8px;
-                    }
-    
-                    & > .shared-button {
-                        margin-top: 26px;
-                    }
-                }
-            }
-
-            & > div.fill {
-                position: absolute;
-                border-radius: 50%;
-                background-color: var(--black);
-                width: 560px;
-                height: 560px;
-                z-index: -1;
-            }
-        }
+        
     }
 }
