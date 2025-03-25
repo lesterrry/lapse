@@ -1,16 +1,21 @@
-.shared-lifetime-card
+- profile_title ||= nil
+- profile_subtitle ||= nil
+- profile_image ||= nil
+
+%a.shared-lifetime-card{href: link}
     %div.upper
         %p.text-m= title
         = shared 'icon', { name: 'more' }
     %div.center
         %div.asset
-            = image_tag 'ugc_mock_1'
+            = image_tag asset_1
         %div.asset
-            = image_tag 'ugc_mock_2'
+            = image_tag asset_2
         %div.asset
-            %p.text-s 2025
+            %p.text-s= asset_3
     %div.lower
-        = shared 'profile_preview', { image: 'profile_mock', title: 'Арина Артамонова', subtitle: '256 подписчиков' }
+        - if profile_image && profile_title && profile_subtitle
+            = shared 'profile_preview', { image: profile_image, title: profile_title, subtitle: profile_subtitle }
         %div.stats
             %div
                 = shared 'icon', { name: 'heart', size: 's' }

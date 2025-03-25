@@ -49,15 +49,6 @@
 		}
 	}
 
-	.popular-block {
-		& > div {
-			width: 100%;
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(375px, 420px));
-			gap: 15px;
-		}
-	}
-
 	.about-block {
 		& {
 			display: flex;

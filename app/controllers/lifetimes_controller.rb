@@ -21,6 +21,18 @@ class LifetimesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@lifetime = Lifetime.find(params[:id])
+
+		@owned = @lifetime.user == current_user
+
+		raise ActiveRecord::RecordInvalid unless @owned
+
+		@lifetime.destroy
+
+		redirect_to my_profile_path
+	end
+
 	def single
 		@lifetime = Lifetime.find(params[:id])
 		@years = years_from_periods(@lifetime.periods)

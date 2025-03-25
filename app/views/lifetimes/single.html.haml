@@ -30,5 +30,8 @@
 		- elsif @owned
 			= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), size: 'm', html_class: 'edit-button' }
 
+	- if @editable
+		= shared 'button', { text: 'Удалить', link: single_lifetime_url, method: :delete, size: 'm', html_class: 'edit-button' }
+
 	= render partial: 'lifetimes/likes'
 	= render partial: 'lifetimes/comments'

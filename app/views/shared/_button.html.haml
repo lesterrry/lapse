@@ -4,8 +4,16 @@
 - html_class ||= nil
 
 - hollow ||= false
+- confirm ||= true
+
+- method ||= nil
 
 - tag = link ? 'a' : 'button'
+- final_class = cn('shared-button', size, html_class, color, hollow ? 'hollow' : nil)
 
-= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: cn('shared-button', size, html_class, color, hollow ? 'hollow' : '') } do
-	%p.stroke{class: "text-#{size}"}= text
+- if !method.nil?
+	= button_to link, method: :delete, class: final_class, form: { data: { turbo_confirm: confirm ? 'Вы уверены?' : nil, turbo_frame: '_top' }, id: "#{method}-form" } do
+		%p.stroke{class: "text-#{size}"}= text
+- else
+	= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: final_class } do
+		%p.stroke{class: "text-#{size}"}= text

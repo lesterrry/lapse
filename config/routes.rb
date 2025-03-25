@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 	get '/lifetimes/new', to: 'lifetimes#new', as: :new_lifetime
 
-	resources :lifetimes, only: %i[create] do # update logic is implemented below
+	resources :lifetimes, only: %i[create destroy] do # update logic is implemented below
 		member do
 			patch ':year', to: 'lifetimes#update_single'
 			get '(:year)', to: 'lifetimes#single', as: :single
