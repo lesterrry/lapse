@@ -1,10 +1,18 @@
 .profiles-single.container
-	%div
-		%h2 профиль
-		= link_to 'Настройки входа', '/users/edit'
 
+	%div.info-block
+		= render layout: 'shared/lapse' do
+			%div.content
+				= image_tag 'profile_mock'
+				%div.content
+					%h1.text-m.stroke.white= some_user_name(current_user)
+					= shared 'bullet_list', { items: ['256 подписчиков', '12 подписок'], html_class: 'white' }
+					= shared 'button', { size: 'xs', color: 'white', hollow: true, text: 'настройки профиля', link: edit_user_registration_url }
+					= shared 'button', { size: 'xs', color: 'white', textonly: true, text: 'выйти', method: :delete, link: destroy_session_path(current_user) }
+			%div.fill
+
+	%div.lifetimes-block
+		%h1.text-l.stroke.heading my timelines
 		%div.shared-lifetime-card-container
 			- @lifetimes.each do |lifetime|
 				= shared 'lifetime_card', { title: lifetime.title, link: single_lifetime_url(lifetime), asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025' }
-
-		= render "users/shared/links", resource_name: :user, devise_mapping: Devise.mappings[:user]

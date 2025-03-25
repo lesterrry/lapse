@@ -1,21 +1,21 @@
 .registrations-edit.container
-  %h2 Настройки аккаунта и входа
+    %h2 Настройки аккаунта и входа
 
-  = link_to 'Настройки Passkey', '/users/passkeys'
+    = link_to 'Настройки Passkey', '/users/passkeys'
 
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    = devise_error_messages!
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
 
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true
+        .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true
 
-    .field
-      = f.label :password
-      %i (leave blank if you don't want to change it)
-      %br/
-      = f.password_field :password, autocomplete: "off" 
+        .field
+            = f.label :password
+            %i (leave blank if you don't want to change it)
+            %br/
+            = f.password_field :password, autocomplete: "off" 
 
-    .actions
-      = f.submit "Update"
+        .actions
+            = f.submit "Update"

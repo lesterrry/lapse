@@ -4,12 +4,13 @@
 - html_class ||= nil
 
 - hollow ||= false
+- textonly ||= false
 - confirm ||= true
 
 - method ||= nil
 
 - tag = link ? 'a' : 'button'
-- final_class = cn('shared-button', size, html_class, color, hollow ? 'hollow' : nil)
+- final_class = cn('shared-button', size, html_class, color, hollow ? 'hollow' : nil, textonly ? 'textonly' : nil)
 
 - if !method.nil?
 	= button_to link, method: :delete, class: final_class, form: { data: { turbo_confirm: confirm ? 'Вы уверены?' : nil, turbo_frame: '_top' }, id: "#{method}-form" } do

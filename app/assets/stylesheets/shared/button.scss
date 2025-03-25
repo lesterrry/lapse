@@ -49,6 +49,11 @@
 		}
 	}
 
+	&.textonly {
+		border: none !important;
+		background-color: initial !important;
+	}
+
 	& > p {
 		color: var(--white);
 		text-align: center;
