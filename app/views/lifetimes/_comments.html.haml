@@ -1,14 +1,11 @@
 %turbo-frame.comments{id: qualify(@lifetime, 'comments')}
     .existing
-        %h2 комментарии
         - @lifetime.comments.each do |comment|
             %div.comment
-                %p= some_user_name(comment.user)
-                %p= comment.content
+                %p.text-s= comment.content
+                = shared 'profile_preview', { image: 'profile_mock', title: some_user_name(comment.user), subtitle: '256 подписчиков' }
 
-    .add
-        %h2 добавить комментарий
         = form_with model: [@lifetime, @lifetime.comments.build] do |form|
-            = form.text_area :content
-            = form.submit "отправить"
+            = form.text_area :content, class: 'text-s', placeholder: 'оставьте комментарий'
+            = shared 'button', { text: 'отправить', color: 'lightblue', size: 'xs', hollow: true, form: }
 

@@ -1,9 +1,8 @@
 %turbo-frame.likes{id: qualify(@lifetime, 'likes')}
-    %h2= @lifetime.like_count
+    %div.count
+        %p.text-s.stroke.lightblue= @lifetime.like_count
     - if current_user
         - if @lifetime.liked_by?(current_user)
-            = button_to(lifetime_like_url(@lifetime, @lifetime.likes.find_by(user: current_user)), method: :delete, class: 'unlike-button', form: { id: qualify(@lifetime, 'like-form') }) do
-                не нравится
+            = shared 'button', size: 'xs', color: 'lightblue', hollow: true, method: :delete, no_confirm: true, link: lifetime_like_url(@lifetime, @lifetime.likes.find_by(user: current_user)), text: 'не нравится'
         - else
-            = button_to(lifetime_likes_url(@lifetime), method: :post, class: 'like-button', form: { id: qualify(@lifetime, 'like-form') }) do
-                нравится
+            = shared 'button', size: 'xs', color: 'lightblue', hollow: true, method: :post, no_confirm: true, link: lifetime_likes_url(@lifetime), text: 'нравится'

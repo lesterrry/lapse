@@ -11,11 +11,13 @@
 				- else
 					%div.loop
 
-		%div.info-block
+		%div.info-block{class: @view_mode}
 			%div.left
 				= shared 'editable_text', { html_class: 'text-l stroke', text: @lifetime.title, enabled: @editable, form_field: :title, form: }
 				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 				= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
+				- if @editable
+					= shared 'button', { text: 'Сохранить', form:, size: 'xs' }
 			%div.right
 				- if @view_mode == :donut
 					= render partial: 'lifetimes/periods', locals: { hide_years: true, form: }
@@ -24,13 +26,17 @@
 			%div.periods-block
 				= render partial: 'lifetimes/periods', locals: { form: }
 
-		- if @editable
-			= shared 'button', { text: 'Сохранить', form:, size: 'm', html_class: 'edit-button' }
-		- elsif @owned
-			= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), size: 'm', html_class: 'edit-button' }
+	%div.social-block
+		= shared 'profile_preview', { image: 'profile_mock', title: 'Арина Артамонова', subtitle: '256 подписчиков' }
+		= render partial: 'lifetimes/likes'
 
-	- if @editable
-		= shared 'button', { text: 'Удалить', link: single_lifetime_url, method: :delete, size: 'm', html_class: 'edit-button' }
+	- if @editable || @owned
+		%div.actions-block
+			- if @editable
+				= shared 'button', { text: 'Удалить', link: single_lifetime_url, method: :delete, size: 'xs', html_class: 'edit-button' }
+			- elsif @owned
+				= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), size: 'xs', html_class: 'edit-button' }
 
-	= render partial: 'lifetimes/likes'
-	= render partial: 'lifetimes/comments'
+	%div.comments-block
+		%h1.text-l.stroke.heading комментарии
+		= render partial: 'lifetimes/comments'
