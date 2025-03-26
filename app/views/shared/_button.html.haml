@@ -1,11 +1,12 @@
 - link ||= nil
 - size ||= 's'
-- color ||= nil
+- color ||= 'black'
 - html_class ||= nil
 
 - hollow ||= false
 - textonly ||= false
 - confirm ||= true
+- top ||= false
 
 - method ||= nil
 
@@ -16,5 +17,5 @@
 	= button_to link, method: :delete, class: final_class, form: { data: { turbo_confirm: confirm ? 'Вы уверены?' : nil, turbo_frame: '_top' }, id: "#{method}-form" } do
 		%p.stroke{class: "text-#{size}"}= text
 - else
-	= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, class: final_class } do
+	= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, data: { turbo_action: top ? 'advance' : nil }, class: final_class } do
 		%p.stroke{class: "text-#{size}"}= text

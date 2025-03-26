@@ -24,8 +24,14 @@
 			border-color: var(--lightblue);
 		}
 
-		& > p {
-			color: var(--black);
+		&.black > p {
+			& {
+				color: var(--black);
+			}
+
+			&.stroke {
+				-webkit-text-stroke-color: var(--black);
+			}
 		}
 
 		&.white > p {

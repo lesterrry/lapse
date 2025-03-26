@@ -52,6 +52,9 @@ class LifetimesController < ApplicationController
 				Time.now.year
 			end
 
+		@previous_year = @years.include?(@selected_year - 1) ? @selected_year - 1 : nil
+		@next_year = @years.include?(@selected_year + 1) ? @selected_year + 1 : nil
+
 		@periods =
 			if @view_mode == :donut
 				periods_of_year(@lifetime.periods, @selected_year)

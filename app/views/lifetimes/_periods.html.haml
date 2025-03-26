@@ -1,9 +1,10 @@
+- hide_years ||= false
+
 - last_year = nil
 
 .periods
-	%h2 периоды
 	- @periods.each do |period|
-		- if last_year != period.start.year
+		- if !hide_years && last_year != period.start.year
 			%h3= period.start.year
 			- last_year = period.start.year
 		= shared 'period', { enabled: @editable, period:, form: }
