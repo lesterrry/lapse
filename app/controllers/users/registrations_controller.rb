@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     super do
       @passkey_mode = params[:passkey] == '1'
+      @hide_footer = true
     end
   end
 
