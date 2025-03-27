@@ -9,5 +9,8 @@
 		= javascript_importmap_tags
 	%body
 		= shared 'nav', { current_page: @page_nav_name }
+		
 		= yield
-		= shared 'nav', { footer: true }
+		
+		- unless @hide_footer 
+			= shared 'nav', { footer: true }

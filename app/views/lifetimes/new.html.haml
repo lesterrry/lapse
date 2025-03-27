@@ -1,8 +1,11 @@
-.lifetimes-single.container
+.lifetimes-new.container
 	= form_for @lifetime do |form|
-		- if alert
-			%h2= alert
-		= shared 'editable_text', { tag: 'h2', text: 'Название', enabled: true, form_field: :title, form: }
-		= shared 'editable_text', { tag: 'p', text: 'Описание', enabled: true, form_field: :description, form: }
+		= render layout: 'shared/lapse' do
+			%div
+				= shared 'icon', { name: 'plus', color: 'lightblue' }
 
-		= shared 'button', { text: 'Далее', form:, size: 'm', html_class: 'edit-button' }
+		%div.info-block
+			= shared 'editable_text', { html_class: 'text-l stroke', text: 'Название', enabled: true, form_field: :title, form: }
+			= shared 'editable_text', { html_class: 'text-s description', text: 'Описание', enabled: true, form_field: :description, form: }
+
+			= shared 'button', { text: 'Далее', form:, size: 'xs', html_class: 'edit-button' }

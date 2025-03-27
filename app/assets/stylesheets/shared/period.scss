@@ -17,6 +17,10 @@
         overflow: visible;
     }
 
+    p.multiline {
+        height: initial;
+    }
+
     p {
         display: inline-flex;
         gap: 4px;

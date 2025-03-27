@@ -1,0 +1,40 @@
+.lifetimes-new {
+    & > form {
+        position: relative;
+    }
+
+    .shared-lapse {
+        & {
+            position: absolute;
+            top: 0;
+        }
+
+        & > div {
+            border: 1px solid var(--lightblue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shared-icon {
+            height: 100px;
+            width: 100px;
+        }
+    }
+
+    .info-block {
+        & {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .description {
+            margin-top: 4px;
+        }
+
+        .shared-button {
+            margin-top: 28px;
+        }
+    }
+}

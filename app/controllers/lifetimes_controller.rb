@@ -7,6 +7,8 @@ class LifetimesController < ApplicationController
 
 	def new
 		@lifetime = Lifetime.new
+
+		@hide_footer = true
 	end
 
 	def create

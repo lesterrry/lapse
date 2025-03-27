@@ -8,6 +8,7 @@
 		justify-content: center;
 		transition: 0.2s;
 		cursor: pointer;
+		width: fit-content;
 	}
 
 	&.hollow {
@@ -84,5 +85,9 @@
 	&.xs {
 		padding: 8px 20px 10px 20px;
 		border-radius: 50px;
+	}
+
+	&.s {
+		width: initial;
 	}
 }

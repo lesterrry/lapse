@@ -9,6 +9,10 @@
 			top: 0;
 		}
 
+		&.list {
+			z-index: -1;
+		}
+
 		.shared-lapse {
 			& > div.loop {
 				position: absolute;
@@ -61,6 +65,7 @@
 		div.left {
 			.description {
 				margin-top: 4px;
+				height: initial;
 			}
 
 			& > .shared-tab-select {

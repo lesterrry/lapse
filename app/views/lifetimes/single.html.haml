@@ -2,7 +2,7 @@
 	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year) do |form|
 		= form.hidden_field :view_mode, value: @view_mode
 
-		%div.chart-block
+		%div.chart-block{class: @view_mode}
 			= render layout: 'shared/lapse' do
 				- if @view_mode == :donut
 					%div.chart{'data-controller': 'lifetime', 'data-action': 'periodChanged@document->lifetime#handlePeriodChanged', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
@@ -18,6 +18,8 @@
 				= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
 				- if @editable
 					= shared 'button', { text: 'Сохранить изменения', form:, size: 'xs' }
+				- elsif @owned
+					= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), top: true, size: 'xs' }
 			%div.right
 				- if @view_mode == :donut
 					= render partial: 'lifetimes/periods', locals: { hide_years: true, form: }
@@ -34,8 +36,6 @@
 		%div.actions-block
 			- if @editable
 				= shared 'button', { text: 'Удалить Lifetime', link: single_lifetime_url, method: :delete, size: 'xs', color: 'red' }
-			- elsif @owned
-				= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), size: 'xs', html_class: 'edit-button' }
 
 	%div.comments-block
 		%h1.text-l.stroke.heading комментарии
