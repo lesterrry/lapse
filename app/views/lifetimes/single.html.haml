@@ -17,7 +17,7 @@
 				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 				= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
 				- if @editable
-					= shared 'button', { text: 'Сохранить', form:, size: 'xs' }
+					= shared 'button', { text: 'Сохранить изменения', form:, size: 'xs' }
 			%div.right
 				- if @view_mode == :donut
 					= render partial: 'lifetimes/periods', locals: { hide_years: true, form: }
@@ -33,7 +33,7 @@
 	- if @editable || @owned
 		%div.actions-block
 			- if @editable
-				= shared 'button', { text: 'Удалить', link: single_lifetime_url, method: :delete, size: 'xs', html_class: 'edit-button' }
+				= shared 'button', { text: 'Удалить Lifetime', link: single_lifetime_url, method: :delete, size: 'xs', color: 'red' }
 			- elsif @owned
 				= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), size: 'xs', html_class: 'edit-button' }
 

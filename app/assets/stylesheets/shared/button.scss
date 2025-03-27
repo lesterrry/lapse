@@ -77,6 +77,10 @@
 		background-color: var(--lightblue);
 	}
 
+	&.red {
+		background-color: var(--red);
+	}
+
 	&.xs {
 		padding: 8px 20px 10px 20px;
 		border-radius: 50px;

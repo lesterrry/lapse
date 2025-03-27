@@ -40,7 +40,7 @@ class LifetimesController < ApplicationController
 		@editable = !params[:edit].nil? && @owned
 		@view_mode = params['view-mode']&.to_sym || :donut
 
-		new_period = !params[:new].nil?
+		new_period = params[:new] == '1'
 		year = params[:year].to_i
 
 		@selected_year =
@@ -84,7 +84,17 @@ class LifetimesController < ApplicationController
 
 	private
 
-	def lifetime_params
+	def permit_lifetime_params(params)s
+		if params[:lifetime][:periods_attributes].present?
+			params[:lifetime][:periods_attributes].each_value do |period|
+				period.delete(:photos) if period[:photos] == ['']
+			end
+		end
+
 		params.require(:lifetime).permit(:title, :description, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, :_destroy, { photos: [] }])
+	end
+
+	def lifetime_params
+		permit_lifetime_params(params)
 	end
 end
