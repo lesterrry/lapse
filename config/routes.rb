@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 		get '/lifetimes/', to: 'lifetimes#index'
 		get '/lifetimes/:id/', to: 'lifetimes#single'
 
+		patch '/lifetimes/:id/', to: 'lifetimes#update_single'
+
 		post '/login', to: 'users#login'
 		post '/signup', to: 'users#signup'
 	end

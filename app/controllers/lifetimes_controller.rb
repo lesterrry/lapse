@@ -35,6 +35,7 @@ class LifetimesController < ApplicationController
 
 	def single
 		@lifetime = Lifetime.find(params[:id])
+
 		@years = years_from_periods(@lifetime.periods)
 		@owned = @lifetime.user == current_user
 		@editable = !params[:edit].nil? && @owned
@@ -84,7 +85,7 @@ class LifetimesController < ApplicationController
 
 	private
 
-	def permit_lifetime_params(params)s
+	def permit_lifetime_params(params)
 		if params[:lifetime][:periods_attributes].present?
 			params[:lifetime][:periods_attributes].each_value do |period|
 				period.delete(:photos) if period[:photos] == ['']
