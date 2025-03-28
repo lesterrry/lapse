@@ -43,3 +43,5 @@ node_modules/
 
 # dont want to get sued
 /app/assets/fonts/*
+
+*.enc
