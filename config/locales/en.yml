@@ -1,5 +1,43 @@
 en:
-  hello: "Hello world"
-  pages:
+  global:
+    subs_count: '%{count} subscribers'
+
+  shared:
+    nav:
+      create: 'create'
+      explore: 'explore'
+      profile: 'profile'
+    subscription:
+      placeholder: 'Email'
+      button: 'Subscribe'
+    
+  common_pages:
     index:
-      description: ''
+      lapse_block:
+        title: 'your whole life'
+        subtitle: 'at a glance'
+        button: 'create a lapse'
+      popular_block:
+        heading: 'popular lifetimes'
+        footnote: 'see all'
+      about_block:
+        heading: 'what is lapse'
+        description1: "lapse is a tool that facilitates detailed timeline visualization of people's lives. It allows users to map out significant milestones, experiences, and events, adding a crucial dimension to how we view personal histories."
+        description2: "lapse allows you to create, manage and share interactive, graphics-rich timelines with ease, affording a deeper understanding of one's own journey or that of another."
+        create_button: 'create a lapse'
+        login_button: 'log in / sign up'
+      subscription_block:
+        heading: 'keep in touch'
+      authors_block:
+        heading: 'authors you might like'
+        footnote: 'see all'
+      tags_block:
+        heading: 'explore tags'
+        footnote: 'see all'
+
+  devise:
+    failure:
+      unauthenticated: 'Log in'
+      invalid: 'Password incorrect'
+      not_found_in_database: 'Username not found'
+      stored_credential_not_found: 'Passkey not found'

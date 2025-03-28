@@ -11,8 +11,8 @@ module ApplicationHelper
         all.join('_')
     end
 
-    def top_link_to(name, url)
-        link_to(name, url, data: { turbo_action: 'advance' })
+    def top_link_to(name, url, **params)
+        link_to(name, url, data: { turbo_action: 'advance' }, **params)
     end
 
     def shared(name, locals = {})

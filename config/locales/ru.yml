@@ -1,8 +1,39 @@
 ru:
-  hello: "Hello world"
-  pages:
+  global:
+    subs_count: '%{count} подписчиков'
+
+  shared:
+    nav:
+      create: 'создать'
+      explore: 'популярное'
+      profile: 'профиль'
+    subscription:
+      placeholder: 'Почта'
+      button: 'Подписаться'
+
+  common_pages:
     index:
-      description: ''
+      lapse_block:
+        title: 'жизнь целиком'
+        subtitle: 'как на ладони'
+        button: 'создать lapse'
+      popular_block:
+        heading: 'популярные лайфтаймы'
+        footnote: 'больше'
+      about_block:
+        heading: 'что такое lapse'
+        description1: "lapse — это инструмент, который облегчает детализированное визуальное представление временной шкалы человеческих жизней. Он позволяет пользователям наносить на карту значимые этапы, переживания и события, добавляя ключевую деталь к тому, как мы видим личную историю."
+        description2: "lapse позволяет вам создавать, управлять и делиться интерактивными, богатыми графикой временными шкалами с легкостью, тем самым помогая глубже понять свое собственное путешествие или путешествие другого человека."
+        create_button: 'создать lapse'
+        login_button: 'войти / создать аккаунт'
+      subscription_block:
+        heading: 'оставайтесь на связи'
+      authors_block:
+        heading: 'популярные авторы'
+        footnote: 'больше'
+      tags_block:
+        heading: 'лайфтаймы по тегам'
+        footnote: 'больше'
 
   devise:
     failure:

@@ -12,8 +12,10 @@
 
     %div.right
         - if footer
-            %p.text-s.stroke.lightblue adc '25
+            %div.locales
+                = top_link_to 'ru', set_locale_url(locale: :ru), class: 'text-s lightblue stroke'
+                = top_link_to 'en', set_locale_url(locale: :en), class: 'text-s lightblue stroke'
         - else
-            = link_to 'create', new_lifetime_path, class: 'text-s stroke'
-            = link_to 'explore', my_profile_path, class: 'text-s stroke'
-            = link_to 'profile', my_profile_path, class: 'text-s stroke'
+            = link_to t('.create'), new_lifetime_path, class: 'text-s stroke'
+            = link_to t('.explore'), my_profile_path, class: 'text-s stroke'
+            = link_to t('.profile'), my_profile_path, class: 'text-s stroke'

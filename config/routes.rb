@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 	root 'common_pages#index'
 
+	get '/locale/:locale', to: 'service#locale', as: :set_locale
+
 	namespace :admin do
 		resources :lifetimes
 		resources :passkeys

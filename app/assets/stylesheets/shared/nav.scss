@@ -40,4 +40,10 @@
 	.logo {
 		color: var(--lightblue);
 	}
+
+	.locales {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+	}
 }

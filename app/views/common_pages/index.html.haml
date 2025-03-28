@@ -6,37 +6,37 @@
             %div.b
             %div.c
             %div.content
-                %h1.text-xl.text-accent your whole life
-                %p.text-m.stroke at a glance
-                = shared 'button', { size: 'xs', color: 'lightblue', text: 'create a lapse', link: new_lifetime_path }
+                %h1.text-xl.text-accent= t('common_pages.index.lapse_block.title')
+                %p.text-m.stroke= t('common_pages.index.lapse_block.subtitle')
+                = shared 'button', { size: 'xs', color: 'lightblue', text: t('common_pages.index.lapse_block.button'), link: new_lifetime_path }
 
     %div.popular-block
-        %h1.text-l.stroke.heading popular timelines
+        %h1.text-l.stroke.heading= t('.popular_block.heading')
         %div.shared-lifetime-card-container
-            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: '256 подписчиков' }
-            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: '256 подписчиков' }
-            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: '256 подписчиков' }
-            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: '256 подписчиков' }
-            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: '256 подписчиков' }
-        = shared 'footnote', { text: 'see all', link: '' }
+            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: t('global.subs_count', count: '256') }
+            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: t('global.subs_count', count: '256') }
+            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: t('global.subs_count', count: '256') }
+            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: t('global.subs_count', count: '256') }
+            = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1', asset_2: 'ugc_mock_2', asset_3: '2025', profile_image: 'profile_mock', profile_title: 'Арина Артамонова', profile_subtitle: t('global.subs_count', count: '256') }
+        = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
 
     %div.about-block
         %div.content
-            %h1.text-l.stroke.heading what is lapse
-            %p.text-m lapse is a tool that facilitates detailed timeline visualization of people's lives. It allows users to map out significant milestones, experiences, and events, adding a crucial dimension to how we view personal histories.
-            %p.text-m lapse allows you to create, manage and share interactive, graphics-rich timelines with ease, affording a deeper understanding of one's own journey or that of another.
+            %h1.text-l.stroke.heading= t('.about_block.heading')
+            %p.text-m= t('.about_block.description1')
+            %p.text-m= t('.about_block.description2')
             %div.buttons
-                = shared 'button', { size: 'xs', color: 'lightblue', text: 'create a lapse', link: new_lifetime_path }
-                = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log in / sign up', link: new_lifetime_path }
+                = shared 'button', { size: 'xs', color: 'lightblue', text: t('.about_block.create_button'), link: new_lifetime_path }
+                = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: t('.about_block.login_button'), link: new_lifetime_path }
         %div.graphics
             = image_tag 'lapse_year.svg'
 
     %div.subscription-block
-        %h1.text-l.stroke.white.heading keep in touch
+        %h1.text-l.stroke.white.heading= t('.subscription_block.heading')
         = shared 'subscription'
 
     %div.authors-block
-        %h1.text-l.stroke.heading authors you might like
+        %h1.text-l.stroke.heading= t('.authors_block.heading')
         %div
             = shared 'profile_card'
             = shared 'profile_card'
@@ -44,10 +44,10 @@
             = shared 'profile_card'
             = shared 'profile_card'
             = shared 'profile_card'
-        = shared 'footnote', { text: 'see all', link: '' }
+        = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
 
     %div.tags-block
-        %h1.text-l.stroke.heading explore tags
+        %h1.text-l.stroke.heading= t('.tags_block.heading')
         %div
             = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
             = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
@@ -62,4 +62,4 @@
             = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
             = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
             = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-        = shared 'footnote', { text: 'see all', link: '' }
+        = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
