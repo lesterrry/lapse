@@ -2,6 +2,6 @@
     %p.text-xl= @selected_year
     %div
         - if @previous_year
-            = link_to '←', single_lifetime_url(id: @lifetime.id, year: @previous_year)
+            = top_link_to '←', single_lifetime_url(id: @lifetime.id, year: @previous_year)
         - if @next_year
-            = link_to '→', single_lifetime_url(id: @lifetime.id, year: @next_year)
+            = top_link_to '→', single_lifetime_url(id: @lifetime.id, year: @next_year)

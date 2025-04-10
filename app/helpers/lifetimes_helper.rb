@@ -4,7 +4,7 @@ module LifetimesHelper
 	end
 
 	def years_from_periods(periods)
-		periods.map { |i| (i.start.year..i.end.year).to_a }.flatten.uniq
+		periods.map { |i| (i.start.year..i.end.year).to_a }.flatten.uniq.sort
 	end
 
 	def periods_of_year(periods, year)
