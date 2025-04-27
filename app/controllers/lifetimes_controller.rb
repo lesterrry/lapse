@@ -55,7 +55,7 @@ class LifetimesController < ApplicationController
 				Time.now.year
 			end
 
-		index = @years.index(@selected_year)
+		index = @years.index(@selected_year) || 0
 
 		@previous_year = index.positive? ? @years[index - 1] : nil
 		@next_year = @years[index + 1]

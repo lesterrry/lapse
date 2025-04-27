@@ -130,6 +130,11 @@
 			display: flex;
 			flex-direction: column;
 			gap: 22px;
+			word-break: break-all;
+		}
+
+		textarea {
+			resize: none;
 		}
 
 		.existing {

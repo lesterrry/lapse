@@ -7,7 +7,7 @@ class Lifetime < ApplicationRecord
 	has_many :periods, dependent: :destroy
 	accepts_nested_attributes_for :periods, allow_destroy: true, reject_if: :all_blank
 
-	has_many :comments, dependent: :nullify
+	has_many :comments, dependent: :destroy
 	has_many :likes, dependent: :destroy
 	has_many :liking_users, through: :likes, source: :user
 
