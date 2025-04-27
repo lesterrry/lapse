@@ -8,7 +8,7 @@
 					%div.chart{'data-controller': 'lifetime', 'data-action': 'periodChanged@document->lifetime#handlePeriodChanged', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
 						%canvas{'data-lifetime-target': 'canvas'}
 					= render partial: 'lifetimes/year_switcher'
-				- else
+				- if @view_mode == :list || @periods.empty?
 					%div.loop
 
 		%div.info-block{class: @view_mode}
@@ -17,7 +17,7 @@
 				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, enabled: @editable, form_field: :description, form: }
 				= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
 				- if @editable
-					= shared 'button', { text: 'Сохранить изменения', form:, size: 'xs' }
+					= shared 'button', { text: 'Сохранить изменения', form:, top: true, size: 'xs' }
 				- elsif @owned
 					= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), top: true, size: 'xs' }
 			%div.right

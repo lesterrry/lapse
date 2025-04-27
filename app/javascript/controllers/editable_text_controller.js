@@ -1,9 +1,21 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-	static targets = ['field'];
+	static targets = ['field', 'text'];
 
 	connect() {
+		this.placeholder = this.data.get('placeholder');
+
+		const src = this.textTarget.innerHTML;
+
+		console.log(src)
+
+		if (!src || src === '<br>') {
+			this.textTarget.innerText = this.placeholder;
+			this.fieldTarget.value = '';
+			this.textTarget.classList.add('empty');
+		}
+
 		window.addEventListener('keydown', this.handleKeyDown.bind(this));
 	}
 
@@ -19,7 +31,32 @@ export default class extends Controller {
 		}
 	}
 
+	handleChange(event) {
+		const src = event.srcElement.innerHTML;
+
+		if (src && src !== '<br>') {
+			this.fieldTarget.value = src;
+		}
+	}
+
 	handleBlur(event) {
-		this.fieldTarget.value = event.srcElement.innerHTML;
+		const src = event.srcElement.innerHTML;
+
+		if (!src || src === '<br>') {
+			event.srcElement.innerText = this.placeholder;
+			this.fieldTarget.value = '';
+			event.currentTarget.classList.add('empty');
+		} else {
+			event.currentTarget.classList.remove('empty');
+		}
+	}
+
+	handleFocus(event) {
+		const field = this.fieldTarget.value;
+
+		if (!field) {
+			event.srcElement.innerText = '';
+			event.currentTarget.classList.remove('empty');
+		}
 	}
 }

@@ -1,0 +1,6 @@
+.shared-editable-text {
+    & > .empty {
+        color: var(--lightgray);
+        -webkit-text-stroke-color: var(--lightgray);
+    }
+}
