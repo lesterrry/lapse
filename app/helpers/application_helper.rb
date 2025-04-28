@@ -24,8 +24,8 @@ module ApplicationHelper
     end
 
     def notification
-        some_alert = flash[:alert] || flash[:notice]
-        color = flash[:alert] && 'red'
+        some_alert = flash[:notice] || flash[:alert] || flash[:error]
+        color = (flash[:alert] || flash[:error]) && 'red'
 
         shared 'notification', { content: some_alert, color:, delay: 2000 } if some_alert
     end

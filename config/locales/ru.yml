@@ -37,7 +37,7 @@ ru:
 
   devise:
     failure:
-      unauthenticated: 'Вход'
+      unauthenticated: false
       invalid: 'Неверные данные для входа'
       not_found_in_database: 'Неверное имя пользователя'
       stored_credential_not_found: 'Ключ не найден'

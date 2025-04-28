@@ -1,4 +1,8 @@
 .shared-editable-text {
+    & {
+        min-height: 22px;
+    }
+
     & > .empty {
         color: var(--lightgray);
         -webkit-text-stroke-color: var(--lightgray);

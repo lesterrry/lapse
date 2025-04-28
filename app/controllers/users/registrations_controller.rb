@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  include ApplicationHelper
   include Devise::Passkeys::Controllers::RegistrationsControllerConcern
   include RelyingParty
 
@@ -8,6 +9,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do
       @passkey_mode = params[:passkey] == '1'
       @hide_footer = true
+    end
+  end
+
+  def create
+    build_resource(sign_up_params)
+
+    resource.save
+
+    if resource.persisted?
+      sign_up(resource_name, resource)
+      respond_with resource, location: after_sign_up_path_for(resource)
+    else
+      flash[:error] = extract_errors(resource)
+
+      redirect_to action: :new
     end
   end
 
