@@ -2,8 +2,8 @@
 	= form.fields_for :periods, period do |fields|
 		- blur_action = 'blur->period#handleBlur'
 
-		- date_start = enabled ? fields.date_field(:start, value: period.start.to_date, 'data-action': blur_action, 'data-id': 'start') : friendly_date(period.start)
-		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date, 'data-action': blur_action, 'data-id': 'end') : friendly_date(period.end)
+		- date_start = enabled ? fields.date_field(:start, value: period.start.to_date, 'data-action': blur_action, 'data-id': 'start', class: 'date-field') : friendly_date(period.start)
+		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date, 'data-action': blur_action, 'data-id': 'end', class: 'date-field') : friendly_date(period.end)
 
 		= shared 'editable_text', { tag: 'h3', id: 'title', text: period.title, placeholder: 'Название', enabled:, form_field: :title, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'title' } }
 		= shared 'editable_text', { tag: 'p', html_class: 'multiline', id: 'description', text: period.description, placeholder: 'Описание', enabled:, form_field: :description, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'description' } }
@@ -13,6 +13,7 @@
 			= image_tag photo
 
 		- if enabled
-			= fields.file_field(:photos, multiple: true)
+			= fields.label(:photos, 'Добавить фото', class: 'file-button hover-underline')
+			= fields.file_field(:photos, multiple: true, class: 'no-display') # <- hidden via css
 			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8')
-			= shared 'checkbox', { text_unchecked: 'Удалить', text_checked: 'Не удалять', form_field: :_destroy, form: fields }
+			= shared 'checkbox', { text_unchecked: 'Удалить', text_checked: 'Не удалять', form_field: :_destroy, form: fields, html_class: 'delete-button text-s stroke red' }

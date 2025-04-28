@@ -1,3 +1,5 @@
+- html_class ||= nil
+
 .shared-checkbox{'data-controller': 'checkbox', 'data-checkbox-text-checked': text_checked, 'data-checkbox-text-unchecked': text_unchecked}
-    = form.label form_field, text_unchecked, {'data-checkbox-target': 'label'}
-    = form.check_box form_field, {'data-action': 'change->checkbox#handleChange'}
+    = form.label(form_field, text_unchecked, {'data-checkbox-target': 'label', class: cn('hover-underline', html_class)})
+    = form.check_box(form_field, {'data-action': 'change->checkbox#handleChange', class: 'no-display'}) # <- hidden via css

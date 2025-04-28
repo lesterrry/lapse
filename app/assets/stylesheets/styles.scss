@@ -22,13 +22,9 @@ a.wrapper {
     display: contents;
 }
 
-[contenteditable]:hover, .shared-checkbox > label:hover {
+[contenteditable]:hover, .hover-underline:hover {
     text-decoration: underline;
     text-decoration-color: gray;
-}
-
-input[type="checkbox"] {
-    display: none;
 }
 
 .stroke {
@@ -127,6 +123,10 @@ input[type="checkbox"] {
         align-items: center;
         justify-content: center;
     }
+}
+
+.no-display {
+    display: none;
 }
 
 @media all and (min-width: 1370px) {
