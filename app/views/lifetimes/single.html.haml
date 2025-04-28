@@ -1,4 +1,5 @@
 %turbo-frame.lifetimes-single.container{id: qualify(@lifetime)}
+	= notification
 	= form_for @lifetime, url: single_lifetime_url(id: @lifetime.id, year: @selected_year) do |form|
 		= form.hidden_field :view_mode, value: @view_mode
 

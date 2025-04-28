@@ -84,11 +84,12 @@ class LifetimesController < ApplicationController
 
 		view_mode = params[:lifetime][:view_mode].dup
 
-		unless @lifetime.update(lifetime_params)
+		if @lifetime.update(lifetime_params)
+			redirect_to action: :single, year: params[:year], 'view-mode': view_mode
+		else
 			flash[:alert] = @lifetime.errors.full_messages.to_sentence
+			redirect_to action: :single, year: params[:year], 'view-mode': view_mode, 'edit': 1
 		end
-
-		redirect_to action: :single, year: params[:year], 'view-mode': view_mode
 	end
 
 	private

@@ -1,9 +1,6 @@
 .sessions-new
   %div.form{'data-controller': 'passkey-form', 'data-passkey-form-type': 'session'}
-    %h2= flash[:alert] || 'Вход'
-
-    - if flash[:notice]
-      %p= flash[:notice]
+    %h2 Вход
 
     = form_with(model: resource, as: resource_name, url: user_session_path, class: 'password-form') do |f|
       = shared 'input', { placeholder: 'Почта', form_field: :email, form: f }

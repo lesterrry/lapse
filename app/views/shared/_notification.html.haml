@@ -1,0 +1,5 @@
+- color ||= nil
+- delay ||= nil
+
+%dialog.shared-notification{'data-controller': 'notification', 'data-notification-delay': delay, class: color}
+    %p.text-s= content

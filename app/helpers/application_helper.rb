@@ -18,4 +18,11 @@ module ApplicationHelper
     def shared(name, locals = {})
         render(partial: "shared/#{name}", locals:)
     end
+
+    def notification
+        some_alert = flash[:alert] || flash[:notice]
+        color = flash[:alert] && 'red'
+
+        shared 'notification', { content: some_alert, color:, delay: 2000 } if some_alert
+    end
 end
