@@ -1,5 +1,6 @@
 .lifetimes-new.container
-	= form_for @lifetime do |form|
+	= notification
+	= form_for @lifetime, data: { turbo_visit_control: 'reload' } do |form|
 		= render layout: 'shared/lapse' do
 			%div
 				= shared 'icon', { name: 'plus', color: 'lightblue' }

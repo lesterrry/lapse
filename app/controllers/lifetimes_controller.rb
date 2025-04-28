@@ -20,7 +20,7 @@ class LifetimesController < ApplicationController
 			redirect_to action: :single, id: @lifetime.id, 'view-mode': :list, edit: true
 		else
 			flash[:alert] = extract_errors(@lifetime)
-			render :new
+			redirect_to action: :new
 		end
 	end
 

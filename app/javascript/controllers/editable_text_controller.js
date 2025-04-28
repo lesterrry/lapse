@@ -8,8 +8,6 @@ export default class extends Controller {
 
 		const src = this.textTarget.innerHTML;
 
-		console.log(src)
-
 		if (!src || src === '<br>') {
 			this.textTarget.innerText = this.placeholder;
 			this.fieldTarget.value = '';
@@ -55,7 +53,10 @@ export default class extends Controller {
 		const field = this.fieldTarget.value;
 
 		if (!field) {
-			event.srcElement.innerText = '';
+			setTimeout(() => {
+				event.srcElement.innerText = '';
+			});
+
 			event.currentTarget.classList.remove('empty');
 		}
 	}

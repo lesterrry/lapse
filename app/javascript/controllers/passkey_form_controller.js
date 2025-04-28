@@ -16,7 +16,6 @@ export default class extends Controller {
 
 	connect() {
 		if (this.formType === 'session') {
-			startConditionalMediation(this.formTarget);
 			this.formTarget.addEventListener('submit', submitSessionFormEvent);
 		} else if (this.formType === 'registration') {
 			this.formTarget.addEventListener('submit', submitRegistrationFormEvent);
