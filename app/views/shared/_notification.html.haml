@@ -2,4 +2,4 @@
 - delay ||= nil
 
 %dialog.shared-notification{'data-controller': 'notification', 'data-notification-delay': delay, class: color}
-    %p.text-s= content
+    %p.text-s.stroke{class: color}= content

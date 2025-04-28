@@ -1,4 +1,5 @@
 class LifetimesController < ApplicationController
+	include ApplicationHelper
 	include LifetimesHelper
 
 	def featured
@@ -18,7 +19,7 @@ class LifetimesController < ApplicationController
 		if @lifetime.save
 			redirect_to action: :single, id: @lifetime.id, 'view-mode': :list, edit: true
 		else
-			flash[:alert] = @lifetime.errors.full_messages.to_sentence
+			flash[:alert] = extract_errors(@lifetime)
 			render :new
 		end
 	end
@@ -87,7 +88,7 @@ class LifetimesController < ApplicationController
 		if @lifetime.update(lifetime_params)
 			redirect_to action: :single, year: params[:year], 'view-mode': view_mode
 		else
-			flash[:alert] = @lifetime.errors.full_messages.to_sentence
+			flash[:alert] = extract_errors(@lifetime)
 			redirect_to action: :single, year: params[:year], 'view-mode': view_mode, 'edit': 1
 		end
 	end

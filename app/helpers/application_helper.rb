@@ -11,6 +11,10 @@ module ApplicationHelper
         all.join('_')
     end
 
+    def extract_errors(obj)
+        obj&.errors&.full_messages&.to_sentence(words_connector: "\n", two_words_connector: "\n", last_word_connector: "\n")
+    end
+
     def top_link_to(name, url, **params)
         link_to(name, url, data: { turbo_action: 'advance' }, **params)
     end

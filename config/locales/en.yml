@@ -42,4 +42,9 @@ en:
       not_found_in_database: 'Username not found'
       stored_credential_not_found: 'Passkey not found'
 
-  
+  activerecord:
+    attributes:
+      lifetime:
+        title: 'Title'
+      lifetime/periods: 
+        title: 'Period title'

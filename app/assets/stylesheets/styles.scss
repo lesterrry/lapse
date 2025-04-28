@@ -43,6 +43,10 @@ input[type="checkbox"] {
     &.lightblue {
         -webkit-text-stroke-color: var(--lightblue);
     }
+
+    &.red {
+        -webkit-text-stroke-color: var(--red);
+    }
 }
 
 .text-xs {

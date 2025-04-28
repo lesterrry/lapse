@@ -3,6 +3,7 @@
         position: fixed;
         display: block;
         padding: 12px 18px;
+        max-width: 500px;
         background-color: var(--white);
         border: 1px solid var(--lightblue);
         border-radius: 16px;
@@ -16,7 +17,11 @@
     }
 
     &.hidden {
-        opacity: 0;
+        // opacity: 0;
+    }
+
+    p {
+        white-space: break-spaces;
     }
 
     @keyframes fadeIn {
