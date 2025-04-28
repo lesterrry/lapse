@@ -18,6 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
 
     if resource.persisted?
+      create_passkey_for_resource(resource:)
       sign_up(resource_name, resource)
       respond_with resource, location: after_sign_up_path_for(resource)
     else
