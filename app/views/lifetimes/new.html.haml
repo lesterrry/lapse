@@ -5,7 +5,7 @@
 				= shared 'icon', { name: 'plus', color: 'lightblue' }
 
 		%div.info-block
-			= shared 'editable_text', { html_class: 'text-l stroke', text: 'Название', enabled: true, form_field: :title, form: }
-			= shared 'editable_text', { html_class: 'text-s description', text: 'Описание', enabled: true, form_field: :description, form: }
+			= shared 'editable_text', { html_class: 'text-l stroke', text: '', placeholder: 'Название', enabled: true, form_field: :title, form: }
+			= shared 'editable_text', { html_class: 'text-s description', text: '', placeholder: 'Описание', enabled: true, form_field: :description, form: }
 
 			= shared 'button', { text: 'Далее', form:, size: 'xs', html_class: 'edit-button' }

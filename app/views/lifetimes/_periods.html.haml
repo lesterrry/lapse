@@ -10,5 +10,4 @@
 		= shared 'period', { enabled: @editable, period:, form: }
 	
 	- if @editable
-		= shared 'button', { text: 'Добавить', link: set_param('new', 1), size: 's', html_class: 'edit-button' }
-		= @new_period
+		= shared 'button', { text: 'Добавить', link: set_param('new', 1), top: true, size: 's', html_class: 'edit-button' }

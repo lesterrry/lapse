@@ -72,7 +72,7 @@ class LifetimesController < ApplicationController
 		if new_period
 			raise ActiveRecord::RecordInvalid unless @owned
 
-			@lifetime.periods.create({ title: 'New period', description: 'description', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
+			@lifetime.periods.create({ title: '', description: '', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
 			redirect_to set_param(['edit', 1], ['new', nil], current_params: request.query_parameters)
 		end
 	end
@@ -84,7 +84,9 @@ class LifetimesController < ApplicationController
 
 		view_mode = params[:lifetime][:view_mode].dup
 
-		@lifetime.update(lifetime_params)
+		unless @lifetime.update(lifetime_params)
+			flash[:alert] = @lifetime.errors.full_messages.to_sentence
+		end
 
 		redirect_to action: :single, year: params[:year], 'view-mode': view_mode
 	end
