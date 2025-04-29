@@ -48,3 +48,6 @@ en:
         title: 'Title'
       lifetime/periods: 
         title: 'Period title'
+  
+  turbo:
+    content_missing: 'Fatal error. Try reloading the page.'

@@ -48,3 +48,6 @@ ru:
         title: 'Название'
       lifetime/periods: 
         title: 'Название периода'
+
+  turbo:
+    content_missing: 'Произошла ошибка. Попробуйте перезагрузить страницу.'

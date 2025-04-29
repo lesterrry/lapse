@@ -9,6 +9,7 @@
 		transition: 0.2s;
 		cursor: pointer;
 		width: fit-content;
+		box-sizing: border-box;
 	}
 
 	&.hollow {
@@ -23,6 +24,10 @@
 
 		&.lightblue {
 			border-color: var(--lightblue);
+		}
+
+		&.red {
+			border-color: var(--red);
 		}
 
 		&.black > p {
@@ -52,6 +57,16 @@
 
 			&.stroke {
 				-webkit-text-stroke-color: var(--lightblue);
+			}
+		}
+
+		&.red > p {
+			& {
+				color: var(--red);
+			}
+
+			&.stroke {
+				-webkit-text-stroke-color: var(--red);
 			}
 		}
 	}

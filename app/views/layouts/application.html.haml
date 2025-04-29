@@ -8,6 +8,7 @@
 		= stylesheet_link_tag 'application'
 		= javascript_importmap_tags
 	%body
+		= shared 'turbo_error_template'
 		= shared 'nav', { current_page: @page_nav_name }
 		
 		= yield

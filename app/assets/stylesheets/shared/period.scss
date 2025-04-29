@@ -41,21 +41,14 @@
     }
 
     .file-button {
+        margin-top: 10px;
         cursor: pointer;
     }
 
     .delete-button {
         & {
             min-width: 100%;
-            display: block;
-            text-align: center;
             border-radius: 8px;
-            padding: 6px 0;
-            border: 1px solid var(--red);
-            margin-top: 20px;
-            text-decoration: none !important;
-            transition: 0.2s;
-            cursor: pointer;
         }
 
         &:hover {

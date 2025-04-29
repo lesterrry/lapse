@@ -13,7 +13,8 @@
 			= image_tag photo
 
 		- if enabled
-			= fields.label(:photos, 'Добавить фото', class: 'file-button hover-underline')
+			- if period.photos.empty? # only one photo for now
+				= fields.label(:photos, 'Добавить фото', class: 'file-button hover-underline')
 			= fields.file_field(:photos, multiple: true, class: 'no-display') # <- hidden via css
 			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8')
-			= shared 'checkbox', { text_unchecked: 'Удалить', text_checked: 'Не удалять', form_field: :_destroy, form: fields, html_class: 'delete-button text-s stroke red' }
+			= shared 'button', { text: 'Удалить', link: set_param('delete-period', period.id), top: true, size: 'xs', color: 'red', hollow: true, html_class: 'delete-button' }

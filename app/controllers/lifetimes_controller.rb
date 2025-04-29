@@ -45,6 +45,7 @@ class LifetimesController < ApplicationController
 		@view_mode = params['view-mode']&.to_sym || :donut
 
 		new_period = params[:new] == '1'
+		delete_period = params['delete-period']
 		year = params[:year].to_i
 
 		@selected_year =
@@ -61,8 +62,6 @@ class LifetimesController < ApplicationController
 		@previous_year = index.positive? ? @years[index - 1] : nil
 		@next_year = @years[index + 1]
 
-		p index, @previous_year, @next_year
-
 		@periods =
 			if @view_mode == :donut
 				periods_of_year(@lifetime.periods, @selected_year)
@@ -75,6 +74,11 @@ class LifetimesController < ApplicationController
 
 			@lifetime.periods.create({ title: '', description: '', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
 			redirect_to set_param(['edit', 1], ['new', nil], current_params: request.query_parameters)
+		elsif delete_period
+			p 'deleting ' + delete_period
+			raise ActiveRecord::RecordInvalid unless @owned && @lifetime.periods.exists?(id: 12345)
+
+			redirect_to set_param(['edit', 1], ['delete-period', nil], current_params: request.query_parameters)
 		end
 	end
 
