@@ -17,4 +17,4 @@
 				= fields.label(:photos, 'Добавить фото', class: 'file-button hover-underline')
 			= fields.file_field(:photos, multiple: true, class: 'no-display') # <- hidden via css
 			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8')
-			= shared 'button', { text: 'Удалить', link: set_param('delete-period', period.id), top: true, size: 'xs', color: 'red', hollow: true, html_class: 'delete-button' }
+			= shared 'button', { text: 'Удалить', link: set_param('delete-period', period.id), top: true, no_preload: true, size: 'xs', color: 'red', hollow: true, html_class: 'delete-button' }

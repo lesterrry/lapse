@@ -48,6 +48,10 @@
 			justify-content: space-between;
 		}
 
+		&.list.empty {
+			margin-bottom: 180px;
+		}
+
 		&.donut {
 			height: 520px;
 		}

@@ -12,7 +12,7 @@
 				- if @view_mode == :list || @periods.empty?
 					%div.loop
 
-		%div.info-block{class: @view_mode}
+		%div.info-block{class: cn(@view_mode, @lifetime.periods.empty? ? 'empty' : nil)}
 			%div.left
 				= shared 'editable_text', { html_class: 'text-l stroke', text: @lifetime.title, placeholder: 'Название', enabled: @editable, form_field: :title, form: }
 				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, placeholder: 'Описание', enabled: @editable, form_field: :description, form: }
