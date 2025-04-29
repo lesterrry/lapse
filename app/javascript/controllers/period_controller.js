@@ -1,9 +1,9 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-	static targets = ['title', 'dateStart', 'dateEnd'];
-
-	periodId = Number(this.data.get('id'));
+	connect() {
+		this.periodId = Number(this.data.get('id'));
+	}
 
 	handleBlur(event) {
 		this.element.dispatchEvent(new CustomEvent('periodChanged',

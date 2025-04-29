@@ -1,0 +1,11 @@
+- html_class ||= nil
+- actions = ['change->file-button#handleSelect', 'click->file-button#handleClick']
+- selected ||= false
+
+- add_class = selected ? 'no-display' : nil
+- delete_class = !selected ? 'no-display' : nil
+
+.shared-file-button{class: html_class, 'data-controller': 'file-button'}
+    = fields.label(:photos, 'Добавить фото', class: cn(add_class, 'hover-underline'), 'data-file-button-target': 'label')
+    = fields.label(:photos, 'Удалить фото', class: cn(delete_class, 'hover-underline'), 'data-file-button-target': 'selectedLabel')
+    = fields.file_field(:photos, multiple: true, class: 'no-display', 'data-file-button-target': 'button', 'data-action': actions.join(' ')) # <- hidden via css

@@ -41,8 +41,13 @@
     }
 
     .file-button {
-        margin-top: 10px;
-        cursor: pointer;
+        & {
+            margin-top: 10px;
+        }
+
+        label {
+            cursor: pointer;
+        }
     }
 
     .delete-button {
