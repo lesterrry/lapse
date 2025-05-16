@@ -8,4 +8,5 @@
 %span.shared-editable-text{'data-controller': 'editable-text', 'data-editable-text-placeholder': placeholder}
 	- actions = ['input->editable-text#handleChange', 'blur->editable-text#handleBlur', 'focus->editable-text#handleFocus', *custom_actions]
 	= content_tag tag, text, { class: html_class, 'contenteditable': enabled || nil, 'data-action': actions.join(' '), 'data-id': id, 'data-editable-text-target': 'text' }
-	= form.hidden_field form_field, { 'data-editable-text-target': 'field' }
+	- if form
+		= form.hidden_field form_field, { 'data-editable-text-target': 'field' }

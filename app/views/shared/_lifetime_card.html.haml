@@ -2,6 +2,9 @@
 - profile_subtitle ||= nil
 - profile_image ||= nil
 
+- start_point ||= ''
+- finish_point ||= ''
+
 %a.shared-lifetime-card{href: link}
     %div.upper
         %p.text-m= title
@@ -12,7 +15,7 @@
         %div.asset
             = image_tag asset_2
         %div.asset
-            %p.text-s= asset_3
+            = shared 'points', { column: true, text_start_point: start_point, text_finish_point: finish_point}
     %div.lower
         - if profile_image && profile_title && profile_subtitle
             = shared 'profile_preview', { image: profile_image, title: profile_title, subtitle: profile_subtitle }

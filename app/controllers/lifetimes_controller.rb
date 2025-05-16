@@ -75,7 +75,6 @@ class LifetimesController < ApplicationController
 			@lifetime.periods.create({ title: '', description: '', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
 			redirect_to set_param(['edit', 1], ['new', nil], current_params: request.query_parameters)
 		elsif delete_period
-			p 'deleting ' + delete_period
 			period = @lifetime.periods.find(delete_period)
 
 			raise ActiveRecord::RecordInvalid unless @owned
@@ -110,7 +109,7 @@ class LifetimesController < ApplicationController
 			end
 		end
 
-		params.require(:lifetime).permit(:title, :description, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
+		params.require(:lifetime).permit(:title, :description, :start_point, :finish_point, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
 	end
 
 	def lifetime_params

@@ -16,6 +16,8 @@
 			%div.left
 				= shared 'editable_text', { html_class: 'text-l stroke', text: @lifetime.title, placeholder: 'Название', enabled: @editable, form_field: :title, form: }
 				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, placeholder: 'Описание', enabled: @editable, form_field: :description, form: }
+				- if @editable
+					= shared 'points', { form: form, text_start_point: @lifetime.start_point, text_finish_point: @lifetime.finish_point, }
 				= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
 				- if @editable
 					= shared 'button', { text: 'Сохранить изменения', form:, top: true, size: 'xs' }

@@ -1,0 +1,21 @@
+.shared-points {
+    & {
+        display: flex;
+        gap: 6px;
+    }
+
+    &.column {
+        & {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        > span {
+            text-align: center;
+        }
+    }
+
+    > span {
+        width: 100px;
+    }
+}
