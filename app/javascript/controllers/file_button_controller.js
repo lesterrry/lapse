@@ -6,7 +6,9 @@ export default class extends Controller {
     static NO_DISPLAY_CLASSNAME = 'no-display';
 
     connect() {
-        this.templateImg = document.querySelector('img#template');
+        const id = this.data.get('id');
+
+        this.templateImg = document.querySelector(`img#template-${id}`);
     }
 
     handleSelect() {

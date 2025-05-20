@@ -46,6 +46,7 @@ class LifetimesController < ApplicationController
 
 		new_period = params[:new] == '1'
 		delete_period = params['delete-period']
+		delete_period_photo = params['delete-period-photo']
 		year = params[:year].to_i
 
 		@selected_year =
@@ -82,6 +83,14 @@ class LifetimesController < ApplicationController
 			period.destroy
 
 			redirect_to set_param(['edit', 1], ['delete-period', nil], current_params: request.query_parameters)
+		elsif delete_period_photo
+			period = @lifetime.periods.find(delete_period_photo)
+
+			raise ActiveRecord::RecordInvalid unless @owned
+
+			period.photos.purge
+
+			redirect_to set_param(['edit', 1], ['delete-period-photo', nil], current_params: request.query_parameters)
 		end
 	end
 
