@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_27_114730) do
+ActiveRecord::Schema[7.0].define(version: 2025_05_22_123244) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_27_114730) do
     t.integer "user_id", null: false
     t.index ["lifetime_id"], name: "index_comments_on_lifetime_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "followings", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_followings_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_followings_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_followings_on_follower_id"
   end
 
   create_table "lifetimes", force: :cascade do |t|
