@@ -24,6 +24,14 @@ class User < ApplicationRecord
         followings.include?(other_user)
     end
 
+    def followings_count
+        followings.length
+    end
+
+    def followers_count
+        followers.length
+    end
+
     def self.passkeys_class
         Passkey
     end
