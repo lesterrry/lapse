@@ -29,4 +29,12 @@ module ApplicationHelper
 
         shared 'notification', { content: some_alert, color:, delay: 2000 } if some_alert
     end
+
+    def image(src, *params)
+        image_tag(asset_path(src), *params)
+    end
+
+    def global_asset(src)
+        Rails.root.join("public", asset_path(src).sub(/\A\//, ""))
+    end
 end

@@ -1,2 +1,2 @@
 .shared-raw-svg{class: html_class}
-    = raw Rails.application.assets[src].to_s
+    = raw File.read(global_asset(src))
