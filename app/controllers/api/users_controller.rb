@@ -1,5 +1,7 @@
 class Api::UsersController < ApplicationController
+    before_action :authenticate_user_from_token!, except: %i[login signup]
     skip_before_action :verify_authenticity_token
+
     include Devise::Controllers::Helpers
 
     def login
@@ -20,6 +22,24 @@ class Api::UsersController < ApplicationController
         else
             render json: { message: 'Error', error: user.errors.full_messages }, status: :unprocessable_entity
         end
+    end
+
+    def index
+        users = User.all
+
+        render json: users
+    end
+
+    def single
+        user = User.find(params[:id])
+
+        render json: user
+    end
+
+    def lifetimes
+        user = User.find(params[:id])
+
+        render json: user.lifetimes, status: :created
     end
 
     private

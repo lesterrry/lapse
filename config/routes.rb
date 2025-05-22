@@ -22,11 +22,19 @@ Rails.application.routes.draw do
 	namespace :api do
 		get '/lifetimes/', to: 'lifetimes#index'
 		get '/lifetimes/:id/', to: 'lifetimes#single'
-
 		patch '/lifetimes/:id/', to: 'lifetimes#update_single'
+		post '/lifetimes/:lifetime_id/comments', to: 'comments#create'
+		post '/lifetimes/:lifetime_id/like', to: 'likes#create'
+		delete '/lifetimes/:lifetime_id/like', to: 'likes#destroy'
+
+		delete '/comments/:id', to: 'comments#destroy'
 
 		post '/login', to: 'users#login'
 		post '/signup', to: 'users#signup'
+
+		get '/users/', to: 'users#index'
+		get '/users/:id/lifetimes', to: 'users#lifetimes'
+		get '/users/:id/', to: 'users#single'
 	end
 
 	get '/lifetimes/new', to: 'lifetimes#new', as: :new_lifetime
