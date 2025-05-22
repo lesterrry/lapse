@@ -1,2 +1,5 @@
 .shared-raw-svg{class: html_class}
-    = raw File.read(global_asset(src))
+    - if Rails.env.production?
+        = raw File.read(global_asset(src))
+    -else
+        = raw Rails.application.assets[src].to_s
