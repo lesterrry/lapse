@@ -12,7 +12,7 @@ export default class extends Controller {
 				detail: {
 					id: this.periodId,
 					field: event.target.dataset.id,
-					value: event.target.innerText || new Date(event.target.value)
+					value: event.target.innerText || (event.target.type === 'date' ? new Date(event.target.value) : event.target.value)
 				}
 			}
 		));

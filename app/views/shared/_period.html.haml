@@ -1,6 +1,7 @@
 .shared-period{'style': period.color_hex ? "border-color: #{period.color_hex}" : nil, 'data-controller': 'period', 'data-period-id': period.id}
 	= form.fields_for :periods, period do |fields|
 		- blur_action = 'blur->period#handleBlur'
+		- change_action = 'change->period#handleBlur'
 
 		- date_start = enabled ? fields.date_field(:start, value: period.start.to_date, 'data-action': blur_action, 'data-id': 'start', class: 'date-field') : friendly_date(period.start)
 		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date, 'data-action': blur_action, 'data-id': 'end', class: 'date-field') : friendly_date(period.end)
@@ -17,5 +18,5 @@
 
 		- if enabled
 			= shared 'file_button', { fields:, selected: !period.photos.empty?, id: period.id, html_class: 'file-button' }
-			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8')
+			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8', 'data-action': change_action, 'data-id': 'color_hex')
 			= shared 'button', { text: 'Удалить', link: set_param('delete-period', period.id), top: true, no_preload: true, size: 'xs', color: 'red', hollow: true, html_class: 'delete-button' }
