@@ -10,7 +10,8 @@
 		%p #{date_start} → #{date_end}
 
 		- period.photos.each do |photo|
-			= image photo
+			-# No need for 'image' helper here as 'photo' is not a string
+			= image_tag photo
 		
 		%img.no-display{id: "template-#{period.id}"}
 
