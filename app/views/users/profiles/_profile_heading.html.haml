@@ -5,8 +5,8 @@
             %h1.text-m.stroke.white= some_user_name(@user)
             = shared 'bullet_list', { items: ["#{@user.followers_count} подписчиков", "#{@user.followings_count} подписок"], html_class: 'white' }
             - if current_user == @user
-                = shared 'button', { size: 'xs', color: 'white', hollow: true, text: 'настройки профиля', link: edit_user_registration_url, html_class: 'main-action' }
-                = shared 'button', { size: 'xs', color: 'white', textonly: true, text: 'выйти', method: :delete, link: destroy_session_path(@user) }
+                = shared 'button', { size: 'xs', color: 'white', hollow: true, text: 'настройки профиля', link: edit_user_registration_url, top: true, html_class: 'main-action' }
+                = shared 'button', { size: 'xs', color: 'white', textonly: true, text: 'выйти', method: :delete, link: destroy_session_path(@user), top: true }
             - elsif current_user
                 - if current_user.following?(@user)
                     = shared 'button', { method: :delete, no_confirm: true, size: 'xs', color: 'white', hollow: true, text: 'отписаться', link: following_url(@user.id), html_class: 'main-action' }

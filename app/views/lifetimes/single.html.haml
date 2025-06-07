@@ -20,9 +20,9 @@
 					= shared 'points', { form: form, text_start_point: @lifetime.start_point, text_finish_point: @lifetime.finish_point, }
 				= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
 				- if @editable
-					= shared 'button', { text: 'Сохранить изменения', form:, top: true, size: 'xs' }
+					= shared 'button', { text: 'Сохранить изменения', form:, advance: true, size: 'xs' }
 				- elsif @owned
-					= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), top: true, size: 'xs' }
+					= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), advance: true, size: 'xs' }
 			%div.right
 				- if @view_mode == :donut
 					= render partial: 'lifetimes/periods', locals: { hide_years: true, form: }

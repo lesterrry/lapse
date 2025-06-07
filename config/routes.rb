@@ -59,11 +59,6 @@ Rails.application.routes.draw do
 	devise_scope :user do
 		get 'me', to: 'users/profiles#me', as: :my_profile
 
-		get 'users/:id', to: 'users/profiles#single', as: :single_profile
-
-		# post 'users/follow/:id', to: 'users/profiles#follow', as: :follow
-		# get 'users/unfollow/:id', to: 'users/profiles#unfollow', as: :unfollow
-
 		resources :followings, only: %i[create destroy]
 
 		post 'sign_up/new_challenge', to: 'users/registrations#new_challenge', as: :new_user_registration_challenge
@@ -83,5 +78,7 @@ Rails.application.routes.draw do
 				end
 			end
 		end
+
+		get 'users/:id', to: 'users/profiles#single', as: :single_profile
 	end
 end

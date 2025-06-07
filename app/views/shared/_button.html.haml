@@ -7,6 +7,7 @@
 - textonly ||= false
 - no_confirm ||= false
 - top ||= false
+- advance ||= false
 - no_preload ||= false
 
 - method ||= nil
@@ -18,5 +19,5 @@
 	= button_to link, method: method, class: final_class, form: { data: { turbo_confirm: no_confirm ? nil : 'Вы уверены?', turbo_frame: top ? '_top' : nil }, id: "#{method}-form" } do
 		%p.stroke{class: "text-#{size}"}= text
 - else
-	= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, data: { turbo_action: top ? 'advance' : nil, turbo_prefetch: no_preload ? false : nil }, class: final_class } do
+	= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, data: { turbo_action: advance ? 'advance' : nil, turbo_prefetch: no_preload ? false : nil, turbo_frame: top ? '_top' : nil }, class: final_class } do
 		%p.stroke{class: "text-#{size}"}= text
