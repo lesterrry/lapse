@@ -1,0 +1,15 @@
+%turbo-frame.profiles-edit.container{id: qualify(@user)}
+  = notification
+  %div.info-block
+    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'назад в профиль', main_link: my_profile_path, bottom_hidden: true }
+
+  %div.settings-block
+    = render partial: 'users/profiles/profile_settings_heading'
+    = form_for @user, url: single_profile_url(@user.id) do |f|
+      = f.label :first_name, 'Имя'
+      = shared 'input', { html_class: 'blue', placeholder: 'Имя', form_field: :first_name, form: f, value: @user.first_name, required: true }
+      = f.label :last_name, 'Фамилия'
+      = shared 'input', { html_class: 'blue', placeholder: 'Фамилия', form_field: :last_name, form: f, value: @user.last_name, required: true }
+      = f.label :username, 'Имя пользователя'
+      = shared 'input', { html_class: 'blue', placeholder: 'Username', form_field: :username, form: f, value: @user.username, required: true }
+      = shared 'button', { text: 'Сохранить изменения', form: f, advance: true, size: 's', html_class: 'save-button' }

@@ -1,0 +1,23 @@
+.profiles-edit {
+    .settings-block {
+        & > * {
+            width: 100%;
+        }
+
+        & > .shared-tab-select {
+            margin-top: 14px;
+            margin-bottom: 28px;
+        }
+
+        .shared-input {
+            margin-top: 4px;
+            margin-bottom: 14px;
+        }
+
+        .save-button {
+            margin-top: 22px;
+        }
+    }
+}
+
+// .settings-block 

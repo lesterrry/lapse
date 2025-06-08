@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
 	devise_scope :user do
 		get 'me', to: 'users/profiles#me', as: :my_profile
+		get 'me/edit', to: 'users/profiles#edit', as: :edit_profile
 
 		resources :followings, only: %i[create destroy]
 
@@ -80,5 +81,6 @@ Rails.application.routes.draw do
 		end
 
 		get 'users/:id', to: 'users/profiles#single', as: :single_profile
+		patch 'users/:id', to: 'users/profiles#update_single', as: :update_single_profile
 	end
 end

@@ -1,11 +1,13 @@
 - is_password ||= false
 - required ||= false
+- value ||= nil
+- html_class ||= nil
 
-.shared-input
+.shared-input{ class: html_class }
 	- if defined? form
 		- if form_field == :password
-			= form.password_field form_field, placeholder:, required:
+			= form.password_field form_field, placeholder:, required:, value:
 		- else
-			= form.text_field form_field, placeholder:, required:
+			= form.text_field form_field, placeholder:, required:, value:
 	- else
 		%input{ type: 'text', placeholder: placeholder }
