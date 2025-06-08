@@ -1,10 +1,10 @@
 %turbo-frame.profiles-single.container{id: qualify(@user)}
+  = notification
+  %div.info-block
+    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'настройки', main_link: edit_user_registration_url }
 
-	%div.info-block
-		= render partial: 'users/profiles/profile_heading'
-
-	%div.lifetimes-block
-		%h1.text-l.stroke.heading my timelines
-		%div.shared-lifetime-card-container
-			- @lifetimes.each do |lifetime|
-				= shared 'lifetime_card', { title: lifetime.title, link: single_lifetime_url(lifetime), asset_1: 'ugc_mock_1.jpg', asset_2: 'ugc_mock_2.jpg', start_point: lifetime.start_point, finish_point: lifetime.finish_point }
+  %div.lifetimes-block
+    %h1.text-l.stroke.heading my timelines
+    %div.shared-lifetime-card-container
+      - @lifetimes.each do |lifetime|
+        = shared 'lifetime_card', { title: lifetime.title, link: single_lifetime_url(lifetime), asset_1: 'ugc_mock_1.jpg', asset_2: 'ugc_mock_2.jpg', start_point: lifetime.start_point, finish_point: lifetime.finish_point }

@@ -28,6 +28,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_update_path_for(_resource)
+    edit_user_registration_path
+  end
+
   # disable reauth
   def verify_reauthentication_token; end
 

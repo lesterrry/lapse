@@ -1,6 +1,6 @@
 .passkeys-index.container
-  %h2 Passkeys
-  = link_to 'Настройки входа', '/users/edit'
+  %div.info-block
+    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'настройки профиля', main_link: edit_user_registration_url, bottom_hidden: true }
 
   %div.form{'data-controller': 'passkey-form', 'data-passkey-form-type': 'registration'}
     %table

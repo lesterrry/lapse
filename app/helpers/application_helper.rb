@@ -24,10 +24,12 @@ module ApplicationHelper
     end
 
     def notification
-        some_alert = flash[:notice] || flash[:alert] || flash[:error]
+        devise_error = devise_error_messages! rescue nil
+
+        some_alert = (flash[:notice] || flash[:alert] || flash[:error] || devise_error).to_s
         color = (flash[:alert] || flash[:error]) && 'red'
 
-        shared 'notification', { content: some_alert, color:, delay: 2000 } if some_alert
+        shared 'notification', { content: some_alert, color:, delay: 2000 } unless some_alert.empty?
     end
 
     def image(src, *params)
@@ -35,6 +37,6 @@ module ApplicationHelper
     end
 
     def global_asset(src)
-        Rails.root.join("public", asset_path(src).sub(/\A\//, ""))
+        Rails.root.join('public', asset_path(src).sub(%r{\A/}, ''))
     end
 end
