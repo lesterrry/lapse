@@ -78,9 +78,9 @@ Rails.application.routes.draw do
 					post :new_destroy_challenge
 				end
 			end
-		end
 
-		get 'users/:id', to: 'users/profiles#single', as: :single_profile
-		patch 'users/:id', to: 'users/profiles#update_single', as: :update_single_profile
+			get ':id', to: 'profiles#single', as: :single_profile
+			patch ':id', to: 'profiles#update_single', as: :update_single_profile
+		end
 	end
 end

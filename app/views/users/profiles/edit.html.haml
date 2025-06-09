@@ -5,11 +5,11 @@
 
   %div.settings-block
     = render partial: 'users/profiles/profile_settings_heading'
-    = form_for @user, url: single_profile_url(@user.id) do |f|
+    = form_for @user, url: users_single_profile_url(@user.id) do |f|
       = f.label :first_name, 'Имя'
-      = shared 'input', { html_class: 'blue', placeholder: 'Имя', form_field: :first_name, form: f, value: @user.first_name, required: true }
+      = shared 'input', { html_class: 'blue', placeholder: 'имя', form_field: :first_name, form: f, value: @user.first_name }
       = f.label :last_name, 'Фамилия'
-      = shared 'input', { html_class: 'blue', placeholder: 'Фамилия', form_field: :last_name, form: f, value: @user.last_name, required: true }
+      = shared 'input', { html_class: 'blue', placeholder: 'фамилия', form_field: :last_name, form: f, value: @user.last_name }
       = f.label :username, 'Имя пользователя'
-      = shared 'input', { html_class: 'blue', placeholder: 'Username', form_field: :username, form: f, value: @user.username, required: true }
+      = shared 'input', { html_class: 'blue', placeholder: '@username', form_field: :username, form: f, value: @user.username }
       = shared 'button', { text: 'Сохранить изменения', form: f, advance: true, size: 's', html_class: 'save-button' }

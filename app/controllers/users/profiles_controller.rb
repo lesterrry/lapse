@@ -1,4 +1,6 @@
 class Users::ProfilesController < ApplicationController
+	include ApplicationHelper
+
 	before_action :authenticate_user!, except: %i[single]
 
 	def me
