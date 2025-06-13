@@ -2,7 +2,7 @@
 
 = render layout: 'shared/lapse', locals: { html_class: 'profile-heading' } do
     %div.content
-        = image 'profile_mock.jpg'
+        = image 'profile_mock.webp'
         %div.content
             %h1.text-m.stroke.white= some_user_name(@user)
             = shared 'bullet_list', { items: ["#{@user.followers_count} подписчиков", "#{@user.followings_count} подписок"], html_class: 'white' }
