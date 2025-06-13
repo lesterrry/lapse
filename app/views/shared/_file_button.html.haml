@@ -1,15 +1,16 @@
 - html_class ||= nil
 - actions = ['change->file-button#handleSelect', 'click->file-button#handleClick']
 - selected ||= false
+- multiple ||= false
 
 - add_class = selected ? 'no-display' : nil
 - delete_class = !selected ? 'no-display' : nil
 
 .shared-file-button{class: html_class, 'data-controller': 'file-button', 'data-file-button-id': id}
     - if selected
-        %a.text-s.hover-underline{href: set_param('delete-period-photo', id), data: { turbo_prefetch: false }}
+        %a.text-s.hover-underline{href: set_param(delete_param, id), data: { turbo_prefetch: false }}
             Удалить фото
     - else
-        = fields.label(:photos, 'Добавить фото', class: cn(add_class, 'hover-underline'), 'data-file-button-target': 'label')
-        = fields.label(:photos, 'Удалить фото', class: cn(delete_class, 'hover-underline'), 'data-file-button-target': 'selectedLabel')
-        = fields.file_field(:photos, multiple: true, class: 'no-display', 'data-file-button-target': 'button', 'data-action': actions.join(' ')) # <- hidden via css
+        = fields.label(label, 'Добавить фото', class: cn(add_class, 'hover-underline'), 'data-file-button-target': 'label')
+        = fields.label(label, 'Удалить фото', class: cn(delete_class, 'hover-underline'), 'data-file-button-target': 'selectedLabel')
+        = fields.file_field(label, multiple:, class: 'no-display', 'data-file-button-target': 'button', 'data-action': actions.join(' ')) # <- hidden via css

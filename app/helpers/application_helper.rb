@@ -33,10 +33,10 @@ module ApplicationHelper
     end
 
     def image(src, *params)
-        image_tag(asset_path(src), *params)
+        ApplicationController.helpers.image_tag(ActionController::Base.helpers.asset_path(src), *params)
     end
 
     def global_asset(src)
-        Rails.root.join('public', asset_path(src).sub(%r{\A/}, ''))
+        Rails.root.join('public', ActionController::Base.helpers.asset_path(src).sub(%r{\A/}, ''))
     end
 end

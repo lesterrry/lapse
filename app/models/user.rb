@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    include ApplicationHelper
+
     validates_uniqueness_of :username, allow_nil: true
 
     validates :email, presence: true, uniqueness: { case_sensitive: false }
@@ -7,18 +9,17 @@ class User < ApplicationRecord
     has_many :comments, dependent: :nullify
     has_many :likes, dependent: :destroy
     has_many :liked_lifetimes, through: :likes, source: :lifetime
+    has_many :active_followings, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
+    has_many :passive_followings, class_name: 'Following', foreign_key: 'followed_id', dependent: :destroy
+    has_many :followings, through: :active_followings, source: :followed
+    has_many :followers, through: :passive_followings, source: :follower
+    has_many :passkeys, dependent: :destroy
+
+    has_one_attached :profile_picture
+
+    validates :profile_picture, content_type: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'], size: { less_than: 1.megabytes }
 
     devise :passkey_authenticatable, :database_authenticatable, :registerable, :rememberable
-
-    has_many :active_followings, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
-
-    has_many :passive_followings, class_name: 'Following', foreign_key: 'followed_id', dependent: :destroy
-
-    has_many :followings, through: :active_followings, source: :followed
-
-    has_many :followers, through: :passive_followings, source: :follower
-
-    has_many :passkeys, dependent: :destroy
 
     def following?(other_user)
         followings.include?(other_user)

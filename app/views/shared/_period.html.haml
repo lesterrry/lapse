@@ -17,6 +17,6 @@
 		%img.no-display{id: "template-#{period.id}"}
 
 		- if enabled
-			= shared 'file_button', { fields:, selected: !period.photos.empty?, id: period.id, html_class: 'file-button' }
+			= shared 'file_button', { label: :photos, fields:, selected: !period.photos.empty?, multiple: true, delete_param: 'delete-period-photo', id: period.id, html_class: 'file-button' }
 			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8', 'data-action': change_action, 'data-id': 'color_hex')
 			= shared 'button', { text: 'Удалить', link: set_param('delete-period', period.id), advance: true, no_preload: true, size: 'xs', color: 'red', hollow: true, html_class: 'delete-button' }

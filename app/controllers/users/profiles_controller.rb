@@ -19,6 +19,12 @@ class Users::ProfilesController < ApplicationController
 
 	def edit
 		@user = current_user
+
+		@delete_picture = params['delete-picture']
+
+		p @delete_picture, params
+
+		@user.profile_picture.purge if @delete_picture
 	end
 
 	def update_single
@@ -36,6 +42,6 @@ class Users::ProfilesController < ApplicationController
 	private
 
 	def profile_params
-		params.require(:user).permit(:first_name, :last_name, :username)
+		params.require(:user).permit(:first_name, :last_name, :username, :profile_picture)
 	end
 end

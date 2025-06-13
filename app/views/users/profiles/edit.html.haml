@@ -12,4 +12,6 @@
       = shared 'input', { html_class: 'blue', placeholder: 'фамилия', form_field: :last_name, form: f, value: @user.last_name }
       = f.label :username, 'Имя пользователя'
       = shared 'input', { html_class: 'blue', placeholder: '@username', form_field: :username, form: f, value: @user.username }
+      = f.label :profile_picture, 'Изображение профиля'
+      = shared 'file_button', { label: :profile_picture, fields: f, selected: @user.profile_picture.attached?, delete_param: 'delete-picture', id: @user.id, html_class: 'file-button' }
       = shared 'button', { text: 'Сохранить изменения', form: f, advance: true, size: 's', html_class: 'save-button' }

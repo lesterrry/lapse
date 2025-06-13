@@ -12,4 +12,12 @@ module UsersHelper
             user.email
         end
     end
+
+    def some_user_profile_picture(user)
+        if user.profile_picture.attached?
+            image_tag user.profile_picture
+        else
+            image 'profile_mock.webp'
+        end
+    end
 end

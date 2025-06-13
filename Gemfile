@@ -51,6 +51,8 @@ gem 'hotwire-rails'
 gem 'sassc-rails'
 gem 'stimulus-rails'
 
+gem 'active_storage_validations'
+
 gem 'devise'
 gem 'devise-passkeys'
 
