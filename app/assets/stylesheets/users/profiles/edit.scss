@@ -17,5 +17,29 @@
         .save-button {
             margin-top: 22px;
         }
+
+        .passkey {
+            border: 1px solid var(--lightblue);
+            border-radius: 14px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .text-m {
+            margin-bottom: 8px;
+        }
+
+        form#add-passkey-form {
+            & {
+                margin-top: 26px;
+            }
+
+            .shared-button {
+                margin-top: 22px;
+            }
+        }
     }
 }

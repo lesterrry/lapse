@@ -1,33 +1,15 @@
 %turbo-frame.profiles-edit.container{id: qualify(@user)}
   %div.info-block
-    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'назад в профиль', main_link: my_profile_path, bottom_hidden: true }
+    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'назад в профиль', main_link: my_profile_path }
   %div.settings-block
     = render partial: 'users/profiles/profile_settings_heading'
 
-  %div.form{'data-controller': 'passkey-form', 'data-passkey-form-type': 'registration'}
-    %table
-      %thead
-        %tr
-          %th Label
-          %th Sign Count
-          %th Last Used At
-          %th Public Key
-          %th External ID
-          %th
-      %tbody
-        - current_user.passkeys.each do |passkey|
-          %tr
-            %td= passkey.label
-            %td= passkey.sign_count
-            %td= passkey.last_used_at
-            %td
-              %pre= passkey.public_key
-            %td
-              %pre= passkey.external_id
-            %td
-              - if current_user.passkeys.count > 1
-                -# TODO: add confirmation 
-                = form_with(model: [:users, passkey], method: :delete, class: 'delete-passkey') do |f|
-                  %button{ type: "submit"} Delete
+    %div.form{'data-controller': 'passkey-form', 'data-passkey-form-type': 'registration'}
+      - if !current_user.passkeys.empty?
+        %p.text-m.stroke Список Passkey
+      - current_user.passkeys.each do |passkey|
+        %div.passkey
+          %p.text-s.stroke= passkey.label
+          %p.text-s= "Использован #{passkey.last_used_at}"
 
-    = render "users/passkeys/new_form", resource_name: :user
+      = render 'users/passkeys/new_form', resource_name: :user
