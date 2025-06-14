@@ -17,4 +17,8 @@ class Lifetime < ApplicationRecord
 	def like_count
 		likes.count
 	end
+
+	def all_photos
+		periods.includes(photos_attachments: :blob).flat_map(&:photos)
+	end
 end

@@ -2,20 +2,21 @@
 - profile_subtitle ||= nil
 - profile_picture ||= nil
 
-- start_point ||= ''
-- finish_point ||= ''
-
-%a.shared-lifetime-card{href: link, 'data-turbo-frame': '_top'}
+%a.shared-lifetime-card{href: single_lifetime_url(lifetime), 'data-turbo-frame': '_top'}
     %div.upper
-        %p.text-m= title
+        %p.text-m= lifetime.title
         = shared 'icon', { name: 'more' }
     %div.center
         %div.asset
-            = image asset_1
+            - asset_1 = lifetime.all_photos[0]
+            - if asset_1
+                = image_tag asset_1
         %div.asset
-            = image asset_2
+            - asset_2 = lifetime.all_photos[1]
+            - if asset_2
+                = image_tag asset_2
         %div.asset
-            = shared 'points', { column: true, text_start_point: start_point, text_finish_point: finish_point }
+            = shared 'points', { column: true, text_start_point: lifetime.start_point || '', text_finish_point: lifetime.finish_point || '' }
     %div.lower
         - if profile_picture && profile_title && profile_subtitle
             = shared 'profile_preview', { image: profile_picture, title: profile_title, subtitle: profile_subtitle }
