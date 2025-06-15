@@ -1,5 +1,5 @@
-.shared-profile-card
-    = image 'profile_mock.webp'
+%a.shared-profile-card{href: users_single_profile_url(user), data: { turbo_frame: '_top' }}
+    = some_user_profile_picture(user)
     %div.content
-        %p.text-m.stroke aydar n
-        %p.text-xs 256 подписчиков
+        %p.text-m.stroke= some_user_name(user)
+        %p.text-xs= "#{user.followers_count} подписчиков"

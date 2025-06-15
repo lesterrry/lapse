@@ -6,7 +6,7 @@ class FollowingsController < ApplicationController
 
     current_user.followings << @user unless self == @user || !@user
 
-    redirect_to single_profile_path(id: @user.id)
+    redirect_to users_single_profile_url(id: @user.id)
   end
 
   def destroy
@@ -14,6 +14,6 @@ class FollowingsController < ApplicationController
 
     current_user.followings.delete(@user) if @user
 
-    redirect_to single_profile_path(id: @user.id)
+    redirect_to users_single_profile_url(id: @user.id)
   end
 end

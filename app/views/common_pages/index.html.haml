@@ -1,5 +1,4 @@
 .common-pages-index.container
-
     %div.lapse-block
         = render layout: 'shared/lapse' do
             %div.a
@@ -10,11 +9,13 @@
                 %p.text-m.stroke= t('common_pages.index.lapse_block.subtitle')
                 = shared 'button', { size: 'xs', color: 'lightblue', text: t('common_pages.index.lapse_block.button'), link: new_lifetime_path }
 
-    %div.popular-block
-        %h1.text-l.stroke.heading= t('.popular_block.heading')
-        %div.shared-lifetime-card-container
-            -# = shared 'lifetime_card', { title: 'life of my grandad', link: '', asset_1: 'ugc_mock_1.jpg', asset_2: 'ugc_mock_2.jpg', asset_3: '2025', profile_picture: 'profile_mock.webp', profile_title: 'Арина Артамонова', profile_subtitle: t('global.subs_count', count: '256') }
-        = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
+    - unless @top_lifetimes.empty?
+        %div.popular-block
+            %h1.text-l.stroke.heading= t('.popular_block.heading')
+            %div.shared-lifetime-card-container
+                - @top_lifetimes.each do |i|
+                    = shared 'lifetime_card', { lifetime: i }
+            = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
 
     %div.about-block
         %div.content
@@ -31,16 +32,13 @@
         %h1.text-l.stroke.white.heading= t('.subscription_block.heading')
         = shared 'subscription'
 
-    %div.authors-block
-        %h1.text-l.stroke.heading= t('.authors_block.heading')
-        %div
-            = shared 'profile_card'
-            = shared 'profile_card'
-            = shared 'profile_card'
-            = shared 'profile_card'
-            = shared 'profile_card'
-            = shared 'profile_card'
-        = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
+    - unless @top_users.empty?
+        %div.authors-block
+            %h1.text-l.stroke.heading= t('.authors_block.heading')
+            %div
+                - @top_users.each do |i|
+                    = shared 'profile_card', { user: i }
+            = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
 
     %div.tags-block
         %h1.text-l.stroke.heading= t('.tags_block.heading')

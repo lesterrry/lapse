@@ -1,6 +1,10 @@
 class CommonPagesController < ApplicationController
 	def index
 		@page_nav_name = 'home'
+
+		@top_lifetimes = Lifetime.order(view_count: :desc).limit(10)
+
+		@top_users = User.joins(:passive_followings).group('users.id').order('COUNT(followings.id) DESC')
 	end
 
 	def promo

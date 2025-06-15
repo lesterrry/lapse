@@ -21,4 +21,8 @@ class Lifetime < ApplicationRecord
 	def all_photos
 		periods.includes(photos_attachments: :blob).flat_map(&:photos)
 	end
+
+	def increment_view_count!
+		increment!(:view_count)
+	end
 end

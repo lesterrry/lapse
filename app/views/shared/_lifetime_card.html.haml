@@ -2,17 +2,19 @@
 - profile_subtitle ||= nil
 - profile_picture ||= nil
 
-%a.shared-lifetime-card{href: single_lifetime_url(lifetime), 'data-turbo-frame': '_top'}
+- all_photos = lifetime.all_photos
+
+%a.shared-lifetime-card{href: single_lifetime_url(lifetime), data: { turbo_frame: '_top', turbo_prefetch: 'false' }}
     %div.upper
         %p.text-m= lifetime.title
         = shared 'icon', { name: 'more' }
     %div.center
         %div.asset
-            - asset_1 = lifetime.all_photos[0]
+            - asset_1 = all_photos[0]
             - if asset_1
                 = image_tag asset_1
         %div.asset
-            - asset_2 = lifetime.all_photos[1]
+            - asset_2 = all_photos[1]
             - if asset_2
                 = image_tag asset_2
         %div.asset
@@ -23,7 +25,7 @@
         %div.stats
             %div
                 = shared 'icon', { name: 'heart', size: 's' }
-                %p.text-s 128
+                %p.text-s= lifetime.like_count
             %div
                 = shared 'icon', { name: 'eye', size: 's' }
-                %p.text-s 128
+                %p.text-s= lifetime.view_count

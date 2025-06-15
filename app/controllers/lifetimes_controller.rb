@@ -39,6 +39,8 @@ class LifetimesController < ApplicationController
 	def single
 		@lifetime = Lifetime.find(params[:id])
 
+		@lifetime.increment_view_count! unless request.headers['HTTP_X_SEC_PURPOSE'] == 'prefetch'
+
 		@years = years_from_periods(@lifetime.periods)
 		@owned = @lifetime.user == current_user
 		@editable = !params[:edit].nil? && @owned
