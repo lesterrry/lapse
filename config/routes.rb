@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 		get '/users/', to: 'users#index'
 		get '/users/:id/lifetimes', to: 'users#lifetimes'
 		get '/users/:id/', to: 'users#single'
+
+		post '/subscribe', to: 'subscriptions#create'
 	end
 
 	get '/lifetimes/new', to: 'lifetimes#new', as: :new_lifetime

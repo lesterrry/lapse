@@ -27,13 +27,13 @@ class Api::UsersController < ApplicationController
     def index
         users = User.all
 
-        render json: users
+        render json: users.to_json(methods: [:followers_count])
     end
 
     def single
         user = User.find(params[:id])
 
-        render json: user
+        render json: user.to_json(methods: [:followers_count])
     end
 
     def lifetimes

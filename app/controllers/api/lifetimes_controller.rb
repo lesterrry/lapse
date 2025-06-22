@@ -2,6 +2,11 @@ class Api::LifetimesController < ApplicationController
 	before_action :authenticate_user_from_token!
 	skip_before_action :verify_authenticity_token
 
+	def index
+		lifetimes = Lifetime.all
+		render json: lifetimes
+	end
+
 	def single
 		lifetime = Lifetime.find(params[:id])
 		render json: lifetime, include: [:periods]

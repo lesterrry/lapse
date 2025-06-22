@@ -26,11 +26,11 @@ class User < ApplicationRecord
     end
 
     def followings_count
-        followings.length
+        followings.count
     end
 
     def followers_count
-        followers.length
+        followers.count
     end
 
     def self.passkeys_class
