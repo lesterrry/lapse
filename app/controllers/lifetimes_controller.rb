@@ -3,7 +3,7 @@ class LifetimesController < ApplicationController
 	include LifetimesHelper
 
 	def featured
-		@featured = Lifetime.all
+		@featured = Lifetime.where(private: false)
 	end
 
 	def new
@@ -38,6 +38,12 @@ class LifetimesController < ApplicationController
 
 	def single
 		@lifetime = Lifetime.find(params[:id])
+
+		unless can_view_lifetime?(@lifetime)
+			flash[:alert] = "You don't have permission to view this lifetime"
+
+			redirect_to root_path and return
+		end
 
 		@lifetime.increment_view_count! unless request.headers['HTTP_X_SEC_PURPOSE'] == 'prefetch'
 
@@ -113,6 +119,10 @@ class LifetimesController < ApplicationController
 
 	private
 
+	def can_view_lifetime?(lifetime)
+		!lifetime.private? || lifetime.user == current_user
+	end
+
 	def permit_lifetime_params(params)
 		if params[:lifetime][:periods_attributes].present?
 			params[:lifetime][:periods_attributes].each_value do |period|
@@ -120,7 +130,7 @@ class LifetimesController < ApplicationController
 			end
 		end
 
-		params.require(:lifetime).permit(:title, :description, :start_point, :finish_point, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
+		params.require(:lifetime).permit(:title, :description, :start_point, :finish_point, :private, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
 	end
 
 	def lifetime_params

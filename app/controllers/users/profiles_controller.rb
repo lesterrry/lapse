@@ -1,47 +1,52 @@
 class Users::ProfilesController < ApplicationController
-	include ApplicationHelper
+    include ApplicationHelper
 
-	before_action :authenticate_user!, except: %i[single]
+    before_action :authenticate_user!, except: %i[single]
 
-	def me
-		@user = current_user
+    def me
+        @user = current_user
 
-		@lifetimes = @user.lifetimes
+        @lifetimes =
+            if @user == current_user
+                @user.lifetimes
+            else
+                @user.lifetimes.where(private: false)
+            end
 
-		render :single
-	end
+        render :single
+    end
 
-	def single
-		@user = User.find(params[:id])
+    def single
+        @user = User.find(params[:id])
 
-		@lifetimes = @user.lifetimes
-	end
+        @lifetimes = @user.lifetimes
+    end
 
-	def edit
-		@user = current_user
+    def edit
+        @user = current_user
 
-		@delete_picture = params['delete-picture']
+        @delete_picture = params['delete-picture']
 
-		p @delete_picture, params
+        p @delete_picture, params
 
-		@user.profile_picture.purge if @delete_picture
-	end
+        @user.profile_picture.purge if @delete_picture
+    end
 
-	def update_single
-		@user = current_user
+    def update_single
+        @user = current_user
 
-		if @user.update(profile_params)
-			flash[:notice] = 'Updated your data'
-		else
-			flash[:alert] = extract_errors(@lifetime)
-		end
+        if @user.update(profile_params)
+            flash[:notice] = 'Updated your data'
+        else
+            flash[:alert] = extract_errors(@lifetime)
+        end
 
-		redirect_to action: :edit
-	end
+        redirect_to action: :edit
+    end
 
-	private
+    private
 
-	def profile_params
-		params.require(:user).permit(:first_name, :last_name, :username, :profile_picture)
-	end
+    def profile_params
+        params.require(:user).permit(:first_name, :last_name, :username, :profile_picture)
+    end
 end
