@@ -7,16 +7,16 @@
             %h1.text-m.stroke.white= some_user_name(@user)
             %div.shared-bullet-list
                 %p.text-xs.white
-                    = link_to "#{@user.followers_count} подписчиков", users_user_followers_path(@user), class: 'white'
+                    = link_to t('users.profiles.common.followers', count: @user.followers_count), users_user_followers_path(@user), class: 'white'
                     %span.bullet •
-                    = link_to "#{@user.followings_count} подписок", users_user_followings_path(@user), class: 'white'
+                    = link_to t('users.profiles.common.followings', count: @user.followings_count), users_user_followings_path(@user), class: 'white'
             - if current_user == @user
                 = shared 'button', { size: 'xs', color: 'white', hollow: true, text: main_text, link: main_link, top: true, html_class: 'main-action' }
                 - unless bottom_hidden
-                    = shared 'button', { size: 'xs', color: 'white', textonly: true, text: 'выйти', method: :delete, link: destroy_session_path(@user), top: true }
+                    = shared 'button', { size: 'xs', color: 'white', textonly: true, text: t('users.profiles.common.logout'), method: :delete, link: destroy_session_path(@user), top: true }
             - elsif current_user
                 - if current_user.following?(@user)
-                    = shared 'button', { method: :delete, no_confirm: true, size: 'xs', color: 'white', hollow: true, text: 'отписаться', link: following_url(@user.id), html_class: 'main-action' }
+                    = shared 'button', { method: :delete, no_confirm: true, size: 'xs', color: 'white', hollow: true, text: t('users.profiles.common.unfollow'), link: following_url(@user.id), html_class: 'main-action' }
                 - else
-                    = shared 'button', { method: :post, no_confirm: true, size: 'xs', color: 'white', hollow: true, text: 'подписаться', link: followings_url(id: @user.id), html_class: 'main-action' }
+                    = shared 'button', { method: :post, no_confirm: true, size: 'xs', color: 'white', hollow: true, text: t('users.profiles.common.follow'), link: followings_url(id: @user.id), html_class: 'main-action' }
     %div.fill

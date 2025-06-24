@@ -15,19 +15,19 @@
 		%div.info-block{class: cn(@view_mode, @lifetime.periods.empty? ? 'empty' : nil)}
 			%div.left
 				%div.title
-					= shared 'editable_text', { html_class: 'text-l stroke', text: @lifetime.title, placeholder: 'Название', enabled: @editable, form_field: :title, form: }
+					= shared 'editable_text', { html_class: 'text-l stroke', text: @lifetime.title, placeholder: t('lifetimes.single.title_placeholder'), enabled: @editable, form_field: :title, form: }
 					- if @lifetime.private?
 						= shared 'icon', { name: 'lock' }
-				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, placeholder: 'Описание', enabled: @editable, form_field: :description, form: }
+				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, placeholder: t('lifetimes.single.description_placeholder'), enabled: @editable, form_field: :description, form: }
 				- if @editable
 					= shared 'points', { form: form, text_start_point: @lifetime.start_point, text_finish_point: @lifetime.finish_point, }
 					
-					= shared 'checkbox', { text_unchecked: 'Сделать приватным', text_checked: 'Сделать открытым', checked: @lifetime.private?, form_field: :private, form: }
-				= shared 'tab_select', { items: [{ label: 'По годам', link: set_param('view-mode', 'donut') }, { label: 'Списком', link: set_param('view-mode', 'list') }] }
+					= shared 'checkbox', { text_unchecked: t('lifetimes.single.make_private'), text_checked: t('lifetimes.single.make_public'), checked: @lifetime.private?, form_field: :private, form: }
+				= shared 'tab_select', { items: [{ label: t('lifetimes.single.by_year_tab'), link: set_param('view-mode', 'donut') }, { label: t('lifetimes.single.list_tab'), link: set_param('view-mode', 'list') }] }
 				- if @editable
-					= shared 'button', { text: 'Сохранить изменения', form:, advance: true, size: 'xs' }
+					= shared 'button', { text: t('lifetimes.single.save_changes'), form:, advance: true, size: 'xs' }
 				- elsif @owned
-					= shared 'button', { text: 'Редактировать', link: set_param('edit', 1), advance: true, size: 'xs' }
+					= shared 'button', { text: t('lifetimes.single.edit'), link: set_param('edit', 1), advance: true, size: 'xs' }
 			%div.right
 				- if @view_mode == :donut
 					= render partial: 'lifetimes/periods', locals: { hide_years: true, form: }
@@ -45,8 +45,8 @@
 	- if @editable || @owned
 		%div.actions-block
 			- if @editable
-				= shared 'button', { text: 'Удалить Lifetime', link: single_lifetime_url, method: :delete, size: 'xs', color: 'red' }
+				= shared 'button', { text: t('lifetimes.single.delete'), link: single_lifetime_url, method: :delete, size: 'xs', color: 'red' }
 
 	%div.comments-block
-		%h1.text-l.stroke.heading комментарии
+		%h1.text-l.stroke.heading= t('lifetimes.single.comments_heading')
 		= render partial: 'lifetimes/comments'

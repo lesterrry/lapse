@@ -1,2 +1,2 @@
-%p.text-l.stroke Настройки
-= shared 'tab_select', { items: [{ label: 'Основные', link: edit_profile_path }, { label: 'Безопасность', link: edit_user_registration_path }, { label: 'Passkeys', link: users_passkeys_path }] }
+%p.text-l.stroke= t('users.profiles.settings.heading')
+= shared 'tab_select', { items: [{ label: t('users.profiles.settings.basic_tab'), link: edit_profile_path }, { label: t('users.profiles.settings.security_tab'), link: edit_user_registration_path }, { label: t('users.profiles.settings.passkeys_tab'), link: users_passkeys_path }] }

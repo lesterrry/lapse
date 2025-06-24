@@ -1,15 +1,15 @@
 %turbo-frame.profiles-edit.container{id: qualify(@user)}
   %div.info-block
-    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'назад в профиль', main_link: my_profile_path }
+    = render partial: 'users/profiles/profile_heading', locals: { main_text: t('users.profiles.common.back_to_profile'), main_link: my_profile_path }
   %div.settings-block
     = render partial: 'users/profiles/profile_settings_heading'
 
     %div.form{'data-controller': 'passkey-form', 'data-passkey-form-type': 'registration'}
       - if !current_user.passkeys.empty?
-        %p.text-m.stroke Список Passkey
+        %p.text-m.stroke= t('users.passkeys.index.passkeys_list')
       - current_user.passkeys.each do |passkey|
         %div.passkey
           %p.text-s.stroke= passkey.label
-          %p.text-s= "Использован #{passkey.last_used_at}"
+          %p.text-s= t('users.passkeys.index.used_at', time: passkey.last_used_at)
 
       = render 'users/passkeys/new_form', resource_name: :user

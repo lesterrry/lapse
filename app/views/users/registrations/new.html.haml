@@ -1,25 +1,25 @@
 .registrations-new.sessions-new
   = notification
   %div.form{'data-controller': @passkey_mode ? 'passkey-form' : nil, 'data-passkey-form-type': 'registration'}
-    %h2 Регистрация
+    %h2= t('users.registrations.new.heading')
 
     - if @passkey_mode
       = form_with(model: resource, as: resource_name, url: registration_path(resource_name), class: 'password-form', data: { 'passkey-form-target': 'form', challenge_url: new_user_registration_challenge_url, credential_field_name: "#{resource_name}[passkey_credential]" }) do |f|
-        = shared 'input', { placeholder: 'Почта', form_field: :email, form: f, required: true }
-        = shared 'input', { placeholder: 'Название устройства', form_field: :passkey_label, form: f, required: true }
+        = shared 'input', { placeholder: t('users.registrations.new.email_placeholder'), form_field: :email, form: f, required: true }
+        = shared 'input', { placeholder: t('users.registrations.new.device_name_placeholder'), form_field: :passkey_label, form: f, required: true }
 
-        = f.hidden_field :passkey_credential 
+        = f.hidden_field :passkey_credential
 
-        = shared 'button', { size: 's', text: 'Зарегистрироваться' }
+        = shared 'button', { size: 's', text: t('users.registrations.new.register_button') }
 
-      = shared 'button', { size: 's', text: 'Использовать пароль', link: '?passkey=0' }
+      = shared 'button', { size: 's', text: t('users.registrations.new.use_password'), link: '?passkey=0' }
     - else
       = form_with(model: resource, as: resource_name, url: registration_path(resource_name), class: 'password-form') do |f|
-        = shared 'input', { placeholder: 'Почта', form_field: :email, form: f, required: true }
-        = shared 'input', { placeholder: 'Пароль', form_field: :password, form: f, required: true }
+        = shared 'input', { placeholder: t('users.registrations.new.email_placeholder'), form_field: :email, form: f, required: true }
+        = shared 'input', { placeholder: t('users.registrations.new.password_placeholder'), form_field: :password, form: f, required: true }
 
-        = shared 'button', { size: 's', text: 'Зарегистрироваться', form: f }
+        = shared 'button', { size: 's', text: t('users.registrations.new.register_button'), form: f }
 
-      = shared 'button', { size: 's', text: 'Использовать Passkey', link: '?passkey=1' }
+      = shared 'button', { size: 's', text: t('users.registrations.new.use_passkey'), link: '?passkey=1' }
 
-    = shared 'button', { hollow: true, size: 's', text: 'Вход', link: new_session_path(resource_name) }
+    = shared 'button', { hollow: true, size: 's', text: t('users.registrations.new.login_button'), link: new_session_path(resource_name) }

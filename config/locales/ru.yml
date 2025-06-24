@@ -1,6 +1,11 @@
 ru:
   global:
-    subs_count: '%{count} подписчиков'
+    subs_count:
+      one: '%{count} подписчик'
+      few: '%{count} подписчика'
+      many: '%{count} подписчиков'
+      other: '%{count} подписчиков'
+    site_title: 'Сайт'
 
   shared:
     nav:
@@ -11,6 +16,28 @@ ru:
     subscription:
       placeholder: 'Почта'
       button: 'Подписаться'
+    points:
+      start_point: 'Точка начала'
+      end_point: 'Точка конца'
+    file_button:
+      delete_photo: 'Удалить фото'
+      add_photo: 'Добавить фото'
+    profile_preview:
+      followers_count:
+        one: '%{count} подписчик'
+        few: '%{count} подписчика'
+        many: '%{count} подписчиков'
+        other: '%{count} подписчиков'
+    profile_card:
+      followers_count:
+        one: '%{count} подписчик'
+        few: '%{count} подписчика'
+        many: '%{count} подписчиков'
+        other: '%{count} подписчиков'
+    period:
+      title_placeholder: 'Название'
+      description_placeholder: 'Описание'
+      delete_button: 'Удалить'
 
   common_pages:
     index:
@@ -35,6 +62,114 @@ ru:
       tags_block:
         heading: 'лайфтаймы по тегам'
         footnote: 'больше'
+    search:
+      heading: 'страница поиска'
+
+  lifetimes:
+    featured:
+      heading: 'избранные лайфтаймы'
+    new:
+      title_placeholder: 'Название'
+      description_placeholder: 'Описание'
+      next_button: 'Далее'
+    single:
+      title_placeholder: 'Название'
+      description_placeholder: 'Описание'
+      make_private: 'Сделать приватным'
+      make_public: 'Сделать открытым'
+      by_year_tab: 'По годам'
+      list_tab: 'Списком'
+      save_changes: 'Сохранить изменения'
+      edit: 'Редактировать'
+      delete: 'Удалить Lifetime'
+      comments_heading: 'комментарии'
+    likes:
+      like: 'нравится'
+      unlike: 'не нравится'
+    comments:
+      leave_comment: 'оставьте комментарий'
+      send: 'отправить'
+
+  savings:
+    index:
+      heading: 'сохраненное'
+      empty_state: 'Нет сохраненных лайфтаймов'
+
+  users:
+    profiles:
+      common:
+        back_to_profile: 'назад в профиль'
+        back: 'назад'
+        settings: 'настройки'
+        followers:
+          one: '%{count} подписчик'
+          few: '%{count} подписчика'
+          many: '%{count} подписчиков'
+          other: '%{count} подписчиков'
+        followings:
+          one: '%{count} подписка'
+          few: '%{count} подписки'
+          many: '%{count} подписок'
+          other: '%{count} подписок'
+        logout: 'выйти'
+        follow: 'подписаться'
+        unfollow: 'отписаться'
+      followers:
+        heading: 'подписчики'
+        empty_state: 'Нет подписчиков'
+      followings:
+        heading: 'подписки'
+        empty_state: 'Нет подписок'
+      single:
+        heading: 'мои лайфтаймы'
+      settings:
+        heading: 'Настройки'
+        basic_tab: 'Основные'
+        security_tab: 'Безопасность'
+        passkeys_tab: 'Passkeys'
+      edit:
+        first_name_label: 'Имя'
+        first_name_placeholder: 'имя'
+        last_name_label: 'Фамилия'
+        last_name_placeholder: 'фамилия'
+        username_label: 'Имя пользователя'
+        username_placeholder: '@username'
+        profile_picture_label: 'Изображение профиля'
+        save_changes: 'Сохранить изменения'
+    passkeys:
+      index:
+        passkeys_list: 'Список Passkey'
+        used_at: 'Использован %{time}'
+      new_form:
+        add_passkey: 'Добавить Passkey'
+        label_placeholder: 'label'
+        add_button: 'Добавить'
+    registrations:
+      edit:
+        email_label: 'Email'
+        email_placeholder: 'email'
+        new_password_label: 'Новый пароль'
+        password_placeholder: 'пароль'
+        save_changes: 'Сохранить изменения'
+      new:
+        heading: 'Регистрация'
+        email_placeholder: 'Почта'
+        device_name_placeholder: 'Название устройства'
+        password_placeholder: 'Пароль'
+        register_button: 'Зарегистрироваться'
+        use_password: 'Использовать пароль'
+        use_passkey: 'Использовать Passkey'
+        login_button: 'Вход'
+    sessions:
+      new:
+        heading: 'Вход'
+        email_placeholder: 'Почта'
+        password_placeholder: 'Пароль'
+        remember_me: 'Запомнить меня'
+        dont_remember: 'Не запоминать'
+        login_button: 'Войти'
+        passkey_button: 'Passkey'
+        register_button: 'Регистрация'
 
   devise:
     failure:
@@ -47,7 +182,7 @@ ru:
     attributes:
       lifetime:
         title: 'Название'
-      lifetime/periods: 
+      lifetime/periods:
         title: 'Название периода'
 
   turbo:

@@ -6,4 +6,4 @@
     = some_user_profile_picture(profile)
     = content_tag tag, {href: users_single_profile_url(profile), data: { turbo_frame: '_top' }} do
         %p.text-xs= some_user_name(profile)
-        %p.text-xs.subtitle= "#{profile.followers_count} подписчиков"
+        %p.text-xs.subtitle= t('shared.profile_preview.followers_count', count: profile.followers_count)

@@ -6,6 +6,6 @@
                 = shared 'profile_preview', { profile: comment.user }
 
         = form_with model: [@lifetime, @lifetime.comments.build] do |form|
-            = form.text_area :content, class: 'text-s', placeholder: 'оставьте комментарий'
-            = shared 'button', { text: 'отправить', color: 'lightblue', size: 'xs', hollow: true, form: }
+            = form.text_area :content, class: 'text-s', placeholder: t('lifetimes.comments.leave_comment')
+            = shared 'button', { text: t('lifetimes.comments.send'), color: 'lightblue', size: 'xs', hollow: true, form: }
 

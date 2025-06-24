@@ -8,6 +8,6 @@
 - enabled = form ? true : false
 
 .shared-points{class: cn(form ? 'lightgray' : nil, column ? 'column' : nil)}
-    = shared 'editable_text', { html_class: 'text-s', text: text_start_point, placeholder: enabled ? 'Точка начала' : text_start_point, enabled:, form_field: :start_point, form: }
+    = shared 'editable_text', { html_class: 'text-s', text: text_start_point, placeholder: enabled ? t('shared.points.start_point') : text_start_point, enabled:, form_field: :start_point, form: }
     →
-    = shared 'editable_text', { html_class: 'text-s', text: text_finish_point, placeholder: enabled ? 'Точка конца' : text_finish_point, enabled:, form_field: :finish_point, form: }
+    = shared 'editable_text', { html_class: 'text-s', text: text_finish_point, placeholder: enabled ? t('shared.points.end_point') : text_finish_point, enabled:, form_field: :finish_point, form: }

@@ -1,6 +1,7 @@
 en:
   global:
     subs_count: '%{count} subscribers'
+    site_title: 'Site'
 
   shared:
     nav:
@@ -11,6 +12,20 @@ en:
     subscription:
       placeholder: 'Email'
       button: 'Subscribe'
+    points:
+      start_point: 'Start point'
+      end_point: 'End point'
+    file_button:
+      delete_photo: 'Delete photo'
+      add_photo: 'Add photo'
+    profile_preview:
+      followers_count: '%{count} followers'
+    profile_card:
+      followers_count: '%{count} followers'
+    period:
+      title_placeholder: 'Title'
+      description_placeholder: 'Description'
+      delete_button: 'Delete'
     
   common_pages:
     index:
@@ -35,6 +50,110 @@ en:
       tags_block:
         heading: 'explore tags'
         footnote: 'see all'
+    search:
+      heading: 'search page'
+
+  lifetimes:
+    featured:
+      heading: 'featured page'
+    new:
+      title_placeholder: 'Title'
+      description_placeholder: 'Description'
+      next_button: 'Next'
+    single:
+      title_placeholder: 'Title'
+      description_placeholder: 'Description'
+      make_private: 'Make private'
+      make_public: 'Make public'
+      by_year_tab: 'By year'
+      list_tab: 'List view'
+      save_changes: 'Save changes'
+      edit: 'Edit'
+      delete: 'Delete Lifetime'
+      comments_heading: 'comments'
+    likes:
+      like: 'like'
+      unlike: 'unlike'
+    comments:
+      leave_comment: 'leave a comment'
+      send: 'send'
+
+  savings:
+    index:
+      heading: 'saved'
+      empty_state: 'No saved lifetimes'
+
+  users:
+    profiles:
+      common:
+        back_to_profile: 'back to profile'
+        back: 'back'
+        settings: 'settings'
+        followers:
+          one: '%{count} follower'
+          other: '%{count} followers'
+        followings:
+          one: '%{count} following'
+          other: '%{count} followings'
+        logout: 'logout'
+        follow: 'follow'
+        unfollow: 'unfollow'
+      followers:
+        heading: 'followers'
+        empty_state: 'No followers'
+      followings:
+        heading: 'followings'
+        empty_state: 'No followings'
+      single:
+        heading: 'my timelines'
+      settings:
+        heading: 'Settings'
+        basic_tab: 'Basic'
+        security_tab: 'Security'
+        passkeys_tab: 'Passkeys'
+      edit:
+        first_name_label: 'First name'
+        first_name_placeholder: 'first name'
+        last_name_label: 'Last name'
+        last_name_placeholder: 'last name'
+        username_label: 'Username'
+        username_placeholder: '@username'
+        profile_picture_label: 'Profile picture'
+        save_changes: 'Save changes'
+    passkeys:
+      index:
+        passkeys_list: 'Passkeys list'
+        used_at: 'Used %{time}'
+      new_form:
+        add_passkey: 'Add Passkey'
+        label_placeholder: 'label'
+        add_button: 'Add'
+    registrations:
+      edit:
+        email_label: 'Email'
+        email_placeholder: 'email'
+        new_password_label: 'New password'
+        password_placeholder: 'password'
+        save_changes: 'Save changes'
+      new:
+        heading: 'Registration'
+        email_placeholder: 'Email'
+        device_name_placeholder: 'Device name'
+        password_placeholder: 'Password'
+        register_button: 'Register'
+        use_password: 'Use password'
+        use_passkey: 'Use Passkey'
+        login_button: 'Login'
+    sessions:
+      new:
+        heading: 'Login'
+        email_placeholder: 'Email'
+        password_placeholder: 'Password'
+        remember_me: 'Remember me'
+        dont_remember: "Don't remember"
+        login_button: 'Login'
+        passkey_button: 'Passkey'
+        register_button: 'Register'
 
   devise:
     failure:
@@ -47,7 +166,7 @@ en:
     attributes:
       lifetime:
         title: 'Title'
-      lifetime/periods: 
+      lifetime/periods:
         title: 'Period title'
   
   turbo:

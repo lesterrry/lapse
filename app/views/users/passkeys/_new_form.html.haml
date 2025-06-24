@@ -1,6 +1,6 @@
 = form_with(scope: :passkey, url: users_passkeys_url, method: :post, id: "add-passkey-form", data: { 'passkey-form-target': 'form', "challenge_url": new_create_challenge_users_passkeys_url, "credential_field_name": "passkey[credential]" }) do |f|
-  %p.text-m.stroke Добавить Passkey
-  = shared 'input', { html_class: 'blue', placeholder: 'label', form_field: :label, form: f, required: true }
+  %p.text-m.stroke= t('users.passkeys.new_form.add_passkey')
+  = shared 'input', { html_class: 'blue', placeholder: t('users.passkeys.new_form.label_placeholder'), form_field: :label, form: f, required: true }
   = f.hidden_field :credential
 
-  = shared 'button', { size: 's', text: 'Добавить' }
+  = shared 'button', { size: 's', text: t('users.passkeys.new_form.add_button') }

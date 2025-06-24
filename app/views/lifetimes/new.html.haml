@@ -6,9 +6,9 @@
 				= shared 'icon', { name: 'plus', color: 'lightblue' }
 
 		%div.info-block
-			= shared 'editable_text', { html_class: 'text-l stroke', text: '', placeholder: 'Название', enabled: true, form_field: :title, form: }
-			= shared 'editable_text', { html_class: 'text-s description', text: '', placeholder: 'Описание', enabled: true, form_field: :description, form: }
+			= shared 'editable_text', { html_class: 'text-l stroke', text: '', placeholder: t('lifetimes.new.title_placeholder'), enabled: true, form_field: :title, form: }
+			= shared 'editable_text', { html_class: 'text-s description', text: '', placeholder: t('lifetimes.new.description_placeholder'), enabled: true, form_field: :description, form: }
 
 			= shared 'points', { form: form }
 
-			= shared 'button', { text: 'Далее', form:, size: 'xs', html_class: 'edit-button' }
+			= shared 'button', { text: t('lifetimes.new.next_button'), form:, size: 'xs', html_class: 'edit-button' }

@@ -9,8 +9,8 @@
 .shared-file-button{class: html_class, 'data-controller': 'file-button', 'data-file-button-id': id}
     - if selected
         %a.text-s.hover-underline{href: set_param(delete_param, id), data: { turbo_prefetch: false }}
-            Удалить фото
+            = t('shared.file_button.delete_photo')
     - else
-        = fields.label(label, 'Добавить фото', class: cn(add_class, 'hover-underline'), 'data-file-button-target': 'label')
-        = fields.label(label, 'Удалить фото', class: cn(delete_class, 'hover-underline'), 'data-file-button-target': 'selectedLabel')
+        = fields.label(label, t('shared.file_button.add_photo'), class: cn(add_class, 'hover-underline'), 'data-file-button-target': 'label')
+        = fields.label(label, t('shared.file_button.delete_photo'), class: cn(delete_class, 'hover-underline'), 'data-file-button-target': 'selectedLabel')
         = fields.file_field(label, multiple:, class: 'no-display', 'data-file-button-target': 'button', 'data-action': actions.join(' ')) # <- hidden via css

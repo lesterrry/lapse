@@ -2,4 +2,4 @@
     = some_user_profile_picture(user)
     %div.content
         %p.text-m.stroke= some_user_name(user)
-        %p.text-xs= "#{user.followers_count} подписчиков"
+        %p.text-xs= t('shared.profile_card.followers_count', count: user.followers_count)

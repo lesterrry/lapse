@@ -1,9 +1,9 @@
 .savings-index.container
   %div
-    %h1.text-l.stroke.heading сохраненное
+    %h1.text-l.stroke.heading= t('.heading')
     
     - if @saved_lifetimes.empty?
-      %p.text-s.stroke Нет сохраненных лайфтаймов
+      %p.text-s.stroke= t('.empty_state')
     - else
       %div.shared-lifetime-card-container
         - @saved_lifetimes.each do |i|

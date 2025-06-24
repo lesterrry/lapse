@@ -1,14 +1,14 @@
 %turbo-frame.profiles-edit.container{id: qualify(@user)}
   = notification
   %div.info-block
-    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'назад в профиль', main_link: my_profile_path}
+    = render partial: 'users/profiles/profile_heading', locals: { main_text: t('users.profiles.common.back_to_profile'), main_link: my_profile_path}
 
   %div.settings-block
     = render partial: 'users/profiles/profile_settings_heading'
 
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      = f.label :email, 'Email'
-      = shared 'input', { html_class: 'blue', placeholder: 'email', form_field: :email, form: f, value: @user.email, required: true }
-      = f.label :password, 'Новый пароль'
-      = shared 'input', { html_class: 'blue', placeholder: 'пароль', form_field: :password, form: f }
-      = shared 'button', { text: 'Сохранить изменения', form: f, advance: true, size: 's', html_class: 'save-button' }
+      = f.label :email, t('users.registrations.edit.email_label')
+      = shared 'input', { html_class: 'blue', placeholder: t('users.registrations.edit.email_placeholder'), form_field: :email, form: f, value: @user.email, required: true }
+      = f.label :password, t('users.registrations.edit.new_password_label')
+      = shared 'input', { html_class: 'blue', placeholder: t('users.registrations.edit.password_placeholder'), form_field: :password, form: f }
+      = shared 'button', { text: t('users.registrations.edit.save_changes'), form: f, advance: true, size: 's', html_class: 'save-button' }

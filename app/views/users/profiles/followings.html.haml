@@ -1,13 +1,13 @@
 %turbo-frame.profiles-followers.container{id: qualify(@user)}
   = notification
   %div.info-block
-    = render partial: 'users/profiles/profile_heading', locals: { main_text: 'назад', main_link: users_single_profile_path(@user) }
+    = render partial: 'users/profiles/profile_heading', locals: { main_text: t('users.profiles.common.back'), main_link: users_single_profile_path(@user) }
 
   %div
-    %h1.text-l.stroke.heading подписки
+    %h1.text-l.stroke.heading= t('users.profiles.followings.heading')
     %div.followers-block
       - if @followings.empty?
-        %p.text-s.stroke Нет подписок
+        %p.text-s.stroke= t('users.profiles.followings.empty_state')
       - else
         - @followings.each do |following|
           = shared 'profile_preview', { profile: following }
