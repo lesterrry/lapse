@@ -31,10 +31,11 @@ class ApplicationController < ActionController::Base
 			parsed_locale = params[:locale]
 		elsif !cookies[:locale].blank?
 			parsed_locale = cookies[:locale]
-		elsif !request.location.country_code.blank?
-			parsed_locale = request.location.country_code.downcase
-		elsif !request.env['HTTP_ACCEPT_LANGUAGE'].blank?
-			parsed_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/)[0]
+		# Disabled to default to english 
+		# elsif !request.location.country_code.blank?
+		# 	parsed_locale = request.location.country_code.downcase
+		# elsif !request.env['HTTP_ACCEPT_LANGUAGE'].blank?
+		# 	parsed_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/)[0]
 		else
 			return nil
 		end
