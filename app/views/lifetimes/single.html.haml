@@ -14,11 +14,10 @@
 
 		%div.info-block{class: cn(@view_mode, @lifetime.periods.empty? ? 'empty' : nil)}
 			%div.left
-				%div.title-container
+				%div.title
 					= shared 'editable_text', { html_class: 'text-l stroke', text: @lifetime.title, placeholder: 'Название', enabled: @editable, form_field: :title, form: }
 					- if @lifetime.private?
-						%span.privacy-indicator{title: "Private - Only visible to you"}
-							🔒
+						= shared 'icon', { name: 'lock' }
 				= shared 'editable_text', { html_class: 'text-s description', text: @lifetime.description, placeholder: 'Описание', enabled: @editable, form_field: :description, form: }
 				- if @editable
 					= shared 'points', { form: form, text_start_point: @lifetime.start_point, text_finish_point: @lifetime.finish_point, }

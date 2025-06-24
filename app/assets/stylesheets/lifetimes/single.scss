@@ -64,6 +64,13 @@
 			width: 280px;
 		}
 
+		div.title {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 10px;
+		}
+
 		div.periods {
 			overflow-y: scroll;
 			height: 100%;
