@@ -25,7 +25,7 @@
             %p.text-m= t('.about_block.description2')
             %div.buttons
                 = shared 'button', { size: 'xs', color: 'lightblue', text: t('.about_block.create_button'), link: new_lifetime_path }
-                = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: t('.about_block.login_button'), link: new_lifetime_path }
+                = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: t('.about_block.login_button'), link: my_profile_path }
         %div.graphics
             = image 'lapse_year.svg'
 
@@ -41,20 +41,3 @@
                     = shared 'profile_card', { user: i }
             = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
 
-    %div.tags-block
-        %h1.text-l.stroke.heading= t('.tags_block.heading')
-        %div
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-            = shared 'button', { size: 'xs', color: 'lightblue', hollow: true, text: 'log into this thing', link: '' }
-        = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }

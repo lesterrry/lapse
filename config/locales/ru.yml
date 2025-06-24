@@ -6,6 +6,7 @@ ru:
     nav:
       create: 'создать'
       explore: 'популярное'
+      saved: 'сохраненное'
       profile: 'профиль'
     subscription:
       placeholder: 'Почта'
@@ -14,7 +15,7 @@ ru:
   common_pages:
     index:
       lapse_block:
-        title: 'жизнь целиком'
+        title: 'вся жизнь'
         subtitle: 'как на ладони'
         button: 'создать lapse'
       popular_block:

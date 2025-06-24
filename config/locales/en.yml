@@ -6,6 +6,7 @@ en:
     nav:
       create: 'create'
       explore: 'explore'
+      saved: 'saved'
       profile: 'profile'
     subscription:
       placeholder: 'Email'

@@ -1,5 +1,9 @@
+- no_link ||= false
+
+- tag = no_link ? 'div' : 'a'
+
 .shared-profile-preview
     = some_user_profile_picture(profile)
-    %div
+    = content_tag tag, {href: users_single_profile_url(profile), data: { turbo_frame: '_top' }} do
         %p.text-xs= some_user_name(profile)
         %p.text-xs.subtitle= "#{profile.followers_count} подписчиков"

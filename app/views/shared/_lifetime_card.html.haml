@@ -21,7 +21,7 @@
             = shared 'points', { column: true, text_start_point: lifetime.start_point || '', text_finish_point: lifetime.finish_point || '' }
     %div.lower
         - unless hide_profile_preview
-            = shared 'profile_preview', { profile: user }
+            = shared 'profile_preview', { profile: user, no_link: true }
         %div.stats
             %div
                 = shared 'icon', { name: 'heart', size: 's' }

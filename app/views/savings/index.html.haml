@@ -3,7 +3,7 @@
     %h1.text-l.stroke.heading сохраненное
     
     - if @saved_lifetimes.empty?
-      %p.text-s Нет сохраненных лайфтаймов
+      %p.text-s.stroke Нет сохраненных лайфтаймов
     - else
       %div.shared-lifetime-card-container
         - @saved_lifetimes.each do |i|
