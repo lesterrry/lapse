@@ -43,6 +43,43 @@
 				height: 50%;
 			}
 		}
+
+		.labels {
+			--offset: 60%;
+
+			& {
+				position: absolute;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				z-index: -1;
+			}
+
+			#jan {
+				position: absolute;
+				margin-left: calc(var(--offset) * cos(270deg));
+  				margin-top: calc(var(--offset) * sin(270deg));
+			}
+
+			#apr {
+				position: absolute;
+				margin-left: calc(var(--offset) * cos(0deg));
+  				margin-top: calc(var(--offset) * sin(0deg));
+			}
+
+			#jul {
+				position: absolute;
+				margin-left: calc(var(--offset) * cos(90deg));
+  				margin-top: calc(var(--offset) * sin(90deg));
+			}
+
+			#oct {
+				position: absolute;
+				margin-left: calc(var(--offset) * cos(180deg));
+  				margin-top: calc(var(--offset) * sin(180deg));
+			}
+		}
 	}
 
 	.info-block {

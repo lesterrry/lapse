@@ -9,6 +9,7 @@
 					%div.chart{'data-controller': 'lifetime', 'data-action': 'periodChanged@document->lifetime#handlePeriodChanged', 'data-lifetime-periods': @periods.to_json, 'data-lifetime-selected-year': @selected_year}
 						%canvas{'data-lifetime-target': 'canvas'}
 					= render partial: 'lifetimes/year_switcher'
+					= render partial: 'lifetimes/labels'
 				- if @view_mode == :list || @periods.empty?
 					%div.loop
 
