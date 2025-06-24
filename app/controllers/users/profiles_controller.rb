@@ -22,6 +22,20 @@ class Users::ProfilesController < ApplicationController
         @lifetimes = @user.lifetimes
     end
 
+    def followers
+        @user = User.find(params[:id])
+        @followers = @user.followers
+
+        render :followers
+    end
+
+    def followings
+        @user = User.find(params[:id])
+        @followings = @user.followings
+
+        render :followings
+    end
+
     def edit
         @user = current_user
 
