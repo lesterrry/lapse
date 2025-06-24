@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_06_22_201456) do
+ActiveRecord::Schema[7.0].define(version: 2025_06_24_104137) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -150,6 +150,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_22_201456) do
     t.index ["lifetime_id"], name: "index_periods_on_lifetime_id"
   end
 
+  create_table "savings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "lifetime_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lifetime_id"], name: "index_savings_on_lifetime_id"
+    t.index ["user_id", "lifetime_id"], name: "index_savings_on_user_id_and_lifetime_id", unique: true
+    t.index ["user_id"], name: "index_savings_on_user_id"
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -183,4 +193,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_22_201456) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "passkeys", "users"
   add_foreign_key "periods", "lifetimes", on_delete: :cascade
+  add_foreign_key "savings", "lifetimes"
+  add_foreign_key "savings", "users"
 end

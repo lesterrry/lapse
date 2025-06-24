@@ -1,0 +1,6 @@
+- if current_user && @lifetime.user != current_user
+  %turbo-frame.save-button{id: qualify(@lifetime, 'saves')}
+    - if @lifetime.saved_by?(current_user)
+      = shared 'button', size: 'xs', color: 'lightblue', hollow: true, method: :delete, no_confirm: true, link: lifetime_saving_url(@lifetime, @lifetime.savings.find_by(user: current_user)), text: 'убрать из сохраненных'
+    - else
+      = shared 'button', size: 'xs', color: 'lightblue', hollow: true, method: :post, no_confirm: true, link: lifetime_savings_url(@lifetime), text: 'сохранить'

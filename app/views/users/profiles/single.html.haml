@@ -7,4 +7,4 @@
     %h1.text-l.stroke.heading my timelines
     %div.shared-lifetime-card-container
       - @lifetimes.each do |lifetime|
-        = shared 'lifetime_card', { lifetime: }
+        = shared 'lifetime_card', { hide_profile_preview: true, lifetime: }

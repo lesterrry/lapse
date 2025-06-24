@@ -13,11 +13,7 @@ Rails.application.routes.draw do
 		root to: 'users#index'
 	end
 
-	get '/search', to: 'common_pages#search'
-	get '/promo', to: 'common_pages#promo'
-	get '/about', to: 'common_pages#about'
-	get '/profile', to: 'users#single'
-	get '/featured', to: 'lifetimes#featured'
+	# get '/featured', to: 'lifetimes#featured'
 
 	namespace :api do
 		get '/lifetimes/', to: 'lifetimes#index'
@@ -40,6 +36,7 @@ Rails.application.routes.draw do
 	end
 
 	get '/lifetimes/new', to: 'lifetimes#new', as: :new_lifetime
+	get '/saved', to: 'savings#index', as: :saved_lifetimes
 
 	resources :lifetimes, only: %i[create destroy] do # update logic is implemented below
 		member do
@@ -49,6 +46,7 @@ Rails.application.routes.draw do
 
 		resources :comments, only: %i[create destroy]
 		resources :likes, only: %i[create destroy]
+		resources :savings, only: %i[create destroy]
 	end
 
 	resources :subscriptions, only: [:create]

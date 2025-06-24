@@ -9,6 +9,8 @@ class User < ApplicationRecord
     has_many :comments, dependent: :nullify
     has_many :likes, dependent: :destroy
     has_many :liked_lifetimes, through: :likes, source: :lifetime
+    has_many :savings, dependent: :destroy
+    has_many :saved_lifetimes, through: :savings, source: :lifetime
     has_many :active_followings, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
     has_many :passive_followings, class_name: 'Following', foreign_key: 'followed_id', dependent: :destroy
     has_many :followings, through: :active_followings, source: :followed

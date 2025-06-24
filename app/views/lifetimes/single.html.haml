@@ -37,8 +37,10 @@
 				= render partial: 'lifetimes/periods', locals: { form: }
 
 	%div.social-block
-		= shared 'profile_preview', { image: 'profile_mock.webp', title: 'Арина Артамонова', subtitle: '256 подписчиков' }
-		= render partial: 'lifetimes/likes'
+		= shared 'profile_preview', { profile: @lifetime.user }
+		%div.actions
+			= render partial: 'lifetimes/save_button'
+			= render partial: 'lifetimes/likes'
 
 	- if @editable || @owned
 		%div.actions-block

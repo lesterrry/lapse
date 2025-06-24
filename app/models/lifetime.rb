@@ -9,6 +9,11 @@ class Lifetime < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :likes, dependent: :destroy
 	has_many :liking_users, through: :likes, source: :user
+	has_many :savings, dependent: :destroy
+
+	def saved_by?(user)
+		savings.exists?(user_id: user&.id)
+	end
 
 	def liked_by?(user)
 		likes.exists?(user_id: user&.id)

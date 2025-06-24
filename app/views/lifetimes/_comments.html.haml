@@ -3,7 +3,7 @@
         - @lifetime.comments.each do |comment|
             %div.comment
                 %p.text-s= comment.content
-                = shared 'profile_preview', { image: 'profile_mock.webp', title: some_user_name(comment.user), subtitle: '256 подписчиков' }
+                = shared 'profile_preview', { profile: comment.user }
 
         = form_with model: [@lifetime, @lifetime.comments.build] do |form|
             = form.text_area :content, class: 'text-s', placeholder: 'оставьте комментарий'

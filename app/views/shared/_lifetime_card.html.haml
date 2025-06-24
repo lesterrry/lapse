@@ -1,7 +1,6 @@
-- profile_title ||= nil
-- profile_subtitle ||= nil
-- profile_picture ||= nil
+- hide_profile_preview ||= false
 
+- user = lifetime.user
 - all_photos = lifetime.all_photos
 
 %a.shared-lifetime-card{href: single_lifetime_url(lifetime), data: { turbo_frame: '_top', turbo_prefetch: 'false' }}
@@ -21,8 +20,8 @@
         %div.asset
             = shared 'points', { column: true, text_start_point: lifetime.start_point || '', text_finish_point: lifetime.finish_point || '' }
     %div.lower
-        - if profile_picture && profile_title && profile_subtitle
-            = shared 'profile_preview', { image: profile_picture, title: profile_title, subtitle: profile_subtitle }
+        - unless hide_profile_preview
+            = shared 'profile_preview', { profile: user }
         %div.stats
             %div
                 = shared 'icon', { name: 'heart', size: 's' }

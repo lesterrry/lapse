@@ -1,0 +1,10 @@
+.savings-index.container
+  %div
+    %h1.text-l.stroke.heading сохраненное
+    
+    - if @saved_lifetimes.empty?
+      %p.text-s Нет сохраненных лайфтаймов
+    - else
+      %div.shared-lifetime-card-container
+        - @saved_lifetimes.each do |i|
+          = shared 'lifetime_card', { lifetime: i }

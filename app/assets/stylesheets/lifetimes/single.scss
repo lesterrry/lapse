@@ -101,9 +101,17 @@
 	}
 
 	.social-block {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+		& {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.actions {
+			display: flex;
+			flex-direction: row;
+			gap: 8px;
+		}
 	}
 
 	.comments-block {

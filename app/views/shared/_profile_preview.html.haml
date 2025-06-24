@@ -1,5 +1,5 @@
 .shared-profile-preview
-    = image image
+    = some_user_profile_picture(profile)
     %div
-        %p.text-xs= title
-        %p.text-xs.subtitle= subtitle
+        %p.text-xs= some_user_name(profile)
+        %p.text-xs.subtitle= "#{profile.followers_count} подписчиков"
