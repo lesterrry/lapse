@@ -14,7 +14,8 @@
         }
 
         & > div {
-            border: 1px solid var(--lightblue);
+            outline: 1px solid var(--lightblue);
+            outline-offset: -1px;
             border-radius: 50%;
             display: flex;
             align-items: center;

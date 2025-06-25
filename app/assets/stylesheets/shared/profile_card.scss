@@ -14,4 +14,9 @@
         border: 1px solid var(--black);
         margin-bottom: 6px;
     }
+
+    @media all and (max-width: 550px) {
+        max-width: unset;
+        width: 100%;
+    }
 }

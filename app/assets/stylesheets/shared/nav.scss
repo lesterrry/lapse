@@ -47,4 +47,21 @@
 		flex-direction: row;
 		gap: 8px;
 	}
+
+	@media all and (max-width: 800px) {
+		.center {
+			display: none;
+		}
+	}
+
+	@media all and (max-width: 550px) {
+		&.header .left {
+			display: none;
+		}
+
+		&.header .right {
+			justify-content: space-between;
+			gap: unset;
+		}
+	}
 }

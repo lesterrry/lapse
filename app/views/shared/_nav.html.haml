@@ -2,7 +2,7 @@
 
 - motto = footer ? 'everything is fragile' : 'everything is temporary'
 
-.shared-nav{class: footer ? 'footer' : nil}
+.shared-nav{class: footer ? 'footer' : 'header'}
     %div.left
         %a.wrapper{href: root_path}
             = shared 'raw_svg', { src: footer ? 'lapse_b.svg' : 'lapse_d.svg', html_class: 'logo' }

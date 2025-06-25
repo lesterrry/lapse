@@ -147,3 +147,15 @@ select:focus,
         };
     }
 }
+
+@media all and (max-width: 550px) {
+    .container {    
+        & {
+            gap: 40px
+        }
+
+        & > div, & > form, & > turbo-frame {
+            padding: 0 10px 0 10px;
+        };
+    }
+}

@@ -61,11 +61,28 @@
             }
         }
     }
+
+    @media all and (max-width: 550px) {
+        .center {
+            .asset {
+                width: 100px;
+                height: 100px;
+                min-width: 100px;
+            }
+        }
+    }
 }
 
 .shared-lifetime-card-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(375px, 420px));
-    gap: 15px;
+    & {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(375px, 420px));
+        gap: 15px;
+    }
+
+    @media all and (max-width: 550px) {
+        display: flex;
+        flex-direction: column;
+    }
 }

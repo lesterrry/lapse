@@ -1,6 +1,10 @@
 .common-pages-index {
 
 	.lapse-block {
+		& {
+			overflow-x: hidden;
+		}
+
 		.shared-lapse {
 			& {
 				display: flex;
@@ -12,7 +16,8 @@
 				& {
 					position: absolute;
 					border-radius: 50%;
-					border: 1px solid var(--lightblue);
+					outline: 1px solid var(--lightblue);
+					outline-offset: -1px;
 				}
 
 				&.b {
@@ -101,4 +106,22 @@
 			gap: 8px;
 		}
 	}
+
+	@media all and (max-width: 1024px) {
+		.about-block {
+			.graphics > img {
+				display: none;
+			}
+		}
+
+		.subscription-block {
+			border-radius: 0;
+		}
+	}
+
+	// @media all and (max-width: 550px) {
+	// 	.lapse-block {
+	// 		overflow-x: hidden;
+	// 	}
+	// }
 }
