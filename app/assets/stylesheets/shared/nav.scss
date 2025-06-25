@@ -55,6 +55,10 @@
 	}
 
 	@media all and (max-width: 550px) {
+		& {
+			height: 72px;
+		}
+
 		&.header .left {
 			display: none;
 		}

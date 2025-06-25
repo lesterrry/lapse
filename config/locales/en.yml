@@ -60,6 +60,9 @@ en:
       title_placeholder: 'Title'
       description_placeholder: 'Description'
       next_button: 'Next'
+    save_button:
+      save: 'Save'
+      unsave: 'Remove from saved'
     single:
       title_placeholder: 'Title'
       description_placeholder: 'Description'

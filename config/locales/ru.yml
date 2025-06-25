@@ -72,6 +72,9 @@ ru:
       title_placeholder: 'Название'
       description_placeholder: 'Описание'
       next_button: 'Далее'
+    save_button:
+      save: 'сохранить'
+      unsave: 'убрать из сохраненных'
     single:
       title_placeholder: 'Название'
       description_placeholder: 'Описание'

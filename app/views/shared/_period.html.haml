@@ -7,7 +7,8 @@
 		- date_end = enabled ? fields.date_field(:end, value: period.end.to_date, 'data-action': blur_action, 'data-id': 'end', class: 'date-field') : friendly_date(period.end)
 
 		= shared 'editable_text', { tag: 'h3', id: 'title', text: period.title, placeholder: t('shared.period.title_placeholder'), enabled:, form_field: :title, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'title' } }
-		= shared 'editable_text', { tag: 'p', html_class: 'multiline', id: 'description', text: period.description, placeholder: t('shared.period.description_placeholder'), enabled:, form_field: :description, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'description' } }
+		- if enabled || !period.description.blank?
+			= shared 'editable_text', { tag: 'p', html_class: 'multiline', id: 'description', text: period.description, placeholder: t('shared.period.description_placeholder'), enabled:, form_field: :description, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'description' } }
 		%p #{date_start} → #{date_end}
 
 		- period.photos.each do |photo|

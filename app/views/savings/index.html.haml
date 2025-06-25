@@ -2,9 +2,9 @@
   %div
     %h1.text-l.stroke.heading= t('.heading')
     
-    - if @saved_lifetimes.empty?
-      %p.text-s.stroke= t('.empty_state')
-    - else
-      %div.shared-lifetime-card-container
+    %div.shared-lifetime-card-container
+      - if @saved_lifetimes.empty?
+        %p.text-s.stroke= t('.empty_state')
+      - else
         - @saved_lifetimes.each do |i|
           = shared 'lifetime_card', { lifetime: i }

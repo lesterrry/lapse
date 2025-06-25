@@ -41,8 +41,6 @@ class Users::ProfilesController < ApplicationController
 
         @delete_picture = params['delete-picture']
 
-        p @delete_picture, params
-
         @user.profile_picture.purge if @delete_picture
     end
 
@@ -52,7 +50,7 @@ class Users::ProfilesController < ApplicationController
         if @user.update(profile_params)
             flash[:notice] = 'Updated your data'
         else
-            flash[:alert] = extract_errors(@lifetime)
+            flash[:alert] = extract_errors(@user)
         end
 
         redirect_to action: :edit
