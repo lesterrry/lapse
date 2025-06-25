@@ -1,7 +1,7 @@
 .shared-button {
 	& {
 		background-color: var(--black);
-		border-radius: 20px;
+		border-radius: 14px;
 		padding: 14px 24px 14px 24px;
 		display: flex;
 		align-items: center;
@@ -11,6 +11,7 @@
 		width: fit-content;
 		box-sizing: outline-box;
 		outline-offset: -1px;
+		box-sizing: border-box;
 	}
 
 	&.selected {
@@ -104,7 +105,8 @@
 
 	&.xs {
 		padding: 8px 20px 10px 20px;
-		outline-radius: 50px;
+		border-radius: 50px;
+		text-transform: lowercase;
 	}
 
 	&.s {

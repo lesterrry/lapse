@@ -8,7 +8,7 @@
 
 .shared-file-button{class: html_class, 'data-controller': 'file-button', 'data-file-button-id': id}
     - if selected
-        %a.text-s.hover-underline{href: set_param(delete_param, id), data: { turbo_prefetch: false }}
+        %a.text-s.hover-underline{href: set_param(delete_param, id), data: { turbo_prefetch: 'false' }}
             = t('shared.file_button.delete_photo')
     - else
         = fields.label(label, t('shared.file_button.add_photo'), class: cn(add_class, 'hover-underline'), 'data-file-button-target': 'label')

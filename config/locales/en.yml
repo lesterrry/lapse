@@ -62,7 +62,7 @@ en:
       next_button: 'Next'
     save_button:
       save: 'Save'
-      unsave: 'Remove from saved'
+      unsave: 'Unsave'
     periods:
       add_period: 'Add period'
     single:
@@ -84,7 +84,7 @@ en:
         indian: 'Indian'
     likes:
       like: 'like'
-      unlike: 'unlike'
+      unlike: 'dislike'
     comments:
       leave_comment: 'leave a comment'
       send: 'send'
