@@ -88,6 +88,12 @@ ru:
       edit: 'Редактировать'
       delete: 'Удалить Lifetime'
       comments_heading: 'комментарии'
+      calendar:
+        gregorian: 'Григорианский'
+        japanese: 'Японский'
+        jewish: 'Еврейский'
+        persian: 'Персидский'
+        indian: 'Индийский'
     likes:
       like: 'нравится'
       unlike: 'не нравится'

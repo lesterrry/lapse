@@ -76,6 +76,12 @@ en:
       edit: 'Edit'
       delete: 'Delete Lifetime'
       comments_heading: 'comments'
+      calendar:
+        gregorian: 'Gregorian'
+        japanese: 'Japanese'
+        jewish: 'Jewish'
+        persian: 'Persian'
+        indian: 'Indian'
     likes:
       like: 'like'
       unlike: 'unlike'
