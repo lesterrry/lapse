@@ -9,11 +9,12 @@
 - top ||= false
 - advance ||= false
 - no_preload ||= false
+- selected ||= false
 
 - method ||= nil
 
 - tag = link ? 'a' : 'button'
-- final_class = cn('shared-button', size, html_class, color, hollow ? 'hollow' : nil, textonly ? 'textonly' : nil)
+- final_class = cn('shared-button', size, html_class, color, hollow ? 'hollow' : nil, textonly ? 'textonly' : nil, selected ? 'selected' : nil)
 
 - if !method.nil?
 	= button_to link, method: method, class: final_class, form: { data: { turbo_confirm: no_confirm ? nil : 'Вы уверены?', turbo_frame: top ? '_top' : nil }, id: "#{method}-form" } do

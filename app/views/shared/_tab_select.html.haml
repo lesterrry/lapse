@@ -1,3 +1,5 @@
+- selected_param_key ||= nil
+
 .shared-tab-select
     - items.each do |item|
-        = shared 'button', { link: item[:link], text: item[:label], size: 'xs', color: 'lightblue', hollow: true, advance: true }
+        = shared 'button', { link: item[:link], text: item[:label], size: 'xs', color: 'lightblue', hollow: true, advance: true, selected: selected_param_key && params[selected_param_key] == item[:key] }

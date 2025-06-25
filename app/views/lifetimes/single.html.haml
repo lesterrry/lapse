@@ -24,7 +24,9 @@
 					= shared 'points', { form: form, text_start_point: @lifetime.start_point, text_finish_point: @lifetime.finish_point, }
 					
 					= shared 'checkbox', { text_unchecked: t('lifetimes.single.make_private'), text_checked: t('lifetimes.single.make_public'), checked: @lifetime.private?, form_field: :private, form: }
-				= shared 'tab_select', { items: [{ label: t('lifetimes.single.by_year_tab'), link: set_param('view-mode', 'donut') }, { label: t('lifetimes.single.list_tab'), link: set_param('view-mode', 'list') }] }
+				= shared 'tab_select', { selected_param_key: nil, items: [{ label: t('lifetimes.single.by_year_tab'), link: set_param('view-mode', 'donut'), key: 'donut' }, { label: t('lifetimes.single.list_tab'), link: set_param('view-mode', 'list'), key: 'list' }] }
+				- if @view_mode == :donut
+					= shared 'dropdown_select', { selected_param_key: 'cal', items: [{ label: 'Григорианский', link: set_param('cal', 'g'), key: 'g' }, { label: 'Китайский', link: set_param('cal', 'c'), key: 'c' }] }
 				- if @editable
 					= shared 'button', { text: t('lifetimes.single.save_changes'), form:, advance: true, size: 'xs' }
 				- elsif @owned

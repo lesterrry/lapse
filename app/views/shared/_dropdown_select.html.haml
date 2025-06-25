@@ -1,0 +1,13 @@
+- size ||= 'xs'
+- color ||= 'lightblue'
+
+- selected_param_key ||= nil
+
+.shared-dropdown-select{'data-controller': 'dropdown'}
+  - selected_item = items.find { |i| params[selected_param_key] == i[:key] } || items.first
+  .dropdown-button{class: "dropdown-button-#{color}", data: { action: 'click->dropdown#toggle' }}
+    %p.stroke{class: "text-#{size}"}= selected_item[:label]
+  .dropdown-menu
+    - items.each do |item|
+      %a.dropdown-item{href: item[:link], data: { turbo_prefetch: 'false', turbo_frame: '_top' }}
+        %p.stroke{class: "text-#{size}"}= item[:label]

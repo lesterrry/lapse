@@ -38,6 +38,10 @@ select:focus,
   outline: none;
 }
 
+[title] {
+    cursor: help !important;
+}
+
 .stroke {
     & {
         -webkit-text-stroke-color: var(--black);

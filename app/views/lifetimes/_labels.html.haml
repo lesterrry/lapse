@@ -1,5 +1,11 @@
+- months = @calendar.map do |month|
+    - { short: t("date.month_names.#{month}.short"), full: t("date.month_names.#{month}.full") }
+
+- with_bullets = months.length == 12
+
 .labels
-    %p.text-s#jan Jan
-    %p.text-s#apr Apr
-    %p.text-s#jul Jul
-    %p.text-s#oct Oct
+    - months.each_with_index do |month, index|
+        - value = 360 / months.length * index
+        - if with_bullets
+            %p.text-s{**position_label(value + 15)} •
+        %p.text-s{title: month[:full], **position_label(value)}= month[:short]

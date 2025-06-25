@@ -75,6 +75,8 @@ ru:
     save_button:
       save: 'сохранить'
       unsave: 'убрать из сохраненных'
+    periods:
+      add_period: 'Добавить период'
     single:
       title_placeholder: 'Название'
       description_placeholder: 'Описание'
@@ -190,3 +192,91 @@ ru:
 
   turbo:
     content_missing: 'Произошла ошибка. Попробуйте перезагрузить страницу.'
+    
+  date:
+    month_names:
+      april:
+        short: 'Апр'
+        full: 'Апрель'
+      may:
+        short: 'Май'
+        full: 'Май'
+      june:
+        short: 'Июн'
+        full: 'Июнь'
+      july:
+        short: 'Июл'
+        full: 'Июль'
+      august:
+        short: 'Авг'
+        full: 'Август'
+      september:
+        short: 'Сен'
+        full: 'Сентябрь'
+      october:
+        short: 'Окт'
+        full: 'Октябрь'
+      november:
+        short: 'Ноя'
+        full: 'Ноябрь'
+      december:
+        short: 'Дек'
+        full: 'Декабрь'
+      january:
+        short: 'Янв'
+        full: 'Январь'
+      february:
+        short: 'Фев'
+        full: 'Февраль'
+      march:
+        short: 'Мар'
+        full: 'Март'
+
+      lichun:
+        full: 'Начало весны'
+      yushui:
+        full: 'Дождевая вода'
+      jingzhe:
+        full: 'Пора пробуждения личинок'
+      chunfen:
+        full: 'Весеннее равноденствие'
+      qingming:
+        full: 'Ясно и светло'
+      guyu:
+        full: 'Хлебные дожди'
+      lixia:
+        full: 'Начало лета'
+      xiaoman:
+        full: 'Малое изобилие'
+      mangzhong:
+        full: 'Колошение хлебов'
+      xiazhi:
+        full: 'Летнее солнцестояние'
+      xiaoshu:
+        full: 'Малая жара'
+      dashu:
+        full: 'Большая жара'
+      liqiu:
+        full: 'Начало осени'
+      chushu:
+        full: 'Прекращение жары'
+      bailu:
+        full: 'Белые росы'
+      qiufen:
+        full: 'Осеннее равноденствие'
+      hanlu:
+        full: 'Холодные росы'
+      shuangjiang:
+        full: 'Выпадение инея'
+      lidong:
+        full: 'Начало зимы'
+      xiaoxue:
+        full: 'Малые снега'
+      daxue:
+        full: 'Большие снега'
+      dongzhi:
+        full: 'Зимнее солнцестояние'
+      xiaohan:
+        full: 'Малые холода'
+      dahan:
+        full: 'Большие холода'

@@ -51,6 +51,12 @@ class LifetimesController < ApplicationController
 		@owned = @lifetime.user == current_user
 		@editable = !params[:edit].nil? && @owned
 		@view_mode = params['view-mode']&.to_sym || :donut
+		@calendar =
+			if params['cal'] == 'c'
+				%i[qingming guyu lixia xiaoman mangzhong xiazhi xiaoshu dashu liqiu chushu bailu qiufen hanlu shuangjiang lidong xiaoxue daxue dongzhi xiaohan dahan lichun yushui jingzhe chunfen]
+			else # григорианский
+				%i[april may june july august september october november december january february march]
+			end
 
 		new_period = params[:new] == '1'
 		delete_period = params['delete-period']

@@ -63,6 +63,8 @@ en:
     save_button:
       save: 'Save'
       unsave: 'Remove from saved'
+    periods:
+      add_period: 'Add period'
     single:
       title_placeholder: 'Title'
       description_placeholder: 'Description'
@@ -174,3 +176,115 @@ en:
   
   turbo:
     content_missing: 'Fatal error. Try reloading the page.'
+    
+  date:
+    month_names:
+      april:
+        short: 'Apr'
+        full: 'April'
+      may:
+        short: 'May'
+        full: 'May'
+      june:
+        short: 'Jun'
+        full: 'June'
+      july:
+        short: 'Jul'
+        full: 'July'
+      august:
+        short: 'Aug'
+        full: 'August'
+      september:
+        short: 'Sep'
+        full: 'September'
+      october:
+        short: 'Oct'
+        full: 'October'
+      november:
+        short: 'Nov'
+        full: 'November'
+      december:
+        short: 'Dec'
+        full: 'December'
+      january:
+        short: 'Jan'
+        full: 'January'
+      february:
+        short: 'Feb'
+        full: 'February'
+      march:
+        short: 'Mar'
+        full: 'March'
+
+      lichun:
+        short: '立春'
+        full: 'Beginning of Spring'
+      yushui:
+        short: '雨水'
+        full: 'Rain Water'
+      jingzhe:
+        short: '惊蛰'
+        full: 'Awakening of Insects'
+      chunfen:
+        short: '春分'
+        full: 'Spring Equinox'
+      qingming:
+        short: '清明'
+        full: 'Clear and Bright'
+      guyu:
+        short: '谷雨'
+        full: 'Grain Rain'
+      lixia:
+        short: '立夏'
+        full: 'Beginning of Summer'
+      xiaoman:
+        short: '小满'
+        full: 'Lesser Fullness'
+      mangzhong:
+        short: '芒种'
+        full: 'Grain in Ear'
+      xiazhi:
+        short: '夏至'
+        full: 'Summer Solstice'
+      xiaoshu:
+        short: '小暑'
+        full: 'Lesser Heat'
+      dashu:
+        short: '大暑'
+        full: 'Greater Heat'
+      liqiu:
+        short: '立秋'
+        full: 'Beginning of Autumn'
+      chushu:
+        short: '处暑'
+        full: 'End of Heat'
+      bailu:
+        short: '白露'
+        full: 'White Dew'
+      qiufen:
+        short: '秋分'
+        full: 'Autumn Equinox'
+      hanlu:
+        short: '寒露'
+        full: 'Cold Dew'
+      shuangjiang:
+        short: '霜降'
+        full: 'Frost Descent'
+      lidong:
+        short: '立冬'
+        full: 'Beginning of Winter'
+      xiaoxue:
+        short: '小雪'
+        full: 'Lesser Snow'
+      daxue:
+        short: '大雪'
+        full: 'Greater Snow'
+      dongzhi:
+        short: '冬至'
+        full: 'Winter Solstice'
+      xiaohan:
+        short: '小寒'
+        full: 'Lesser Cold'
+      dahan:
+        short: '大寒'
+        full: 'Greater Cold'

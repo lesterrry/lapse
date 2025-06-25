@@ -13,6 +13,12 @@ module LifetimesHelper
 		end
 	end
 
+	def position_label(deg)
+		{
+			style: "margin-left: calc(var(--offset) * cos(#{deg}deg)); margin-top: calc(var(--offset) * sin(#{deg}deg))"
+		}
+	end
+
 	def set_param(*params, current_params: nil)
 		current_params ||= request.query_parameters.dup
 

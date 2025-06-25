@@ -30,7 +30,7 @@ export default class extends Controller {
 			options: {
 				cutout: '70%',
 				animation: { duration: withAnimation ? 1000 : 0 },
-				rotation: -16,
+				rotation: -15,
 
 				plugins: {
 					tooltip: {

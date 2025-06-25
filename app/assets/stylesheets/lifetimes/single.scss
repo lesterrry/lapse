@@ -35,19 +35,19 @@
 		}
 
 		.year-switcher {
-			& {
-				position: absolute;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				width: 50%;
-				height: 50%;
-			}
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 50%;
+			height: 50%;
+			z-index: 10;
+			border-radius: 50%;
 		}
 
 		.labels {
-			--offset: 60%;
+			--offset: 100%;
 
 			& {
 				position: absolute;
@@ -55,31 +55,19 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				z-index: -1;
+				width: 60%;
+				height: 60%;
+				border-radius: 50%;
 			}
 
-			#jan {
+			& > * {
 				position: absolute;
-				margin-left: calc(var(--offset) * cos(270deg));
-  				margin-top: calc(var(--offset) * sin(270deg));
-			}
-
-			#apr {
-				position: absolute;
-				margin-left: calc(var(--offset) * cos(0deg));
-  				margin-top: calc(var(--offset) * sin(0deg));
-			}
-
-			#jul {
-				position: absolute;
-				margin-left: calc(var(--offset) * cos(90deg));
-  				margin-top: calc(var(--offset) * sin(90deg));
-			}
-
-			#oct {
-				position: absolute;
-				margin-left: calc(var(--offset) * cos(180deg));
-  				margin-top: calc(var(--offset) * sin(180deg));
+				color: var(--lightgray);
+				font-weight: 300;
+				font-size: 12px;
+				cursor: default;
+				width: 40px;
+				text-align: center;
 			}
 		}
 	}
@@ -131,11 +119,7 @@
 				margin-top: 28px;
 			}
 
-			& > .shared-button {
-				margin-top: 8px;
-			}
-
-			& > .shared-checkbox {
+			& > .shared-button, & > .shared-dropdown-select, & > .shared-checkbox  {
 				margin-top: 8px;
 			}
 		}
