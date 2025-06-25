@@ -217,6 +217,10 @@
 				div.left, div.right {
 					width: 100%;
 				}
+
+				div.left {
+					z-index: 11;
+				}
 			}
 
 			&.list {

@@ -280,3 +280,90 @@ ru:
         full: 'Малые холода'
       dahan:
         full: 'Большие холода'
+
+      tishrei:
+        full: 'Тишрей'
+      cheshvan:
+        full: 'Хешван'
+      kislev:
+        full: 'Кислев'
+      tevet:
+        full: 'Тевет'
+      shvat:
+        full: 'Шват'
+      adar:
+        full: 'Адар'
+      nissan:
+        full: 'Нисан'
+      iyar:
+        full: 'Ияр'
+      sivan:
+        full: 'Сиван'
+      tammuz:
+        full: 'Тамуз'
+      av:
+        full: 'Ав'
+      elul:
+        full: 'Элул'
+
+      farvardin:
+        full: 'Фарвардин'
+      ordibehesht:
+        full: 'Ордибехешт'
+      khordad:
+        full: 'Хордад'
+      tir:
+        full: 'Тир'
+      mordad:
+        full: 'Мордад'
+      shahrivar:
+        full: 'Шахривар'
+      mehr:
+        full: 'Мехр'
+      aban:
+        full: 'Абан'
+      azar:
+        full: 'Азар'
+      dey:
+        full: 'Дей'
+      bahman:
+        full: 'Бахман'
+      esfand:
+        full: 'Эсфанд'
+
+      chaitra:
+        short: 'चैत्र'
+        full: 'Чайтра'
+      vaisakha:
+        short: 'वैशाख'
+        full: 'Вайшакха'
+      jyaistha:
+        short: 'ज्येष्ठ'
+        full: 'Джьештха'
+      asadha:
+        short: 'आषाढ़'
+        full: 'Ашадха'
+      sravana:
+        short: 'श्रावण'
+        full: 'Шравана'
+      bhadrapada:
+        short: 'भाद्रपद'
+        full: 'Бхадра'
+      asvina:
+        short: 'आश्विन'
+        full: 'Ашвина'
+      kartika:
+        short: 'कार्तिक'
+        full: 'Картика'
+      agrahayana:
+        short: 'अग्रहायण'
+        full: 'Аграхайана'
+      pausa:
+        short: 'पौष'
+        full: 'Пауша'
+      magha:
+        short: 'माघ'
+        full: 'Магха'
+      phalguna:
+        short: 'फाल्गुन'
+        full: 'Пхальгуна'

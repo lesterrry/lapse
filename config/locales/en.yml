@@ -288,3 +288,114 @@ en:
       dahan:
         short: '大寒'
         full: 'Greater Cold'
+
+      tishrei:
+        short: 'תשרי'
+        full: 'Tishrei'
+      cheshvan:
+        short: 'חשון'
+        full: 'Cheshvan'
+      kislev:
+        short: 'כסלו'
+        full: 'Kislev'
+      tevet:
+        short: 'טבת'
+        full: 'Tevet'
+      shvat:
+        short: 'שבט'
+        full: 'Shvat'
+      adar:
+        short: 'אדר'
+        full: 'Adar'
+      nissan:
+        short: 'ניסן'
+        full: 'Nissan'
+      iyar:
+        short: 'אייר'
+        full: 'Iyar'
+      sivan:
+        short: 'סיון'
+        full: 'Sivan'
+      tammuz:
+        short: 'תמוז'
+        full: 'Tammuz'
+      av:
+        short: 'אב'
+        full: 'Av'
+      elul:
+        short: 'אלול'
+        full: 'Elul'
+
+      farvardin:
+        short: 'فروردین'
+        full: 'Farvardin'
+      ordibehesht:
+        short: 'اردیبهشت'
+        full: 'Ordibehesht'
+      khordad:
+        short: 'خرداد'
+        full: 'Khordad'
+      tir:
+        short: 'تیر'
+        full: 'Tir'
+      mordad:
+        short: 'مرداد'
+        full: 'Mordad'
+      shahrivar:
+        short: 'شهریور'
+        full: 'Shahrivar'
+      mehr:
+        short: 'مهر'
+        full: 'Mehr'
+      aban:
+        short: 'آبان'
+        full: 'Aban'
+      azar:
+        short: 'آذر'
+        full: 'Azar'
+      dey:
+        short: 'دی'
+        full: 'Dey'
+      bahman:
+        short: 'بهمن'
+        full: 'Bahman'
+      esfand:
+        short: 'اسفند'
+        full: 'Esfand'
+
+      chaitra:
+        short: 'चैत्र'
+        full: 'Chaitra'
+      vaisakha:
+        short: 'वैशाख'
+        full: 'Vaisakha'
+      jyaistha:
+        short: 'ज्येष्ठ'
+        full: 'Jyaistha'
+      asadha:
+        short: 'आषाढ़'
+        full: 'Asadha'
+      sravana:
+        short: 'श्रावण'
+        full: 'Sravana'
+      bhadrapada:
+        short: 'भाद्रपद'
+        full: 'Bhadrapada'
+      asvina:
+        short: 'आश्विन'
+        full: 'Asvina'
+      kartika:
+        short: 'कार्तिक'
+        full: 'Kartika'
+      agrahayana:
+        short: 'अग्रहायण'
+        full: 'Agrahayana'
+      pausa:
+        short: 'पौष'
+        full: 'Pausa'
+      magha:
+        short: 'माघ'
+        full: 'Magha'
+      phalguna:
+        short: 'फाल्गुन'
+        full: 'Phalguna'
