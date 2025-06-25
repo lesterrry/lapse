@@ -5,7 +5,6 @@
         min-height: 340px;
         max-height: 540px;
         aspect-ratio: 1 / 1;
-        overflow-x: hidden;
         z-index: -1;
     }
 
@@ -13,72 +12,74 @@
         width: 100%;
         height: 100%;
     }
+
+    @media all and (max-width: 800px) {
+        & {
+            height: 370px;
+        }
+    }
 }
 
 .shared-lapse.profile-heading {
+    & {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: unset;
+    }
+
+    & > div.content {
         & {
+            position: absolute;
+            border-radius: 50%;
+            outline: 1px solid var(--lightblue);
+            outline-offset: -1px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow-x: visible;
-            z-index: unset;
         }
 
-        & > div.content {
+        img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 1px solid var(--white);
+        }
+
+        .content {
             & {
                 position: absolute;
-                border-radius: 50%;
-                outline: 1px solid var(--lightblue);
-                outline-offset: -1px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                margin-top: 340px;
             }
 
-            img {
-                width: 160px;
-                height: 160px;
-                border-radius: 50%;
-                border: 1px solid var(--white);
+            & > .shared-bullet-list {
+                margin-top: 8px;
             }
 
-            .content {
-                & {
-                    position: absolute;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    margin-top: 340px;
-                }
-
-                & > .shared-bullet-list {
-                    margin-top: 8px;
-                }
-
-                .main-action {
-                    margin-top: 26px;
-                }
-            }
-        }
-
-        & > div.fill {
-            position: absolute;
-            border-radius: 50%;
-            background-color: var(--black);
-            width: 560px;
-            height: 560px;
-            z-index: -1;
-        }
-
-        @media all and (max-width: 800px) {
-            & {
-                overflow: hidden;
-            }
-
-            & > div.fill {
-                display: none;
+            .main-action {
+                margin-top: 26px;
             }
         }
     }
+
+    & > div.fill {
+        position: absolute;
+        border-radius: 50%;
+        background-color: var(--black);
+        width: 560px;
+        height: 560px;
+        z-index: -1;
+    }
+
+    @media all and (max-width: 800px) {
+        & > div.fill {
+            display: none;
+        }
+    }
+}
+

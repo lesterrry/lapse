@@ -1,4 +1,8 @@
 .profiles-single {
+    .info-block {
+        overflow-x: visible;
+    }
+
     .followers-block {
         display: flex;
         flex-direction: column;
@@ -9,14 +13,13 @@
     @media all and (max-width: 800px) {
         .info-block {
             & {
-                overflow-x: hidden;
+                // overflow-x: hidden;
             }
 
             * {
                 color: var(--black) !important;
                 -webkit-text-stroke-color: var(--black) !important;
                 border-color: var(--black) !important;
-
             }
         }
     }

@@ -1,6 +1,8 @@
 .lifetimes-new {
     & > form {
         position: relative;
+        height: 100vh;
+        justify-content: unset !important;
     }
 
     .shared-points {

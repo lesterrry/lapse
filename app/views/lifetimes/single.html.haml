@@ -43,11 +43,11 @@
 			= render partial: 'lifetimes/save_button'
 			= render partial: 'lifetimes/likes'
 
-	- if @editable || @owned
+	- if @owned && @editable
 		%div.actions-block
-			- if @editable
-				= shared 'button', { text: t('lifetimes.single.delete'), link: single_lifetime_url, method: :delete, size: 'xs', color: 'red' }
+			= shared 'button', { text: t('lifetimes.single.delete'), link: single_lifetime_url, method: :delete, size: 'xs', color: 'red' }
 
-	%div.comments-block
-		%h1.text-l.stroke.heading= t('lifetimes.single.comments_heading')
-		= render partial: 'lifetimes/comments'
+	- unless @editable
+		%div.comments-block
+			%h1.text-l.stroke.heading= t('lifetimes.single.comments_heading')
+			= render partial: 'lifetimes/comments'
