@@ -9,10 +9,18 @@ class LifetimeDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    comments: Field::HasMany,
     description: Field::String,
+    finish_point: Field::String,
+    likes: Field::HasMany,
+    liking_users: Field::HasMany,
     periods: Field::HasMany,
+    private: Field::Boolean,
+    savings: Field::HasMany,
+    start_point: Field::String,
     title: Field::String,
     user: Field::BelongsTo,
+    view_count: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -24,19 +32,27 @@ class LifetimeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    comments
     description
-    periods
-    title
+    finish_point
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    comments
     description
+    finish_point
+    likes
+    liking_users
     periods
+    private
+    savings
+    start_point
     title
     user
+    view_count
     created_at
     updated_at
   ].freeze
@@ -45,10 +61,18 @@ class LifetimeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    comments
     description
+    finish_point
+    likes
+    liking_users
     periods
+    private
+    savings
+    start_point
     title
     user
+    view_count
   ].freeze
 
   # COLLECTION_FILTERS

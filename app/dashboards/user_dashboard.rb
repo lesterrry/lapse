@@ -9,15 +9,26 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    active_followings: Field::HasMany,
+    comments: Field::HasMany,
     email: Field::String,
     encrypted_password: Field::String,
     first_name: Field::String,
+    followers: Field::HasMany,
+    followings: Field::HasMany,
     is_admin: Field::Boolean,
     last_name: Field::String,
     lifetimes: Field::HasMany,
+    liked_lifetimes: Field::HasMany,
+    likes: Field::HasMany,
+    passive_followings: Field::HasMany,
     passkeys: Field::HasMany,
+    profile_picture_attachment: Field::HasOne,
+    profile_picture_blob: Field::HasOne,
     remember_created_at: Field::DateTime,
     remember_token: Field::String,
+    saved_lifetimes: Field::HasMany,
+    savings: Field::HasMany,
     username: Field::String,
     webauthn_id: Field::String,
     created_at: Field::DateTime,
@@ -31,24 +42,35 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    active_followings
+    comments
     email
-    encrypted_password
-    first_name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    active_followings
+    comments
     email
     encrypted_password
     first_name
+    followers
+    followings
     is_admin
     last_name
     lifetimes
+    liked_lifetimes
+    likes
+    passive_followings
     passkeys
+    profile_picture_attachment
+    profile_picture_blob
     remember_created_at
     remember_token
+    saved_lifetimes
+    savings
     username
     webauthn_id
     created_at
@@ -59,15 +81,26 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    active_followings
+    comments
     email
     encrypted_password
     first_name
+    followers
+    followings
     is_admin
     last_name
     lifetimes
+    liked_lifetimes
+    likes
+    passive_followings
     passkeys
+    profile_picture_attachment
+    profile_picture_blob
     remember_created_at
     remember_token
+    saved_lifetimes
+    savings
     username
     webauthn_id
   ].freeze

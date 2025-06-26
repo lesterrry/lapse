@@ -13,6 +13,8 @@ class PeriodDashboard < Administrate::BaseDashboard
     description: Field::Text,
     end: Field::DateTime,
     lifetime: Field::BelongsTo,
+    photos_attachments: Field::HasMany,
+    photos_blobs: Field::HasMany,
     start: Field::DateTime,
     title: Field::Text,
     created_at: Field::DateTime,
@@ -39,6 +41,8 @@ class PeriodDashboard < Administrate::BaseDashboard
     description
     end
     lifetime
+    photos_attachments
+    photos_blobs
     start
     title
     created_at
@@ -53,6 +57,8 @@ class PeriodDashboard < Administrate::BaseDashboard
     description
     end
     lifetime
+    photos_attachments
+    photos_blobs
     start
     title
   ].freeze
