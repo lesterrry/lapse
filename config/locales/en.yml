@@ -70,7 +70,7 @@ en:
       description_placeholder: 'Description'
       make_private: 'Make private'
       make_public: 'Make public'
-      by_year_tab: 'By year'
+      by_year_tab: 'Year view'
       list_tab: 'List view'
       save_changes: 'Save changes'
       edit: 'Edit'
