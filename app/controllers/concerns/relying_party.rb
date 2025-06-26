@@ -5,7 +5,7 @@ module RelyingParty
 		WebAuthn::RelyingParty.new(
 			# This value needs to match `window.location.origin` evaluated by
 			# the User Agent during registration and authentication ceremonies.
-			origin: 'https://devise-passkeys.test',
+			origin: 'https://lapse.aydar.media',
 
 			# Relying Party name for display purposes
 			name: 'lapse'
