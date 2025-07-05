@@ -78,8 +78,20 @@
 	}
 
 	&.textonly {
-		outline: none !important;
-		background-color: initial !important;
+		& {
+			outline: none !important;
+			background-color: initial !important;
+		}
+
+		&.black > p {
+			& {
+				color: var(--black);
+			}
+
+			&.stroke {
+				-webkit-text-stroke-color: var(--black);
+			}
+		}
 	}
 
 	& > p {

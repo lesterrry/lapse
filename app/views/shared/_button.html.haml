@@ -12,6 +12,8 @@
 - selected ||= false
 
 - method ||= nil
+- form_submit_param ||= nil
+- form_submit_param_value ||= nil
 
 - tag = link ? 'a' : 'button'
 - final_class = cn('shared-button', size, html_class, color, hollow ? 'hollow' : nil, textonly ? 'textonly' : nil, selected ? 'selected' : nil)
@@ -20,5 +22,5 @@
 	= button_to link, method: method, class: final_class, form: { data: { turbo_confirm: no_confirm ? nil : 'Вы уверены?', turbo_frame: top ? '_top' : nil }, id: "#{method}-form" } do
 		%p.stroke{class: "text-#{size}"}= text
 - else
-	= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, data: { turbo_action: advance ? 'advance' : nil, turbo_prefetch: no_preload ? 'false' : nil, turbo_frame: top ? '_top' : nil }, class: final_class } do
+	= content_tag tag, { href: link, type: defined?(form) ? 'submit' : nil, name: form_submit_param, value: form_submit_param_value || 'true', data: { turbo_action: advance ? 'advance' : nil, turbo_prefetch: no_preload ? 'false' : nil, turbo_frame: top ? '_top' : nil }, class: final_class } do
 		%p.stroke{class: "text-#{size}"}= text

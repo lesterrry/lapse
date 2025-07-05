@@ -20,4 +20,4 @@
 		- if enabled
 			= shared 'file_button', { label: :photos, fields:, selected: !period.photos.empty?, multiple: true, delete_param: 'delete-period-photo', id: period.id, html_class: 'file-button' }
 			= fields.color_field(:color_hex, value: period.color_hex || '#6290C8', 'data-action': change_action, 'data-id': 'color_hex')
-			= shared 'button', { text: t('shared.period.delete_button'), link: set_param('delete-period', period.id), advance: true, no_preload: true, size: 'xs', color: 'red', hollow: true, html_class: 'delete-button' }
+			= shared 'button', { text: t('shared.period.delete_button'), advance: true, no_preload: true, form_submit_param: 'delete-period', form_submit_param_value: period.id, size: 'xs', color: 'red', hollow: true, html_class: 'delete-button' }

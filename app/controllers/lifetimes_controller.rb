@@ -65,8 +65,6 @@ class LifetimesController < ApplicationController
 				%i[april may june july august september october november december january february march]
 			end
 
-		new_period = params[:new] == '1'
-		delete_period = params['delete-period']
 		delete_period_photo = params['delete-period-photo']
 		year = params[:year].to_i
 
@@ -91,20 +89,7 @@ class LifetimesController < ApplicationController
 				@lifetime.periods
 			end
 
-		if new_period
-			raise ActiveRecord::RecordInvalid unless @owned
-
-			@lifetime.periods.create({ title: '', description: '', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
-			redirect_to set_param(['edit', 1], ['new', nil], current_params: request.query_parameters)
-		elsif delete_period
-			period = @lifetime.periods.find(delete_period)
-
-			raise ActiveRecord::RecordInvalid unless @owned
-
-			period.destroy
-
-			redirect_to set_param(['edit', 1], ['delete-period', nil], current_params: request.query_parameters)
-		elsif delete_period_photo
+		if delete_period_photo
 			period = @lifetime.periods.find(delete_period_photo)
 
 			raise ActiveRecord::RecordInvalid unless @owned
@@ -117,13 +102,28 @@ class LifetimesController < ApplicationController
 
 	def update_single
 		@lifetime = Lifetime.find(params[:id])
+		@selected_year = params[:year] ? params[:year].to_i : Time.now.year
 
 		raise ActiveRecord::RecordInvalid unless @lifetime.user == current_user
 
 		view_mode = params[:lifetime][:view_mode].dup
+		new_period = params['new-period']
+		delete_period = params['delete-period']
 
 		if @lifetime.update(lifetime_params)
-			redirect_to action: :single, year: params[:year], 'view-mode': view_mode
+			if new_period
+				@lifetime.periods.create({ title: '', description: '', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
+
+				redirect_to set_param(['edit', 1], current_params: request.query_parameters)
+			elsif delete_period
+				period = @lifetime.periods.find(delete_period)
+
+				period.destroy
+
+				redirect_to set_param(['edit', 1], current_params: request.query_parameters)
+			else
+				redirect_to action: :single, year: params[:year], 'view-mode': view_mode
+			end
 		else
 			flash[:alert] = extract_errors(@lifetime)
 			redirect_to action: :single, year: params[:year], 'view-mode': view_mode, 'edit': 1
