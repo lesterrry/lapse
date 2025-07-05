@@ -47,7 +47,7 @@
 
 	- if @owned && @editable
 		%div.actions-block
-			= shared 'button', { text: t('lifetimes.single.delete'), link: single_lifetime_url, method: :delete, size: 'xs', color: 'red' }
+			= shared 'button', { text: t('lifetimes.single.delete'), link: single_lifetime_url, top: true, method: :delete, size: 'xs', color: 'red' }
 
 	- unless @editable
 		%div.comments-block
