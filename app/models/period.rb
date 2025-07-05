@@ -1,4 +1,6 @@
 class Period < ApplicationRecord
+  include ImageCompressible
+
   belongs_to :lifetime
 
   has_many_attached :photos

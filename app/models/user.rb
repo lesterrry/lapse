@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     include ApplicationHelper
+    include ImageCompressible
 
     validates_uniqueness_of :username, allow_nil: true
 

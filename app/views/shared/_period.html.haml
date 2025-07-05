@@ -11,7 +11,7 @@
 			= shared 'editable_text', { tag: 'p', html_class: 'multiline', id: 'description', text: period.description, placeholder: t('shared.period.description_placeholder'), enabled:, form_field: :description, form: fields, custom_actions: blur_action, data: { 'period-trigger': 'description' } }
 		%p #{date_start} → #{date_end}
 
-		- period.photos.each do |photo|
+		- period.compressed_images(:photos).each do |photo|
 			-# No need for 'image' helper here as 'photo' is not a string
 			= image_tag photo
 		

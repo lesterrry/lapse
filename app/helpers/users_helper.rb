@@ -13,9 +13,13 @@ module UsersHelper
         end
     end
 
-    def some_user_profile_picture(user)
+    def some_user_profile_picture(user, thumbnail: false)
         if user.profile_picture.attached?
-            image_tag user.profile_picture
+            if thumbnail
+                image_tag user.thumbnail_image(:profile_picture)
+            else
+                image_tag user.compressed_image(:profile_picture)
+            end
         else
             image 'profile_mock.webp'
         end

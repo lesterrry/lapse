@@ -1,33 +1,36 @@
 class Lifetime < ApplicationRecord
-	belongs_to :user
+  include ImageCompressible
 
-	validates :title, presence: true
+  belongs_to :user
 
-	has_many :periods, dependent: :destroy
-	accepts_nested_attributes_for :periods, allow_destroy: true, reject_if: :all_blank
+  validates :title, presence: true
 
-	has_many :comments, dependent: :destroy
-	has_many :likes, dependent: :destroy
-	has_many :liking_users, through: :likes, source: :user
-	has_many :savings, dependent: :destroy
+  has_many :periods, dependent: :destroy
+  accepts_nested_attributes_for :periods, allow_destroy: true, reject_if: :all_blank
 
-	def saved_by?(user)
-		savings.exists?(user_id: user&.id)
-	end
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
+  has_many :savings, dependent: :destroy
 
-	def liked_by?(user)
-		likes.exists?(user_id: user&.id)
-	end
+  def saved_by?(user)
+    savings.exists?(user_id: user&.id)
+  end
 
-	def like_count
-		likes.count
-	end
+  def liked_by?(user)
+    likes.exists?(user_id: user&.id)
+  end
 
-	def all_photos
-		periods.includes(photos_attachments: :blob).flat_map(&:photos)
-	end
+  def like_count
+    likes.count
+  end
 
-	def increment_view_count!
-		increment!(:view_count)
-	end
+  def all_photos
+    photos = periods.includes(photos_attachments: :blob).flat_map(&:photos)
+    compressed_collection(photos)
+  end
+
+  def increment_view_count!
+    increment!(:view_count)
+  end
 end
