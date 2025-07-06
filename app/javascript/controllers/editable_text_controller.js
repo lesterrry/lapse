@@ -60,4 +60,11 @@ export default class extends Controller {
 			event.currentTarget.classList.remove('empty');
 		}
 	}
+
+	handlePaste(event) {
+		event.preventDefault();
+
+		const text = (event.clipboardData || window.clipboardData).getData('text/plain');
+		document.execCommand('insertText', false, text);
+	}
 }
