@@ -6,26 +6,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   include RelyingParty
 
   def new
-    super do
-      @passkey_mode = params[:passkey] == '1'
-      @hide_footer = true
-    end
+    flash[:notice] = 'New user registrations are temporarily disabled.'
+    redirect_to root_path
   end
 
   def create
-    build_resource(sign_up_params)
-
-    resource.save
-
-    if resource.persisted?
-      create_passkey_for_resource(resource:)
-      sign_up(resource_name, resource)
-      respond_with resource, location: after_sign_up_path_for(resource)
-    else
-      flash[:error] = extract_errors(resource)
-
-      redirect_to action: :new
-    end
+    flash[:notice] = 'New user registrations are temporarily disabled.'
+    redirect_to root_path
   end
 
   def after_update_path_for(_resource)
