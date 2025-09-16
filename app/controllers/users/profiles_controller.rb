@@ -19,7 +19,21 @@ class Users::ProfilesController < ApplicationController
     def single
         @user = User.find(params[:id])
 
+        # If user has a username, redirect to username-based route
+        if @user.username.present?
+            redirect_to single_profile_by_username_path(@user.username), status: :moved_permanently
+            return
+        end
+
         @lifetimes = @user.lifetimes
+    end
+
+    def single_by_username
+        @user = User.find_by!(username: params[:username])
+
+        @lifetimes = @user.lifetimes
+
+        render :single
     end
 
     def followers

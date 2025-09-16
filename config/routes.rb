@@ -77,10 +77,11 @@ Rails.application.routes.draw do
 				end
 			end
 
-			get ':id', to: 'profiles#single', as: :single_profile
+			get ':id', to: 'profiles#single', as: :single_profile, constraints: { id: /\d+/ }
+			get ':username', to: 'profiles#single_by_username', as: :single_profile_by_username
+			patch ':id', to: 'profiles#update_single', as: :update_single_profile
 			get ':id/followers', to: 'profiles#followers', as: :user_followers
 			get ':id/followings', to: 'profiles#followings', as: :user_followings
-			patch ':id', to: 'profiles#update_single', as: :update_single_profile
 		end
 	end
 end

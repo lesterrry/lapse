@@ -2,7 +2,7 @@ class User < ApplicationRecord
     include ApplicationHelper
     include ImageCompressible
 
-    validates_uniqueness_of :username, allow_nil: true
+    validates :username, uniqueness: true, format: { with: /\A[a-z0-9_]+\z/, message: 'can only contain lowercase letters, numbers, and underscores' }, length: { in: 3..10, message: 'must be between 3 and 10 characters' }, allow_nil: true
 
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 

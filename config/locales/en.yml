@@ -170,7 +170,7 @@ en:
     failure:
       unauthenticated: false
       invalid: 'Password incorrect'
-      not_found_in_database: 'Username not found'
+      not_found_in_database: 'User not found'
       stored_credential_not_found: 'Passkey not found'
 
   activerecord:
