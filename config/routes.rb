@@ -13,27 +13,25 @@ Rails.application.routes.draw do
 		root to: 'users#index'
 	end
 
-	# get '/featured', to: 'lifetimes#featured'
+	# namespace :api do
+	# 	get '/lifetimes/', to: 'lifetimes#index'
+	# 	get '/lifetimes/:id/', to: 'lifetimes#single'
+	# 	patch '/lifetimes/:id/', to: 'lifetimes#update_single'
+	# 	post '/lifetimes/:lifetime_id/comments', to: 'comments#create'
+	# 	post '/lifetimes/:lifetime_id/like', to: 'likes#create'
+	# 	delete '/lifetimes/:lifetime_id/like', to: 'likes#destroy'
 
-	namespace :api do
-		get '/lifetimes/', to: 'lifetimes#index'
-		get '/lifetimes/:id/', to: 'lifetimes#single'
-		patch '/lifetimes/:id/', to: 'lifetimes#update_single'
-		post '/lifetimes/:lifetime_id/comments', to: 'comments#create'
-		post '/lifetimes/:lifetime_id/like', to: 'likes#create'
-		delete '/lifetimes/:lifetime_id/like', to: 'likes#destroy'
+	# 	delete '/comments/:id', to: 'comments#destroy'
 
-		delete '/comments/:id', to: 'comments#destroy'
+	# 	post '/login', to: 'users#login'
+	# 	post '/signup', to: 'users#signup'
 
-		post '/login', to: 'users#login'
-		post '/signup', to: 'users#signup'
+	# 	get '/users/', to: 'users#index'
+	# 	get '/users/:id/lifetimes', to: 'users#lifetimes'
+	# 	get '/users/:id/', to: 'users#single'
 
-		get '/users/', to: 'users#index'
-		get '/users/:id/lifetimes', to: 'users#lifetimes'
-		get '/users/:id/', to: 'users#single'
-
-		post '/subscribe', to: 'subscriptions#create'
-	end
+	# 	post '/subscribe', to: 'subscriptions#create'
+	# end
 
 	get '/lifetimes/new', to: 'lifetimes#new', as: :new_lifetime
 	get '/saved', to: 'savings#index', as: :saved_lifetimes
