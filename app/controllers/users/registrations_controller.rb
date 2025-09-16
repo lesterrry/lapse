@@ -5,14 +5,39 @@ class Users::RegistrationsController < Devise::RegistrationsController
   include Devise::Passkeys::Controllers::RegistrationsControllerConcern
   include RelyingParty
 
+  REGISTRATIONS_DISABLED = false
+
   def new
-    flash[:notice] = 'New user registrations are temporarily disabled.'
-    redirect_to root_path
+    if REGISTRATIONS_DISABLED
+      flash[:notice] = 'New user registrations are temporarily disabled.'
+      redirect_to root_path
+    else
+      super do
+        @passkey_mode = params[:passkey] == '1'
+        @hide_footer = true
+      end
+    end
   end
 
   def create
-    flash[:notice] = 'New user registrations are temporarily disabled.'
-    redirect_to root_path
+    if REGISTRATIONS_DISABLED
+      flash[:notice] = 'New user registrations are temporarily disabled.'
+      redirect_to root_path
+    else
+      build_resource(sign_up_params)
+
+      resource.save
+
+      if resource.persisted?
+        create_passkey_for_resource(resource:)
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        flash[:error] = extract_errors(resource)
+
+        redirect_to action: :new
+      end
+    end
   end
 
   def after_update_path_for(_resource)
