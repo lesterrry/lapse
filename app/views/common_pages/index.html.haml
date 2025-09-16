@@ -29,15 +29,15 @@
         %div.graphics
             = image 'lapse_year.svg'
 
-    %div.subscription-block
-        %h1.text-l.stroke.white.heading= t('.subscription_block.heading')
-        = shared 'subscription'
+    -# %div.subscription-block
+    -#     %h1.text-l.stroke.white.heading= t('.subscription_block.heading')
+    -#     = shared 'subscription'
 
-    - unless @top_users.empty?
-        %div.authors-block
-            %h1.text-l.stroke.heading= t('.authors_block.heading')
-            %div
-                - @top_users.each do |i|
-                    = shared 'profile_card', { user: i }
-            = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
+    -# - unless @top_users.empty?
+    -#     %div.authors-block
+    -#         %h1.text-l.stroke.heading= t('.authors_block.heading')
+    -#         %div
+    -#             - @top_users.each do |i|
+    -#                 = shared 'profile_card', { user: i }
+    -#         = shared 'footnote', { text: t('.popular_block.footnote'), link: '' }
 

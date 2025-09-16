@@ -21,7 +21,7 @@ class Users::ProfilesController < ApplicationController
 
         # If user has a username, redirect to username-based route
         if @user.username.present?
-            redirect_to single_profile_by_username_path(@user.username), status: :moved_permanently
+            redirect_to users_single_profile_by_username_path(@user.username)
             return
         end
 
