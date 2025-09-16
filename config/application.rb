@@ -12,7 +12,7 @@ module Lifetracer
     config.load_defaults 7.0
 
     config.i18n.available_locales = %i[en ru]
-    config.i18n.default_locale = :ru
+    config.i18n.default_locale = :en
 
     config.assets.paths << Rails.root.join('node_modules')
 
