@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
+module Users
+  class SessionsController < Devise::SessionsController
     include Devise::Passkeys::Controllers::SessionsControllerConcern
     include RelyingParty
 
@@ -13,4 +14,5 @@ class Users::SessionsController < Devise::SessionsController
             @hide_footer = true
         end
     end
+  end
 end

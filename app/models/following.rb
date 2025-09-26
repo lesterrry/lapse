@@ -10,8 +10,8 @@ class Following < ApplicationRecord
   private
 
   def cannot_follow_self
-    if follower_id == followed_id
-      errors.add(:base, 'You cannot subscribe to yourself')
-    end
+    return unless follower_id == followed_id
+
+    errors.add(:base, 'You cannot subscribe to yourself')
   end
 end

@@ -6,38 +6,38 @@ namespace :active_storage do
     # Process user profile pictures
     puts 'Processing user profile pictures...'
     User.all.each do |user|
-      if user.profile_picture.attached? && user.profile_picture.content_type.start_with?('image/')
-        begin
-          # Create web-optimized variant
-          user.compressed_image(:profile_picture)
-          # Create thumbnail variant
-          user.thumbnail_image(:profile_picture)
-          print '.'
-        rescue => e
-          puts "\nError processing profile picture for user #{user.id}: #{e.message}"
-        end
+      next unless user.profile_picture.attached? && user.profile_picture.content_type.start_with?('image/')
+
+      begin
+        # Create web-optimized variant
+        user.compressed_image(:profile_picture)
+        # Create thumbnail variant
+        user.thumbnail_image(:profile_picture)
+        print '.'
+      rescue StandardError => e
+        puts "\nError processing profile picture for user #{user.id}: #{e.message}"
       end
     end
 
     # Process period photos
     puts "\nProcessing period photos..."
     Period.all.each do |period|
-      if period.photos.attached?
-        period.photos.each do |photo|
-          if photo.content_type.start_with?('image/')
-            begin
-              # Create web-optimized variant
-              photo.variant(
-                format: 'webp',
-                saver: { quality: 80, strip: true },
-                resize_to_limit: [1920, 1080]
-              ).processed
+      next unless period.photos.attached?
 
-              print '.'
-            rescue => e
-              puts "\nError processing photo #{photo.id} for period #{period.id}: #{e.message}"
-            end
-          end
+      period.photos.each do |photo|
+        next unless photo.content_type.start_with?('image/')
+
+        begin
+          # Create web-optimized variant
+          photo.variant(
+            format: 'webp',
+            saver: { quality: 80, strip: true },
+            resize_to_limit: [1920, 1080]
+          ).processed
+
+          print '.'
+        rescue StandardError => e
+          puts "\nError processing photo #{photo.id} for period #{period.id}: #{e.message}"
         end
       end
     end

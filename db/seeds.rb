@@ -9,9 +9,9 @@ user = User.create(username: 'lesterrry') do |u|
 	u.is_admin = true
 end
 
-Lifetime.create(title: 'Мемуары лил пипа', description: "isn't life beautiful", user: user)
+Lifetime.create(title: 'Мемуары лил пипа', description: "isn't life beautiful", user:)
 
-lifetime = Lifetime.create(title: 'Эры Тейлор Свифт', description: '(taylor\'s version)', user: user) do |lifetime|
+new_lifetime = Lifetime.create(title: 'Эры Тейлор Свифт', description: '(taylor\'s version)', user:) do |lifetime|
 	Period.create(title: 'Taylor Swift', description: 'First studio album', start: DateTime.parse('2006-10-24 00:00:00'), end: DateTime.parse('2007-11-10 23:59:59'), lifetime:)
 
 	Period.create(title: 'Fearless', description: 'Second studio album', start: DateTime.parse('2008-11-11 00:00:00'), end: DateTime.parse('2010-01-01 00:00:00'), lifetime:)
@@ -31,4 +31,4 @@ lifetime = Lifetime.create(title: 'Эры Тейлор Свифт', description:
 	Period.create(title: 'Fearless (Taylor\'s Version)', description: 'First re-recorded album', start: DateTime.parse('2021-04-09 00:00:00'), end: DateTime.parse('2022-07-11 23:59:59'), lifetime:)
 end
 
-p lifetime
+p new_lifetime

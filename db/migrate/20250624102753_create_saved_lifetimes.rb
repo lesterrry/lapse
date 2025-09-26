@@ -6,7 +6,7 @@ class CreateSavedLifetimes < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    
-    add_index :saved_lifetimes, [:user_id, :lifetime_id], unique: true
+
+    add_index :saved_lifetimes, %i[user_id lifetime_id], unique: true
   end
 end

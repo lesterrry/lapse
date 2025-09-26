@@ -1,4 +1,5 @@
-class Users::ProfilesController < ApplicationController
+module Users
+  class ProfilesController < ApplicationController
     include ApplicationHelper
 
     before_action :authenticate_user!, except: %i[single]
@@ -17,10 +18,10 @@ class Users::ProfilesController < ApplicationController
         set_lifetimes
 
         # If user has a username, redirect to username-based route
-        if @user.username.present?
-            redirect_to users_single_profile_by_username_path(@user.username)
-            return
-        end
+        return unless @user.username.present?
+
+        redirect_to users_single_profile_by_username_path(@user.username)
+        nil
     end
 
     def single_by_username
@@ -73,10 +74,11 @@ class Users::ProfilesController < ApplicationController
 
     def set_lifetimes
         @lifetimes =
-            if @user == current_user
-                @user.lifetimes
-            else
-                @user.lifetimes.where(private: false)
-            end
+          if @user == current_user
+              @user.lifetimes
+          else
+              @user.lifetimes.where(private: false)
+          end
     end
+  end
 end

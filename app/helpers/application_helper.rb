@@ -24,7 +24,11 @@ module ApplicationHelper
     end
 
     def notification
-        devise_error = devise_error_messages! rescue nil
+        devise_error = begin
+                         devise_error_messages!
+        rescue StandardError
+                         nil
+        end
 
         some_alert = (flash[:notice] || flash[:alert] || flash[:error] || devise_error).to_s
         color = (flash[:alert] || flash[:error]) && 'red'

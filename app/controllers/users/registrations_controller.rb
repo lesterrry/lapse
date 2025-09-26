@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Users::RegistrationsController < Devise::RegistrationsController
+module Users
+  class RegistrationsController < Devise::RegistrationsController
   include ApplicationHelper
   include Devise::Passkeys::Controllers::RegistrationsControllerConcern
   include RelyingParty
@@ -73,5 +74,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   rescue ::WebAuthn::Error => e
     error_key = Warden::WebAuthn::ErrorKeyFinder.webauthn_error_key(exception: e)
     render json: { message: find_message(error_key) }, status: :bad_request
+  end
   end
 end

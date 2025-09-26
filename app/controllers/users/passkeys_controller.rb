@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Users::PasskeysController < DeviseController
+module Users
+  class PasskeysController < DeviseController
   include Devise::Passkeys::Controllers::PasskeysControllerConcern
   include RelyingParty
 
@@ -13,5 +14,6 @@ class Users::PasskeysController < DeviseController
 
   def set_relying_party_in_request_env
     request.env[relying_party_key] = relying_party
+  end
   end
 end

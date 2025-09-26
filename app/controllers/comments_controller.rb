@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
         redirect_to single_lifetime_url(@lifetime)
     end
 
-    private
+  private
 
     def set_lifetime
         @lifetime = Lifetime.find(params[:lifetime_id])

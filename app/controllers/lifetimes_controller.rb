@@ -53,30 +53,30 @@ class LifetimesController < ApplicationController
 		@editable = !params[:edit].nil? && @owned
 		@view_mode = params['view-mode']&.to_sym || :donut
 		@calendar =
-			case params['cal']
-			when 'c' # китайский
-				%i[qingming guyu lixia xiaoman mangzhong xiazhi xiaoshu dashu liqiu chushu bailu qiufen hanlu shuangjiang lidong xiaoxue daxue dongzhi xiaohan dahan lichun yushui jingzhe chunfen]
-			when 'j' # еврейский
-				%i[nissan iyar sivan tammuz av elul tishrei cheshvan kislev tevet shvat adar]
-			when 'p' # персидский
-				%i[farvardin ordibehesht khordad tir mordad shahrivar mehr aban azar dey bahman esfand]
-			when 'i' # индийский
-				%i[vaisakha jyaistha asadha sravana bhadrapada asvina kartika agrahayana pausa magha phalguna chaitra]
-			else # григорианский
-				%i[april may june july august september october november december january february march]
-			end
+			 case params['cal']
+ 			when 'c' # китайский
+ 				%i[qingming guyu lixia xiaoman mangzhong xiazhi xiaoshu dashu liqiu chushu bailu qiufen hanlu shuangjiang lidong xiaoxue daxue dongzhi xiaohan dahan lichun yushui jingzhe chunfen]
+ 			when 'j' # еврейский
+ 				%i[nissan iyar sivan tammuz av elul tishrei cheshvan kislev tevet shvat adar]
+ 			when 'p' # персидский
+ 				%i[farvardin ordibehesht khordad tir mordad shahrivar mehr aban azar dey bahman esfand]
+ 			when 'i' # индийский
+ 				%i[vaisakha jyaistha asadha sravana bhadrapada asvina kartika agrahayana pausa magha phalguna chaitra]
+ 			else # григорианский
+ 				%i[april may june july august september october november december january february march]
+ 			end
 
 		delete_period_photo = params['delete-period-photo']
 		year = params[:year].to_i
 
 		@selected_year =
-			if year && @years.include?(year)
-				year
-			elsif !@years.empty?
-				@years.last
-			else
-				Time.now.year
-			end
+			 if year && @years.include?(year)
+ 				year
+ 			elsif !@years.empty?
+ 				@years.last
+ 			else
+ 				Time.now.year
+ 			end
 
 		index = @years.index(@selected_year) || 0
 
@@ -84,21 +84,21 @@ class LifetimesController < ApplicationController
 		@next_year = @years[index + 1]
 
 		@periods =
-			if @view_mode == :donut
-				periods_of_year(@lifetime.periods, @selected_year)
-			else
-				@lifetime.periods
-			end
+			 if @view_mode == :donut
+ 				periods_of_year(@lifetime.periods, @selected_year)
+ 			else
+ 				@lifetime.periods
+ 			end
 
-		if delete_period_photo
-			period = @lifetime.periods.find(delete_period_photo)
+		return unless delete_period_photo
 
-			raise ActiveRecord::RecordInvalid unless @owned
+		period = @lifetime.periods.find(delete_period_photo)
 
-			period.photos.purge
+		raise ActiveRecord::RecordInvalid unless @owned
 
-			redirect_to set_param(['edit', 1], ['delete-period-photo', nil], current_params: request.query_parameters)
-		end
+		period.photos.purge
+
+		redirect_to set_param(['edit', 1], ['delete-period-photo', nil], current_params: request.query_parameters)
 	end
 
 	def update_single
@@ -131,7 +131,7 @@ class LifetimesController < ApplicationController
 		end
 	end
 
-	private
+	 private
 
 	def can_view_lifetime?(lifetime)
 		!lifetime.private? || lifetime.user == current_user

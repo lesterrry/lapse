@@ -54,12 +54,12 @@ module ImageCompressible
       resize_to_fill: [300, 300]
     )
   end
-  
+
   # Returns web-optimized variants for a collection of attachments
   # For collections that aren't directly attached to the model
   def compressed_collection(attachments)
     return [] if attachments.empty?
-    
+
     attachments.map do |attachment|
       # Only process images
       if attachment.content_type.start_with?('image/')

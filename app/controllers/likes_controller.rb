@@ -18,7 +18,7 @@ class LikesController < ApplicationController
         redirect_back(fallback_location: root_path)
     end
 
-    private
+  private
 
     def set_lifetime
         @lifetime = Lifetime.find(params[:lifetime_id])

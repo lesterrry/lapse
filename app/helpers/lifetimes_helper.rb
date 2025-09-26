@@ -36,6 +36,6 @@ module LifetimesHelper
 			set.call(params[0], params[1])
 		end
 
-		request.path + '?' + current_params.to_query
+		"#{request.path}?#{current_params.to_query}"
 	end
 end
