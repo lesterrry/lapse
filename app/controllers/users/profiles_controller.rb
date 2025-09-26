@@ -6,12 +6,7 @@ class Users::ProfilesController < ApplicationController
     def me
         @user = current_user
 
-        @lifetimes =
-            if @user == current_user
-                @user.lifetimes
-            else
-                @user.lifetimes.where(private: false)
-            end
+        set_lifetimes
 
         render :single
     end
@@ -19,19 +14,19 @@ class Users::ProfilesController < ApplicationController
     def single
         @user = User.find(params[:id])
 
+        set_lifetimes
+
         # If user has a username, redirect to username-based route
         if @user.username.present?
             redirect_to users_single_profile_by_username_path(@user.username)
             return
         end
-
-        @lifetimes = @user.lifetimes
     end
 
     def single_by_username
         @user = User.find_by!(username: params[:username])
 
-        @lifetimes = @user.lifetimes
+        set_lifetimes
 
         render :single
     end
@@ -74,5 +69,14 @@ class Users::ProfilesController < ApplicationController
 
     def profile_params
         params.require(:user).permit(:first_name, :last_name, :username, :profile_picture)
+    end
+
+    def set_lifetimes
+        @lifetimes =
+            if @user == current_user
+                @user.lifetimes
+            else
+                @user.lifetimes.where(private: false)
+            end
     end
 end

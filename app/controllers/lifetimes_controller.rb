@@ -45,10 +45,11 @@ class LifetimesController < ApplicationController
 			redirect_to root_path and return
 		end
 
-		@lifetime.increment_view_count! unless request.headers['HTTP_X_SEC_PURPOSE'] == 'prefetch'
+		@owned = @lifetime.user == current_user
+
+		@lifetime.increment_view_count! if request.headers['HTTP_X_SEC_PURPOSE'] != 'prefetch' && !@owned
 
 		@years = years_from_periods(@lifetime.periods)
-		@owned = @lifetime.user == current_user
 		@editable = !params[:edit].nil? && @owned
 		@view_mode = params['view-mode']&.to_sym || :donut
 		@calendar =
