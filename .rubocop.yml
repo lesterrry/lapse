@@ -1,3 +1,6 @@
+AllCops:
+  NewCops: disable
+    
 Layout/IndentationStyle:
   Enabled: false
 Layout/IndentationWidth:
@@ -14,11 +17,11 @@ Style/NumericLiterals:
   Enabled: false
 Style/AndOr:
   Enabled: false
-Style/RescueModifier:
-  Enabled: false
 Metrics/BlockLength:
   Enabled: false
 Metrics/MethodLength:
+  Enabled: false
+Metrics/ClassLength:
   Enabled: false
 Style/SingleLineMethods:
   Enabled: false
@@ -32,12 +35,9 @@ Metrics/PerceivedComplexity:
   Enabled: false
 Metrics/ModuleLength:
   Enabled: false
+Metrics/ParameterLists:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Layout/AccessModifierIndentation:
-  Enabled: false
-Layout/AssignmentIndentation:
   Enabled: false
