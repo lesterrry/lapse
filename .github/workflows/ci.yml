@@ -39,6 +39,7 @@ jobs:
           script: |
             cd /var/www/lapse
             git pull
+            /home/volchok/.rbenv/shims/bundle install
             /home/volchok/.rbenv/shims/rails db:migrate
             /home/volchok/.rbenv/shims/rails assets:precompile
             sudo service apache2 restart
