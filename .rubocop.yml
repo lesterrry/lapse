@@ -1,3 +1,6 @@
+# TODO
+# plugins: rubocop-rails
+
 AllCops:
   NewCops: disable
     
