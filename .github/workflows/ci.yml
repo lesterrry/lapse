@@ -43,5 +43,6 @@ jobs:
           script: |
             cd /var/www/lapse
             git pull
+            rails db:migrate
             rails assets:precompile
             sudo service apache2 restart

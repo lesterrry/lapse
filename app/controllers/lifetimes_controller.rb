@@ -2,6 +2,8 @@ class LifetimesController < ApplicationController
 	include ApplicationHelper
 	include LifetimesHelper
 
+	before_action :authenticate_user!, only: %i[new create destroy update_single]
+
 	def featured
 		@featured = Lifetime.where(private: false)
 	end
