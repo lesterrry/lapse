@@ -1,168 +1,168 @@
 class LifetimesController < ApplicationController
-	include ApplicationHelper
-	include LifetimesHelper
+  include ApplicationHelper
+  include LifetimesHelper
 
-	before_action :authenticate_user!, only: %i[new create destroy update_single]
+  before_action :authenticate_user!, only: %i[new create destroy update_single]
 
-	def featured
-		@featured = Lifetime.where(visibility: :everyone)
-	end
+  def featured
+    @featured = Lifetime.where(visibility: :everyone)
+  end
 
-	def new
-		@lifetime = Lifetime.new
+  def new
+    @lifetime = Lifetime.new
 
-		@hide_footer = true
-	end
+    @hide_footer = true
+  end
 
-	def create
-		@lifetime = Lifetime.new(lifetime_params)
-		@lifetime.user = current_user
+  def create
+    @lifetime = Lifetime.new(lifetime_params)
+    @lifetime.user = current_user
 
-		if @lifetime.save
-			redirect_to action: :single, id: @lifetime.id, 'view-mode': :list, edit: true
-		else
-			flash[:alert] = extract_errors(@lifetime)
-			redirect_to action: :new
-		end
-	end
+    if @lifetime.save
+      redirect_to action: :single, id: @lifetime.id, 'view-mode': :list, edit: true
+    else
+      flash[:alert] = extract_errors(@lifetime)
+      redirect_to action: :new
+    end
+  end
 
-	def destroy
-		@lifetime = Lifetime.find(params[:id])
+  def destroy
+    @lifetime = Lifetime.find(params[:id])
 
-		@owned = @lifetime.user == current_user
+    @owned = @lifetime.user == current_user
 
-		raise ActiveRecord::RecordInvalid unless @owned
+    raise ActiveRecord::RecordInvalid unless @owned
 
-		@lifetime.destroy
+    @lifetime.destroy
 
-		redirect_to my_profile_path
-	end
+    redirect_to my_profile_path
+  end
 
-	def single
-		@lifetime = Lifetime.find(params[:id])
+  def single
+    @lifetime = Lifetime.find(params[:id])
 
-		unless can_view_lifetime?(@lifetime)
-			flash[:alert] = "You don't have permission to view this lifetime"
+    unless can_view_lifetime?(@lifetime)
+      flash[:alert] = "You don't have permission to view this lifetime"
 
-			redirect_to root_path and return
-		end
+      redirect_to root_path and return
+    end
 
-		@owned = @lifetime.user == current_user
+    @owned = @lifetime.user == current_user
 
-		@lifetime.increment_view_count! if request.headers['HTTP_X_SEC_PURPOSE'] != 'prefetch' && !@owned
+    @lifetime.increment_view_count! if request.headers['HTTP_X_SEC_PURPOSE'] != 'prefetch' && !@owned
 
-		@years = years_from_periods(@lifetime.periods)
-		@editable = !params[:edit].nil? && @owned
-		@view_mode = params['view-mode']&.to_sym || :donut
-		@calendar =
-			 case params['cal']
- 			when 'c' # китайский
- 				%i[qingming guyu lixia xiaoman mangzhong xiazhi xiaoshu dashu liqiu chushu bailu qiufen hanlu shuangjiang lidong xiaoxue daxue dongzhi xiaohan dahan lichun yushui jingzhe chunfen]
- 			when 'j' # еврейский
- 				%i[nissan iyar sivan tammuz av elul tishrei cheshvan kislev tevet shvat adar]
- 			when 'p' # персидский
- 				%i[farvardin ordibehesht khordad tir mordad shahrivar mehr aban azar dey bahman esfand]
- 			when 'i' # индийский
- 				%i[vaisakha jyaistha asadha sravana bhadrapada asvina kartika agrahayana pausa magha phalguna chaitra]
- 			else # григорианский
- 				%i[april may june july august september october november december january february march]
- 			end
+    @years = years_from_periods(@lifetime.periods)
+    @editable = !params[:edit].nil? && @owned
+    @view_mode = params['view-mode']&.to_sym || :donut
+    @calendar =
+      case params['cal']
+      when 'c' # китайский
+        %i[qingming guyu lixia xiaoman mangzhong xiazhi xiaoshu dashu liqiu chushu bailu qiufen hanlu shuangjiang lidong xiaoxue daxue dongzhi xiaohan dahan lichun yushui jingzhe chunfen]
+      when 'j' # еврейский
+        %i[nissan iyar sivan tammuz av elul tishrei cheshvan kislev tevet shvat adar]
+      when 'p' # персидский
+        %i[farvardin ordibehesht khordad tir mordad shahrivar mehr aban azar dey bahman esfand]
+      when 'i' # индийский
+        %i[vaisakha jyaistha asadha sravana bhadrapada asvina kartika agrahayana pausa magha phalguna chaitra]
+      else # григорианский
+        %i[april may june july august september october november december january february march]
+      end
 
-		delete_period_photo = params['delete-period-photo']
-		year = params[:year].to_i
+    delete_period_photo = params['delete-period-photo']
+    year = params[:year].to_i
 
-		@selected_year =
-			 if year && @years.include?(year)
- 				year
- 			elsif !@years.empty?
- 				@years.last
- 			else
- 				Time.now.year
- 			end
+    @selected_year =
+      if year && @years.include?(year)
+        year
+      elsif !@years.empty?
+        @years.last
+      else
+        Time.now.year
+      end
 
-		index = @years.index(@selected_year) || 0
+    index = @years.index(@selected_year) || 0
 
-		@previous_year = index.positive? ? @years[index - 1] : nil
-		@next_year = @years[index + 1]
+    @previous_year = index.positive? ? @years[index - 1] : nil
+    @next_year = @years[index + 1]
 
-		@periods =
-			 if @view_mode == :donut
- 				periods_of_year(@lifetime.periods, @selected_year)
- 			else
- 				@lifetime.periods
- 			end
+    @periods =
+      if @view_mode == :donut
+        periods_of_year(@lifetime.periods, @selected_year)
+      else
+        @lifetime.periods
+      end
 
-		return unless delete_period_photo
+    return unless delete_period_photo
 
-		period = @lifetime.periods.find(delete_period_photo)
+    period = @lifetime.periods.find(delete_period_photo)
 
-		raise ActiveRecord::RecordInvalid unless @owned
+    raise ActiveRecord::RecordInvalid unless @owned
 
-		period.photos.purge
+    period.photos.purge
 
-		redirect_to set_param(['edit', 1], ['delete-period-photo', nil], current_params: request.query_parameters)
-	end
+    redirect_to set_param(['edit', 1], ['delete-period-photo', nil], current_params: request.query_parameters)
+  end
 
-	def update_single
-		@lifetime = Lifetime.find(params[:id])
-		@selected_year = params[:year] ? params[:year].to_i : Time.now.year
+  def update_single
+    @lifetime = Lifetime.find(params[:id])
+    @selected_year = params[:year] ? params[:year].to_i : Time.now.year
 
-		raise ActiveRecord::RecordInvalid unless @lifetime.user == current_user
+    raise ActiveRecord::RecordInvalid unless @lifetime.user == current_user
 
-		view_mode = params[:lifetime][:view_mode].dup
-		new_period = params['new-period']
-		delete_period = params['delete-period']
+    view_mode = params[:lifetime][:view_mode].dup
+    new_period = params['new-period']
+    delete_period = params['delete-period']
 
-		if @lifetime.update(lifetime_params)
-			if new_period
-				@lifetime.periods.create({ title: '', description: '', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
+    if @lifetime.update(lifetime_params)
+      if new_period
+        @lifetime.periods.create({ title: '', description: '', start: Date.new(@selected_year, 1, 1), end: Date.new(@selected_year, 1, 2) })
 
-				redirect_to set_param(['edit', 1], current_params: request.query_parameters)
-			elsif delete_period
-				period = @lifetime.periods.find(delete_period)
+        redirect_to set_param(['edit', 1], current_params: request.query_parameters)
+      elsif delete_period
+        period = @lifetime.periods.find(delete_period)
 
-				period.destroy
+        period.destroy
 
-				redirect_to set_param(['edit', 1], current_params: request.query_parameters)
-			else
-				redirect_to action: :single, year: params[:year], 'view-mode': view_mode
-			end
-		else
-			flash[:alert] = extract_errors(@lifetime)
-			redirect_to action: :single, year: params[:year], 'view-mode': view_mode, 'edit': 1
-		end
-	end
+        redirect_to set_param(['edit', 1], current_params: request.query_parameters)
+      else
+        redirect_to action: :single, year: params[:year], 'view-mode': view_mode
+      end
+    else
+      flash[:alert] = extract_errors(@lifetime)
+      redirect_to action: :single, year: params[:year], 'view-mode': view_mode, 'edit': 1
+    end
+  end
 
-	 private
+  private
 
-	def can_view_lifetime?(lifetime)
-		case lifetime.visibility
-		when 'everyone', 'link_only'
-			true
-		when 'author_only'
-			lifetime.user == current_user
-		when 'mutuals_only'
-			if !current_user
-				false
-			elsif lifetime.user == current_user
-				true
-			else
-				current_user.followings.include?(lifetime.user) && lifetime.user.followings.include?(current_user)
-			end
-		end
-	end
+  def can_view_lifetime?(lifetime)
+    case lifetime.visibility
+    when 'everyone', 'link_only'
+      true
+    when 'author_only'
+      lifetime.user == current_user
+    when 'mutuals_only'
+      if !current_user
+        false
+      elsif lifetime.user == current_user
+        true
+      else
+        current_user.followings.include?(lifetime.user) && lifetime.user.followings.include?(current_user)
+      end
+    end
+  end
 
-	def permit_lifetime_params(params)
-		if params[:lifetime][:periods_attributes].present?
-			params[:lifetime][:periods_attributes].each_value do |period|
-				period.delete(:photos) if period[:photos] == ['']
-			end
-		end
+  def permit_lifetime_params(params)
+    if params[:lifetime][:periods_attributes].present?
+      params[:lifetime][:periods_attributes].each_value do |period|
+        period.delete(:photos) if period[:photos] == ['']
+      end
+    end
 
-		params.require(:lifetime).permit(:title, :description, :start_point, :finish_point, :visibility, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
-	end
+    params.require(:lifetime).permit(:title, :description, :start_point, :finish_point, :visibility, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
+  end
 
-	def lifetime_params
-		permit_lifetime_params(params)
-	end
+  def lifetime_params
+    permit_lifetime_params(params)
+  end
 end

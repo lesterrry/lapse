@@ -2,11 +2,11 @@
 
 module Users
   class ReauthenticationController < DeviseController
-  include Devise::Passkeys::Controllers::ReauthenticationControllerConcern
-  include RelyingParty
+    include Devise::Passkeys::Controllers::ReauthenticationControllerConcern
+    include RelyingParty
 
-  def set_relying_party_in_request_env
-    request.env[relying_party_key] = relying_party
-  end
+    def set_relying_party_in_request_env
+      request.env[relying_party_key] = relying_party
+    end
   end
 end

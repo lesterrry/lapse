@@ -1,34 +1,34 @@
 class CommentsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_lifetime
+  before_action :authenticate_user!
+  before_action :set_lifetime
 
-    def create
-        @comment = @lifetime.comments.build(comment_params)
-        @comment.user = current_user
+  def create
+    @comment = @lifetime.comments.build(comment_params)
+    @comment.user = current_user
 
-        @comment.save
+    @comment.save
 
-        redirect_to single_lifetime_url(@lifetime)
-    end
+    redirect_to single_lifetime_url(@lifetime)
+  end
 
-    def destroy
-        @comment = @lifetime.comments.find(params[:id])
-        @owned = @comment.user == current_user
+  def destroy
+    @comment = @lifetime.comments.find(params[:id])
+    @owned = @comment.user == current_user
 
-        raise ActiveRecord::RecordInvalid unless @owned
+    raise ActiveRecord::RecordInvalid unless @owned
 
-        @comment.destroy
+    @comment.destroy
 
-        redirect_to single_lifetime_url(@lifetime)
-    end
+    redirect_to single_lifetime_url(@lifetime)
+  end
 
   private
 
-    def set_lifetime
-        @lifetime = Lifetime.find(params[:lifetime_id])
-    end
+  def set_lifetime
+    @lifetime = Lifetime.find(params[:lifetime_id])
+  end
 
-    def comment_params
-        params.require(:comment).permit(:content)
-    end
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end

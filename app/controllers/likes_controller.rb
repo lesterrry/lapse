@@ -1,26 +1,26 @@
 class LikesController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_lifetime
+  before_action :authenticate_user!
+  before_action :set_lifetime
 
-    def create
-        @like = @lifetime.likes.new(user: current_user)
+  def create
+    @like = @lifetime.likes.new(user: current_user)
 
-        @like.save
+    @like.save
 
-        redirect_back(fallback_location: root_path)
-    end
+    redirect_back(fallback_location: root_path)
+  end
 
-    def destroy
-        @like = @lifetime.likes.find_by(user: current_user)
+  def destroy
+    @like = @lifetime.likes.find_by(user: current_user)
 
-        @like&.destroy
+    @like&.destroy
 
-        redirect_back(fallback_location: root_path)
-    end
+    redirect_back(fallback_location: root_path)
+  end
 
   private
 
-    def set_lifetime
-        @lifetime = Lifetime.find(params[:lifetime_id])
-    end
+  def set_lifetime
+    @lifetime = Lifetime.find(params[:lifetime_id])
+  end
 end
