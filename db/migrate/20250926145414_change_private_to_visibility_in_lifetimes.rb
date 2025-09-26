@@ -7,7 +7,7 @@ class ChangePrivateToVisibilityInLifetimes < ActiveRecord::Migration[7.0]
     execute <<-SQL
       UPDATE lifetimes
       SET visibility = CASE
-        WHEN private = 1 THEN 1
+        WHEN private = true THEN 1
         ELSE 0
       END
     SQL
@@ -24,8 +24,8 @@ class ChangePrivateToVisibilityInLifetimes < ActiveRecord::Migration[7.0]
     execute <<-SQL
       UPDATE lifetimes
       SET private = CASE
-        WHEN visibility = 1 THEN 1
-        ELSE 0
+        WHEN visibility = 1 THEN true
+        ELSE false
       END
     SQL
 
