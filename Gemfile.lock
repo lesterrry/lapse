@@ -90,8 +90,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    brakeman (7.1.0)
-      racc
     builder (3.3.0)
     capybara (3.39.0)
       addressable
@@ -362,7 +360,6 @@ DEPENDENCIES
   active_storage_validations
   administrate (~> 0.20.1)
   bootsnap
-  brakeman
   capybara
   debug
   devise
