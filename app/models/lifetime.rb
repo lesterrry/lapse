@@ -5,6 +5,13 @@ class Lifetime < ApplicationRecord
 
   validates :title, presence: true
 
+  enum visibility: {
+    everyone: 0,
+    author_only: 1,
+    link_only: 2,
+    mutuals_only: 3
+  }
+
   has_many :periods, dependent: :destroy
   accepts_nested_attributes_for :periods, allow_destroy: true, reject_if: :all_blank
 

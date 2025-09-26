@@ -1,0 +1,8 @@
+- lifetime ||= @lifetime
+
+- if lifetime.visibility === 'author_only'
+    = shared 'icon', { name: 'lock' }
+- elsif lifetime.visibility === 'link_only'
+    = shared 'icon', { name: 'link' }
+- elsif lifetime.visibility === 'mutuals_only'
+    = shared 'icon', { name: 'users' }

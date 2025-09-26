@@ -6,8 +6,7 @@
 %a.shared-lifetime-card{href: single_lifetime_url(lifetime), data: { turbo_frame: '_top', turbo_prefetch: 'false' }}
     %div.upper
         %p.text-m= lifetime.title
-        - if lifetime.private?
-            = shared 'icon', { name: 'lock' }
+        = shared 'visibility_icon', { lifetime: }
     %div.center
         %div.asset
             - asset_1 = all_photos[0]

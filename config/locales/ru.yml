@@ -82,6 +82,12 @@ ru:
       description_placeholder: 'Описание'
       make_private: 'Сделать приватным'
       make_public: 'Сделать открытым'
+      visibility_label: 'Видимость'
+      visibility_options:
+        public: 'Открытый'
+        private: 'Приватный'
+        link_only: 'Только по ссылке'
+        mutuals_only: 'Только взаимные подписчики'
       by_year_tab: 'По годам'
       list_tab: 'Списком'
       save_changes: 'Сохранить изменения'

@@ -70,6 +70,12 @@ en:
       description_placeholder: 'Description'
       make_private: 'Make private'
       make_public: 'Make public'
+      visibility_label: 'Visibility'
+      visibility_options:
+        public: 'Public'
+        private: 'Private'
+        link_only: 'Link only'
+        mutuals_only: 'Mutuals only'
       by_year_tab: 'Year view'
       list_tab: 'List view'
       save_changes: 'Save changes'

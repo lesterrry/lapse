@@ -5,7 +5,7 @@ class LifetimesController < ApplicationController
 	before_action :authenticate_user!, only: %i[new create destroy update_single]
 
 	def featured
-		@featured = Lifetime.where(private: false)
+		@featured = Lifetime.where(visibility: :everyone)
 	end
 
 	def new
@@ -136,7 +136,20 @@ class LifetimesController < ApplicationController
 	 private
 
 	def can_view_lifetime?(lifetime)
-		!lifetime.private? || lifetime.user == current_user
+		case lifetime.visibility
+		when 'everyone', 'link_only'
+			true
+		when 'author_only'
+			lifetime.user == current_user
+		when 'mutuals_only'
+			if !current_user
+				false
+			elsif lifetime.user == current_user
+				true
+			else
+				current_user.followings.include?(lifetime.user) && lifetime.user.followings.include?(current_user)
+			end
+		end
 	end
 
 	def permit_lifetime_params(params)
@@ -146,7 +159,7 @@ class LifetimesController < ApplicationController
 			end
 		end
 
-		params.require(:lifetime).permit(:title, :description, :start_point, :finish_point, :private, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
+		params.require(:lifetime).permit(:title, :description, :start_point, :finish_point, :visibility, periods_attributes: [:id, :title, :description, :color_hex, :start, :end, { photos: [] }])
 	end
 
 	def lifetime_params

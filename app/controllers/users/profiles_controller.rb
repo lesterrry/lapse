@@ -2,7 +2,7 @@ module Users
   class ProfilesController < ApplicationController
     include ApplicationHelper
 
-    before_action :authenticate_user!, except: %i[single]
+    before_action :authenticate_user!, except: %i[single single_by_username]
 
     def me
         @user = current_user
@@ -74,10 +74,12 @@ module Users
 
     def set_lifetimes
         @lifetimes =
-          if @user == current_user
+          if current_user && @user == current_user
               @user.lifetimes
+          elsif current_user&.followings&.include?(@user) && @user.followings.include?(current_user)
+              @user.lifetimes.where(visibility: :everyone).or(@user.lifetimes.where(visibility: :mutuals_only))
           else
-              @user.lifetimes.where(private: false)
+              @user.lifetimes.where(visibility: :everyone)
           end
     end
   end
